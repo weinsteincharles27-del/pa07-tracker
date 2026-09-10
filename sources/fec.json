@@ -1,0 +1,348 @@
+{
+  "source": "FEC / OpenFEC API",
+  "url": "https://www.fec.gov/data/elections/house/PA/07/2026/",
+  "retrieved_utc": "2026-08-30T16:22:43Z",
+  "cycle": 2026,
+  "coverage_through": "2026-06-30",
+  "candidates": [
+    {
+      "name": "Bob Brooks",
+      "party": "DEM",
+      "candidate_id": "H6PA07188",
+      "incumbent": false,
+      "committee_id": "C00917096",
+      "committee_name": "BOB BROOKS FOR CONGRESS",
+      "receipts": 2392215.23,
+      "disbursements": 1373792.39,
+      "cash_on_hand": 1018422.84,
+      "debts": 15000.0,
+      "individual_contributions": 1942165.53,
+      "pac_contributions": 403000.03,
+      "self_funding": 3500.0,
+      "coverage_through": "2026-06-30",
+      "notes": "Democratic nominee; won a contested 5-way primary (also ran Ryan Crosswell, Lamont McClure, Carol Obando-Derstine, Mark Pinsley). Figures are cycle-to-date (coverage_start 2025-07-01) per FEC JULY QUARTERLY 2026 report, filed 2026-07-15. Also received $5,000 from party committees and $26,085.00 in transfers from another authorized committee (not broken out in the fixed schema). Individual unitemized (small-dollar, <=$200 aggregated) contributions were $599,386.78, i.e. 25.1% of total receipts / 30.9% of individual contributions. 21 total FEC filings on record for committee C00917096. Self-funding of $3,500 is minimal."
+    },
+    {
+      "name": "Ryan Mackenzie",
+      "party": "REP",
+      "candidate_id": "H8PA15195",
+      "incumbent": true,
+      "committee_id": "C00846501",
+      "committee_name": "MACKENZIE FOR CONGRESS COMMITTEE",
+      "receipts": 4357405.11,
+      "disbursements": 1521927.85,
+      "cash_on_hand": 2938717.17,
+      "debts": 22583.23,
+      "individual_contributions": 1493241.01,
+      "pac_contributions": 1042912.78,
+      "self_funding": 0.0,
+      "coverage_through": "2026-06-30",
+      "notes": "Incumbent (first elected 2024, defeating Susan Wild); ran unopposed in the Republican primary. Figures are cycle-to-date (coverage_start 2025-01-01) per FEC JULY QUARTERLY 2026 report, filed 2026-07-15. Includes an unusually large $1,779,199.14 in transfers from another authorized committee (not broken out in the fixed schema) -- consistent with the wind-down of a former joint committee, 'MACKENZIE FOR CONGRESS-GTM NF PA07' (C00858357), which stopped filing in early 2025. Also received $5,000 from party committees. Individual unitemized (small-dollar, <=$200 aggregated) contributions were $554,133.97, i.e. 12.7% of total receipts / 37.1% of individual contributions. No candidate self-funding reported. 55 total FEC filings on record for committee C00846501 (committee active since the 2024 cycle)."
+    },
+    {
+      "name": "Frank Golden",
+      "party": "UN",
+      "candidate_id": "H6PA07212",
+      "incumbent": false,
+      "committee_id": "C00935189",
+      "committee_name": "GOLDEN FOR CONGRESS",
+      "receipts": null,
+      "disbursements": null,
+      "cash_on_hand": null,
+      "debts": null,
+      "individual_contributions": null,
+      "pac_contributions": null,
+      "self_funding": null,
+      "coverage_through": null,
+      "notes": "Declared candidate (Unaffiliated), committee registered but has never filed a periodic financial report; FEC lists no fundraising activity (has_raised_funds=false) as of retrieval."
+    },
+    {
+      "name": "Aiden Alexander Gonzalez",
+      "party": "DEM",
+      "candidate_id": "H6PA07196",
+      "incumbent": false,
+      "committee_id": "C00932301",
+      "committee_name": "AIDEN FOR PA",
+      "receipts": null,
+      "disbursements": null,
+      "cash_on_hand": null,
+      "debts": null,
+      "individual_contributions": null,
+      "pac_contributions": null,
+      "self_funding": null,
+      "coverage_through": null,
+      "notes": "Declared Democratic candidate, committee registered but has never filed a periodic financial report; FEC lists no fundraising activity (has_raised_funds=false) as of retrieval. Did not appear to contest the Democratic primary that Brooks won."
+    },
+    {
+      "name": "Michael Ramon Granados Jr.",
+      "party": "IND",
+      "candidate_id": "H6PA07204",
+      "incumbent": false,
+      "committee_id": null,
+      "committee_name": null,
+      "receipts": null,
+      "disbursements": null,
+      "cash_on_hand": null,
+      "debts": null,
+      "individual_contributions": null,
+      "pac_contributions": null,
+      "self_funding": null,
+      "coverage_through": null,
+      "notes": "Declared candidate (Independent); no principal committee on file and no fundraising activity reported (has_raised_funds=false) as of retrieval."
+    },
+    {
+      "name": "Lewis Shupe",
+      "party": "IND",
+      "candidate_id": "H4PA07134",
+      "incumbent": false,
+      "committee_id": "C00857995",
+      "committee_name": "SHUPE FOR CONGRESS",
+      "receipts": null,
+      "disbursements": null,
+      "cash_on_hand": null,
+      "debts": null,
+      "individual_contributions": null,
+      "pac_contributions": null,
+      "self_funding": null,
+      "coverage_through": null,
+      "notes": "Declared candidate (Independent), committee registered but has never filed a periodic financial report; FEC lists no fundraising activity (has_raised_funds=false) as of retrieval."
+    }
+  ],
+  "independent_expenditures": [
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 140300.0,
+      "committee": "CONGRESSIONAL PROGRESSIVE CAUCUS PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 3556.19,
+      "committee": "WORKING FAMILIES PARTY PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 157.07,
+      "committee": "RURAL FREEDOM NETWORK",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 4500.0,
+      "committee": "FF PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 99625.0,
+      "committee": "MEDICARE FOR ALL",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 30559.95,
+      "committee": "MAKE THE ROAD ACTION POLITICAL COMMITTEE",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 9116.67,
+      "committee": "BLUE BATTLEGROUND PROJECT",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 187.51,
+      "committee": "SURJ PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 50.0,
+      "committee": "THE PEOPLE UNITED PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 36.54,
+      "committee": "GIVEGREEN UNITED ACTION",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 88321.5,
+      "committee": "DLP PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 16643.34,
+      "committee": "BLUE MAJORITY PROJECT",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 638.3,
+      "committee": "FIELD TEAM 6, INC.",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "O",
+      "amount": 8840.0,
+      "committee": "KITCHEN TABLE VALUES PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 249750.0,
+      "committee": "JOBS AND DEMOCRACY PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 4708.33,
+      "committee": "BLUE SHIFT PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 1075.0,
+      "committee": "BLUE DEMOCRACY NETWORK",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 2600.0,
+      "committee": "DEMOCRATIC FUTURE PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 1781524.0,
+      "committee": "STRONGER TOGETHER PA",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 4941.66,
+      "committee": "MAJORITY BLUE PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 766.66,
+      "committee": "BLUE MAJORITY MAKERS PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "O",
+      "amount": 312371.76,
+      "committee": "LEAD LEFT PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Ryan Mackenzie",
+      "support_oppose": "O",
+      "amount": 156.81,
+      "committee": "PLANNED PARENTHOOD VOTES",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Ryan Mackenzie",
+      "support_oppose": "O",
+      "amount": 1702.29,
+      "committee": "ACTIVATE AMERICA",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Ryan Mackenzie",
+      "support_oppose": "O",
+      "amount": 1517.06,
+      "committee": "RURAL FREEDOM NETWORK",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Ryan Mackenzie",
+      "support_oppose": "O",
+      "amount": 6044.0,
+      "committee": "YOUTH SAVE DEMOCRACY PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Ryan Mackenzie",
+      "support_oppose": "O",
+      "amount": 1835.77,
+      "committee": "INDIGO PAC",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Ryan Mackenzie",
+      "support_oppose": "O",
+      "amount": 1096.69,
+      "committee": "FIELD TEAM 6, INC.",
+      "as_of": "2026-06-30"
+    },
+    {
+      "target_candidate": "Bob Brooks",
+      "support_oppose": "S",
+      "amount": 11000.0,
+      "committee": "SENIORS EMPOWERING AN EFFECTIVE DEMOCRACY (SEED-PAC)",
+      "as_of": "2026-08-19"
+    }
+  ],
+  "totals_by_party": {
+    "DEM": {
+      "candidate": "Bob Brooks",
+      "receipts": 2392215.23,
+      "disbursements": 1373792.39,
+      "cash_on_hand": 1018422.84
+    },
+    "REP": {
+      "candidate": "Ryan Mackenzie",
+      "receipts": 4357405.11,
+      "disbursements": 1521927.85,
+      "cash_on_hand": 2938717.17
+    },
+    "note": "Only the two general-election nominees are aggregated here; minor-party/independent candidates on record reported no financial activity."
+  },
+  "notes": [
+    "Coverage_through (2026-06-30) reflects the most recent PERIODIC financial report (FEC Form 3, 'JULY QUARTERLY 2026', filed 2026-07-15) for both major-party nominees' principal committees. As of retrieval (2026-08-30), that is roughly 2 months stale; the next scheduled disclosure is the OCTOBER QUARTERLY report (due on/around 2026-10-15, covering through 2026-09-30).",
+    "Both candidates have filed newer non-financial-summary documents since June 30, 2026 (e.g. Brooks filed a Statement of Organization amendment on 2026-08-20; both campaigns have filed periodic 48-Hour Notices of Contributions/Loans around the primary), but these do not update the aggregate receipts/disbursements/cash-on-hand totals shown here.",
+    "Bob Brooks (D) won a contested 5-candidate Democratic primary; the other Democratic primary candidates (Ryan Crosswell, Lamont McClure, Carol Obando-Derstine, Mark Pinsley) are not included as candidate entries above because they are not on the 2026 general-election ballot, but their FEC candidate IDs are C00907667/H6PA07162, C00898544/H6PA07147, C00903963/H6PA07154, and C00913947/H6PA07170 respectively, for reference.",
+    "Ryan Mackenzie (R) is the incumbent, having defeated then-Rep. Susan Wild (D) in 2024; Wild is not a 2026 candidate (FEC candidate_status = prior-cycle candidate, H8PA15229).",
+    "Independent-expenditure totals in 'independent_expenditures' come from OpenFEC's schedules/schedule_e/by_candidate aggregate (deduplicated, i.e. amendments/superseding filings already reconciled), queried for cycle=2026. A naive sum of raw itemized schedule_e line items for these two candidates totals roughly $5.9M, materially higher than the ~$2.76M deduplicated aggregate, because raw itemized records include amended/superseded filings; the deduplicated by_candidate totals are the ones used here.",
+    "Spot-checking the underlying itemized Schedule E records for the largest committees (e.g. STRONGER TOGETHER PA supporting Brooks, LEAD LEFT PAC opposing Brooks) shows expenditure dates clustered between 2026-05-06 and 2026-05-18 -- i.e. immediately before Pennsylvania's 2026 primary (inferred to be mid-May 2026 based on FEC 'PRE-PRIMARY 2026' reports covering periods ending 2026-04-29). This strongly suggests the great majority of the ~$2.76M in outside spending found here was primary-season spending (aimed at the multi-candidate Democratic primary), not general-election spending in the Brooks-vs-Mackenzie race. Post-primary (after 2026-05-19) itemized IE activity located for these two candidates was comparatively minor: a handful of small-dollar entries in June 2026 (e.g. Field Team 6 $638.30 and GiveGreen United Action $36.54 supporting Brooks; Planned Parenthood Votes $85.38 opposing Mackenzie) plus one larger, more recent item: an $11,000 pro-Brooks independent expenditure by Seniors Empowering an Effective Democracy (SEED-PAC), reported via a 24-hour notice filed 2026-08-19 (not yet reflected in the by_candidate aggregate; listed separately in independent_expenditures).",
+    "No independent expenditures supporting Ryan Mackenzie were found in FEC records as of retrieval; all $12,352.62 in IE activity referencing him was in opposition (mostly small-dollar and primary-period).",
+    "No independent expenditure activity was found for the four no-fundraising minor/independent candidates (Golden, Gonzalez, Granados, Shupe).",
+    "'Self-funding' = FEC 'candidate_contribution' (candidate's own money loaned/contributed to their committee this cycle), not candidate personal wealth.",
+    "'pac_contributions' = FEC 'other_political_committee_contributions' (traditional multicandidate/PAC money); this excludes party-committee contributions and inter-committee transfers, which are called out separately in each candidate's notes field since the fixed schema has no dedicated field for them."
+  ],
+  "extraction_problems": [
+    "Precise dollar split of independent-expenditure spending between the primary period and the general-election period could not be computed exhaustively (would require reconciling all itemized Schedule E records, including amendments, against exact PA primary election-day boundaries); the primary-vs-general characterization above is based on spot-checking the top committees' itemized records, not a full reconciliation.",
+    "OpenFEC's schedules/schedule_e/by_candidate aggregate had not yet incorporated the 2026-08-19 SEED-PAC $11,000 pro-Brooks 24-hour notice at the time of retrieval; it was added to independent_expenditures manually from the itemized schedule_e record rather than the aggregate endpoint.",
+    "No FEC financial totals exist for declared candidates Frank Golden, Aiden Alexander Gonzalez, Michael Ramon Granados Jr., and Lewis Shupe (empty results from /candidate/{id}/totals/); their financial fields are null rather than 0, since 'no report filed' is not the same as a confirmed zero."
+  ]
+}

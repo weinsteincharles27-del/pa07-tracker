@@ -1,0 +1,63 @@
+# ---------------------------------------------------------------- credentials
+# This repository is intended to become PUBLIC. Nothing below may ever be
+# committed. The Kalshi RSA key signs every API request; the FEC key is a
+# read-only token but still a credential. In CI they belong in encrypted
+# Actions secrets, never in the tree.
+kalshi_key.pem
+fec_key.txt
+*.pem
+*.key
+*_key.txt
+*_key
+.env
+.env.*
+secrets/
+
+# ------------------------------------------------------------- build artefacts
+# Intermediate workbooks handed between build stages. Regenerated every run.
+_stage*.xlsx
+
+# ------------------------------------------------------------- runtime / local
+# Per-machine state, not source. state.json drives cumulative-move detection and
+# is meaningless on another machine; status.json is the last run's result.
+logs/
+archive/
+status.json
+state.json
+state.json.corrupt
+pollstamp.json
+*.prev
+
+# Collected data. Whether these are committed depends on the deployment: a
+# GitHub Actions cron would commit refreshed copies into data/ so the static
+# site can read them. Until that exists they are local build output.
+data.json
+data2.json
+data3.json
+refs.json
+prefs.json
+movrefs.json
+vrefs.json
+k3refs.json
+f7refs.json
+
+# The full NYT/538 house-poll file is ~2.9 MB and covers every 2026 House race.
+# Only the PA-07 rows are needed, and those are committed as a fixture.
+house.csv
+
+# ------------------------------------------------------------------- generated
+PA-07_House_Election_Tracker.xlsx
+
+# ------------------------------------------------------------------------ junk
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+node_modules/
+
+# the key id is an identifier, not a secret, but it does not belong in a public repo
+kalshi_key_id.txt
+
+# Excel lock files
+~$*

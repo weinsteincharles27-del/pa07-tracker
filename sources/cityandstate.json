@@ -1,0 +1,50 @@
+{
+  "source": "City & State PA",
+  "url": "https://www.cityandstatepa.com/prediction-markets/races/pa-07-house",
+  "retrieved_utc": "2026-08-30T16:20:00Z",
+  "method": "http",
+  "market_odds": {
+    "dem_prob": 0.72,
+    "rep_prob": 0.28,
+    "venues": ["Kalshi"],
+    "as_of": null,
+    "history": null
+  },
+  "polls": [],
+  "rating": {
+    "label": null,
+    "by": null,
+    "as_of": null
+  },
+  "methodology": {
+    "summary": "The PA-07 race page presents a single 'General Election · PARTY TO WIN' odds card (Bob Brooks/Democrat vs. a generic 'Republican' side, no name given) plus a separate 'Candidates' grid with a per-candidate 'MARKET ODDS' figure. Both are sourced, per the site's FAQ and its dedicated 'What Are Prediction Markets?' page, from real-money prediction-market prices supplied by a vendor called PredictionEdge, which the site describes as aggregating 'regulated prediction exchanges including Kalshi.' Kalshi is the only venue named anywhere on the site; Polymarket is never mentioned. Odds are stated to refresh every 30 minutes, but no per-race 'last updated' timestamp is shown, and no historical/time-series chart or odds history is published for this or any race. The entire '/prediction-markets' section carries a sitewide 'SPONSORED CONTENT' banner stating editorial staff were not involved in its preparation, and its 'Predict Now' calls-to-action are Plus500 affiliate trading links (utm_campaign=cta, partner id=139423, tag=CSPA) -- i.e., this is a monetized/affiliate content vertical built on the PredictionEdge odds feed, not a standalone newsroom market-tracking product.",
+    "sources": ["PredictionEdge (aggregator/data vendor)", "Kalshi (only exchange explicitly named)"],
+    "update_frequency": "Every 30 minutes (stated site-wide; no race-specific 'as of' timestamp shown)",
+    "quotes": [
+      "It comes straight from regulated prediction markets via PredictionEdge; each figure is a live, money-backed probability rather than a poll, updated every 30 minutes.",
+      "Where is this odds data sourced? From regulated prediction exchanges including Kalshi, aggregated by PredictionEdge and updated every 30 minutes.",
+      "PredictionEdge supplies the consolidated feed from the major regulated prediction market platforms.",
+      "This content is made possible by our sponsor(s). The editorial staff of City & State PA was not involved in its preparation."
+    ]
+  },
+  "context": {
+    "fundraising": null,
+    "candidates": "Only Bob Brooks (D) has a profile on the site (/prediction-markets/candidates/bob-brooks): described as a Bethlehem, PA firefighter and labor leader, president of the Pennsylvania Professional Fire Fighters Association, running on a working-class/union-advocacy platform. His stated positions: Economy & Taxes (reverse 2017 tax law benefits for wealthy/corporations, raise minimum wage, strengthen unions; sourced to brooksforcongress.com and fec.gov), Healthcare (Medicare for All, restore Medicaid cuts, lower drug prices), Immigration (secure the border while creating earned-citizenship pathways), Abortion (codify Roe v. Wade, overturn state bans), Climate & Energy (renewables plus nuclear/natural gas as transition), Public Safety & Guns (respects 2nd Amendment, supports universal background checks/closing gun-show loophole). Ryan Mackenzie (R), the incumbent, has NO profile anywhere on the site and is never named on the PA-07 race page, the candidates index, or elsewhere -- the 'Republican' side of the party-to-win card has no name or photo attached.",
+    "history": null,
+    "other": "Site-wide FAQ on the /prediction-markets/polls page states (unattributed to any named forecaster): 'Forecasters put PA-7 in the Lehigh Valley, PA-10 around Harrisburg and York, PA-8 in the Scranton area, and PA-1 in Bucks County among the most competitive seats in the country for 2026.' The Bob Brooks candidate page's sidebar showed 'Days to Election: 65' (consistent with an Aug 30, 2026 build/render date, 65 days before Nov 3, 2026)."
+  },
+  "notes": [
+    "The Republican candidate, Rep. Ryan Mackenzie, is never named anywhere on cityandstatepa.com's prediction-markets section (race page, candidates index, or candidate profile pages). The PA-07 'Party to Win' card labels his side simply 'Republican' with no photo.",
+    "Two different Brooks probabilities appear on the same race page and are inconsistent with each other: the race-level 'General Election · PARTY TO WIN' gauge shows Bob Brooks (D) 72% vs. generic Republican 28%; the 'Pennsylvania Congressional Candidates' card directly below it shows Bob Brooks 'MARKET ODDS' at 78%. The page does not explain the discrepancy (e.g., whether one reflects a party-control market and the other a candidate-specific market). market_odds.dem_prob/rep_prob above use the race-level 72/28 'Party to Win' figures; the 78% candidate-card figure is flagged here rather than silently discarded.",
+    "No 'as of' or last-updated timestamp is shown for the PA-07 odds specifically; only a generic sitewide claim of 30-minute refresh cadence.",
+    "No historical odds chart, sparkline, or time series is published for this race (or any race) on the site.",
+    "No PA-07-specific polling exists anywhere on the site. The dedicated /prediction-markets/polls page contains only Pennsylvania Governor race polls (Shapiro vs. Garrity); it has zero mentions of Brooks, Mackenzie, or PA-07.",
+    "No formal race rating/handicapping (e.g., Cook Political Report, Sabato's Crystal Ball, Inside Elections) is cited for PA-07 anywhere on the site.",
+    "No fundraising/FEC figures, cash-on-hand, or district historical election results (e.g., prior PA-07 results, PVI) are presented anywhere on the site for this race.",
+    "The only prediction-market venue explicitly named anywhere on the site is Kalshi (via the PredictionEdge aggregation feed); Polymarket is never mentioned in any page swept.",
+    "The entire '/prediction-markets' vertical carries a sitewide 'SPONSORED CONTENT' disclosure ('the editorial staff of City & State PA was not involved in its preparation'), and its 'Predict Now' buttons are Plus500 affiliate links (us.plus500.com/en/prediction-markets?id=139423&tags=CSPA&...) -- relevant context when weighing this source's independence versus a newsroom-run tracker.",
+    "Pages swept: race page (/prediction-markets/races/pa-07-house), candidate profile (/prediction-markets/candidates/bob-brooks), candidates index (/prediction-markets/candidates), methodology page (/prediction-markets/what-are-prediction-markets), polls page (/prediction-markets/polls), section landing page (/prediction-markets), and races index (/prediction-markets/races). All returned HTTP 200 via plain curl with a standard browser User-Agent; Playwright was not needed.",
+    "No text resembling instructions directed at an AI/agent was found in any swept page; all content was ordinary marketing/editorial copy."
+  ],
+  "extraction_problems": []
+}
