@@ -48,6 +48,14 @@ house.csv
 # ------------------------------------------------------------------- generated
 PA-07_House_Election_Tracker.xlsx
 
+# ------------------------------------------------------------------------ site
+# site/data/*.json and site/PA-07_House_Election_Tracker.xlsx ARE committed:
+# they are the snapshot the published page reads, and a static host can only
+# serve what is in the tree. The workbook is the one large binary in this
+# history — export_site.py --no-workbook skips the copy if that becomes a
+# problem, and the download link disappears with it.
+!site/PA-07_House_Election_Tracker.xlsx
+
 # ------------------------------------------------------------------------ junk
 __pycache__/
 *.py[cod]

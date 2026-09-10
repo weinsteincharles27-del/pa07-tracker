@@ -387,7 +387,12 @@ r = note(tn, r, "Columns are nested, not exclusive: each is P(turnout ≥ that t
                 % (min(tdays) if tdays else "n/a"), 10)
 tn.freeze_panes = tn.cell(TH2, 2)
 
+# D_TOP_MID/R_TOP_MID travel out with the row anchors for the same reason the
+# turnout midpoints already did: export_site.py has to reproduce this ladder's
+# expected margin, and a second copy of the constants in a second file is a
+# guaranteed future disagreement between the sheet and the site.
 json.dump({"TURN_LOW_MID": TURN_LOW_MID, "TURN_TOP_MID": TURN_TOP_MID,
+           "D_TOP_MID": D_TOP_MID, "R_TOP_MID": R_TOP_MID,
            "TURNOUT_2024": TURNOUT_2024,
            "K0": K0, "KN": KN, "KTOT": KTOT, "KEM": KEM, "R03": R03, "D03": D03,
            "KHF": KHF, "KHL": KHL, "T0": T0, "TN": TN, "TTOT": TTOT, "TEXP": TEXP,
