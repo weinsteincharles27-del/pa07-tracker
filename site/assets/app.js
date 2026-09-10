@@ -60,6 +60,7 @@
     ul.innerHTML = "";
     man.freshness.forEach(function (f) {
       var li = elem("li", "src");
+      li.setAttribute("data-id", f.id);     // live.js updates the Polymarket chip
       li.appendChild(elem("span", "tag " + f.kind, f.kind));
       li.appendChild(elem("b", null, f.label));
       var when = elem("span", "when", ago(f.snapshot_utc));

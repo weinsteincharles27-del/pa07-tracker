@@ -128,7 +128,7 @@
        "wider than 25 cents bid to ask. The midpoint of a one-cent bid against an 84-cent " +
        "ask is arithmetic, not a price, so it is shown but not joined into the line.");
 
-    window.Chart.line(plot, {
+    var opts = {
       title: "Democratic win probability on Polymarket and Kalshi",
       series: [
         { label: "Polymarket", points: S.pm_dem, color: C.D, width: 2.2 },
@@ -138,7 +138,11 @@
       refLines: [{ y: 0.5, label: "50%" }],
       yMin: 0.3, yMax: 0.9,
       yFormat: pct
-    });
+    };
+    /* Handed out so the live poller can drop today's price on as a marker. It
+       gets to add a marker; it does not get to extend the committed line. */
+    window.PA07.charts = window.PA07.charts || {};
+    window.PA07.charts.probability = { opts: opts, redraw: window.Chart.line(plot, opts) };
     return sec;
   }
 
