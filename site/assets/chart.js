@@ -177,8 +177,11 @@
       });
 
       (opt.markers || []).forEach(function (mk) {
+        /* A hollow marker (fill white, stroke in the series colour) pairs with
+           a dashed line the same way a solid one pairs with a solid line. */
         svg.appendChild(el("circle", { cx: X(ms(mk.date)), cy: Y(mk.value), r: 5,
-                                       fill: mk.color, stroke: "#fff", "stroke-width": 1.5 }));
+                                       fill: mk.color, stroke: mk.stroke || "#fff",
+                                       "stroke-width": mk.stroke ? 2 : 1.5 }));
         if (mk.label) {
           svg.appendChild(el("text", { class: "reflabel", x: X(ms(mk.date)),
                                        y: Y(mk.value) - 9, "text-anchor": "middle" }, mk.label));

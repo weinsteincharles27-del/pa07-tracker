@@ -93,39 +93,6 @@ header.top .wrap { padding-top: 1.25rem; padding-bottom: 1rem; }
 
 /* --------------------------------------------------------------- freshness */
 
-.sources {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.9rem;
-  padding: 0;
-  list-style: none;
-}
-.src {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 0.3rem 0.55rem;
-  background: var(--ground-2);
-  font-size: 0.75rem;
-}
-.src b { font-weight: 600; }
-.src .when { color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.tag {
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  border-radius: 3px;
-  padding: 0.05rem 0.3rem;
-  white-space: nowrap;
-}
-.tag.live { background: #E1F2E8; color: var(--live); }
-.tag.snapshot { background: var(--ground-3); color: var(--ink-2); }
-.tag.manual { background: var(--warn-bg); color: #8A6D12; }
-.tag.build { background: var(--ground-3); color: var(--ink-2); }
 
 /* ------------------------------------------------------------------ blocks */
 

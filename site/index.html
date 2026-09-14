@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PA-07 House Election Tracker</title>
-<meta name="description" content="Prediction-market prices, a statistical forecast and the one public poll for the 2026 PA-07 US House race, with the caveats that decide how to read them.">
+<meta name="description" content="Live prediction-market odds for the 2026 PA-07 US House race, Bob Brooks (D) against Ryan Mackenzie (R), with the forecast and polls beside them.">
 <meta name="color-scheme" content="light">
 <link rel="stylesheet" href="assets/app.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%232E5FA3'/></svg>">
@@ -17,31 +17,24 @@
     <div class="eyebrow">Pennsylvania 7th congressional district &middot; US House</div>
     <h1>Bob Brooks <span class="dem">(D)</span> vs Rep. Ryan Mackenzie <span class="rep">(R)</span></h1>
     <p class="countdown num" id="countdown">Election 3 November 2026</p>
-
-    <!-- Every source states its own freshness; none borrows another's. -->
-    <ul class="sources" id="sources" aria-label="Data sources and how fresh each one is"></ul>
   </div>
 </header>
 
 <main id="main" class="wrap">
 
   <noscript>
-    <div class="caveat high">
-      <b>This page draws its charts in the browser.</b>
-      <p>With JavaScript off there is nothing to show. The same numbers are in the Excel
-      workbook and in <code>site/data/*.json</code>, which are plain files you can read
-      directly.</p>
-    </div>
+    <div class="caveat high">This page needs JavaScript to draw its charts. The same numbers
+    are in the Excel workbook linked at the bottom.</div>
   </noscript>
 
-  <div id="boot" class="note">Loading the last committed snapshot&hellip;</div>
+  <div id="boot" class="note">Loading&hellip;</div>
 
 </main>
 
 <footer class="foot">
   <div class="wrap">
-    <p>Prices from Polymarket and Kalshi, the forecast from PollsMax, polls from the NYT/538
-    house-poll file. Not advice. A prediction market is a price, not a prophecy.</p>
+    <p>Prices from Polymarket and Kalshi, forecast from PollsMax, polls from the NYT/538 house file.
+    Not advice.</p>
     <p id="built" class="num"></p>
   </div>
 </footer>
@@ -49,6 +42,7 @@
 <script src="assets/chart.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/dashboard.js"></script>
+<script src="assets/live-config.js"></script>
 <script src="assets/live.js"></script>
 </body>
 </html>

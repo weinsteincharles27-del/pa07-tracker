@@ -73,11 +73,10 @@
       c.d30 ? "from " + pct(c.d30.start) : "", c.d30 && c.d30.pp < 0 ? "down" : c.d30 && c.d30.pp > 0 ? "up" : ""));
     ul.appendChild(tile("Since the primary", c.since_primary ? pp(c.since_primary.pp) : "n/a",
       "19 May 2026", c.since_primary && c.since_primary.pp > 0 ? "up" : "down"));
-    ul.appendChild(tile("Venues disagree by", pp(s.divergence !== null && s.divergence !== undefined ? s.divergence * 100 : null),
+    ul.appendChild(tile("Gap between markets", pp(s.divergence !== null && s.divergence !== undefined ? s.divergence * 100 : null),
       "Polymarket minus Kalshi"));
-    ul.appendChild(tile("Days left", String(d.manifest.race.days_to_election), "3 November 2026"));
     sec.appendChild(ul);
-    var live = elem("p", "fine", "Consensus is the plain average of the two venues. Polymarket updates live on this page; Kalshi is from the last scheduled build.");
+    var live = elem("p", "fine", "The headline is the average of the two markets. Live prices are below.");
     sec.appendChild(live);
     return sec;
   }
@@ -86,11 +85,11 @@
 
   function probability(d) {
     var S = d.series.series;
-    var sec = block("probability", "Democratic win probability");
+    var sec = block("probability", "Chance Brooks wins");
     var plot = chart(sec, [
       { label: "Polymarket", color: C.D },
       { label: "Kalshi", color: C.D, dash: true }
-    ], "Two independent real-money books on the same question. Days when Kalshi's book was wider than 25 cents are left out of its line.");
+    ], "Two real-money markets on the same question. Days when Kalshi's bid and ask were more than 25 cents apart are left out of its line.");
     var opts = {
       title: "Democratic win probability on Polymarket and Kalshi",
       series: [
@@ -109,7 +108,7 @@
 
   function moves(d) {
     var m = d.divergence.moves || {};
-    var sec = block("moves", "Biggest single-day moves");
+    var sec = block("moves", "Biggest one-day moves");
     var rows = [];
     ["polymarket", "kalshi"].forEach(function (v) {
       ((m[v] || {}).biggest_days || []).slice(0, 4).forEach(function (b) {
@@ -126,12 +125,10 @@
 
   function divergence(d) {
     var S = d.series.series, dv = d.divergence.divergence || {};
-    var sec = block("divergence", "When the two venues disagreed");
+    var sec = block("divergence", "Where Polymarket and Kalshi disagreed");
     var plot = chart(sec, [{ label: "Polymarket minus Kalshi", color: "#6B7C93" }],
-      "Above zero, Polymarket was the more bullish on Brooks; below, Kalshi was. " +
-      "Across " + dv.days_tight + " comparable days the gap averaged " + dv.mean_abs_pp +
-      " points, and Kalshi was the higher of the two on " +
-      Math.round((dv.direction_share_kalshi_higher || 0) * 100) + "% of them.");
+      "Above zero, Polymarket gave Brooks the better odds; below zero, Kalshi did. " +
+      "Over " + dv.days_tight + " days the gap averaged " + dv.mean_abs_pp + " points.");
     window.Chart.line(plot, {
       title: "Polymarket minus Kalshi, Democratic win probability",
       series: [{ label: "Divergence", points: S.divergence, color: "#6B7C93", width: 2 }],
@@ -141,9 +138,9 @@
 
     var eps = dv.episodes || [];
     if (eps.length) {
-      var h = elem("h3", null, "Sustained gaps");
+      var h = elem("h3", null, "Longest disagreements");
       sec.appendChild(h);
-      table(sec, ["Period", "Length", "Peak gap", "Who was higher", "What was happening"],
+      table(sec, ["Period", "Length", "Peak gap", "Higher on Brooks", "What was happening"],
         eps.map(function (e) {
           var who = e.direction === "kalshi_higher" ? "Kalshi" : "Polymarket";
           var why = e.events && e.events.length
@@ -155,30 +152,6 @@
         }));
     }
 
-    var art = dv.artifact_days || [];
-    if (art.length) {
-      var p = elem("p", "fine",
-        art.length + " day" + (art.length === 1 ? "" : "s") + " with a Kalshi book wider than " +
-        Math.round((dv.wide_threshold || 0.25) * 100) + " cents are excluded above: a one-cent bid " +
-        "against an 84-cent ask has a midpoint, but not a price.");
-      sec.appendChild(p);
-    }
-    return sec;
-  }
-
-  /* ------------------------------------------------------------ 5. arbitrage */
-
-  function arbitrage(d) {
-    var a = (d.divergence.moves || {}).arbitrage || {};
-    var sec = block("arbitrage", "Can you arbitrage them?");
-    var gross = a.gross_pp, net = a.net_pp;
-    var verdict = net !== null && net !== undefined && net > 0 ? "Yes, narrowly." : "No.";
-    var text = verdict + " Buying the cheaper Democratic contract on one venue and the cheaper Republican " +
-      "contract on the other costs " + (a.pair_ask_total !== null && a.pair_ask_total !== undefined ? (a.pair_ask_total * 100).toFixed(1) + " cents" : "n/a") +
-      " per dollar of guaranteed payout. That is " + (gross !== null && gross !== undefined ? pp(gross) : "n/a") +
-      " before fees and " + (net !== null && net !== undefined ? pp(net) : "n/a") +
-      " after Kalshi's, so the two venues agree once trading costs are counted.";
-    sec.appendChild(elem("p", null, text));
     return sec;
   }
 
@@ -187,15 +160,14 @@
   function validation(d) {
     var S = d.series.series, m = d.polls.model || {}, s = d.headline.snapshot || {};
     var polls = d.polls.polls || [];
-    var sec = block("validation", "Are the markets right?");
+    var sec = block("validation", "Markets against the forecast and the polls");
     var gap = (s.consensus_dem && m.dem_win_prob) ? (s.consensus_dem - m.dem_win_prob) * 100 : null;
 
     var plot = chart(sec, [
       { label: "Polymarket", color: C.D },
       { label: "PollsMax model", color: C.MODEL }
-    ], "The only independent forecast for this race puts Brooks at " + pct(m.dem_win_prob) +
-       ". The market is " + (gap !== null ? gap.toFixed(0) + " points higher" : "n/a") +
-       ". One of them is wrong.");
+    ], "The PollsMax forecast puts Brooks at " + pct(m.dem_win_prob) +
+       "; the markets are " + (gap !== null ? Math.abs(gap).toFixed(0) + " points " + (gap >= 0 ? "higher" : "lower") : "n/a") + ".");
     window.Chart.line(plot, {
       title: "Polymarket against the PollsMax model",
       series: [
@@ -209,13 +181,13 @@
     var ul = elem("ul", "plain");
     if (polls.length) {
       var p0 = polls[0];
-      ul.appendChild(elem("li", null, "Polling: " + (polls.length === 1 ? "one public general-election poll" : polls.length + " polls") +
+      ul.appendChild(elem("li", null, "Polls: " + (polls.length === 1 ? "one public poll so far" : polls.length + " public polls") +
         ", " + p0.pollster + " for " + (p0.sponsor || "an undisclosed sponsor") + ", " + day(p0.end) +
-        ", Brooks " + p0.dem.toFixed(0) + "% to " + p0.rep.toFixed(0) + "%. " +
-        (p0.partisan === "D" ? "It is Democratic-sponsored, so it is not an independent check on the market." : "")));
+        ", Brooks " + p0.dem.toFixed(0) + "% to " + p0.rep.toFixed(0) + "%." +
+        (p0.partisan === "D" ? " Democratic-sponsored." : "")));
     }
-    ul.appendChild(elem("li", null, "Calibration: the May primary is the one settled test. Every public poll understated Brooks; the last had him at 26% and he took 41.4%."));
-    ul.appendChild(elem("li", null, "History: the only prior PA-07 market, Polymarket in November 2024, had Wild at 68.5% on election morning. She lost by a point."));
+    ul.appendChild(elem("li", null, "Primary: every public poll understated Brooks. The last had him at 26%; he took 41.4%."));
+    ul.appendChild(elem("li", null, "2024: Polymarket had Susan Wild at 68.5% on election morning. She lost by a point."));
     sec.appendChild(ul);
     return sec;
   }
@@ -224,13 +196,13 @@
 
   function distribution(d) {
     var dist = d.distribution || {}, pmm = dist.polymarket_margin || {}, s = d.headline.snapshot || {};
-    var sec = block("margin", "By how much?");
+    var sec = block("margin", "Expected margin of victory");
     var bars = (pmm.brackets || []).map(function (b) {
       return { label: b.bracket.replace("Republican ", "R ").replace("Democrat ", "D "),
                value: b.normalised, color: b.points < 0 ? C.R : C.D };
     });
     var plot = chart(sec, null, "Polymarket's expected margin is " + margin(s.expected_margin_pts) +
-      ". Wide, because the market is confident Brooks wins and unsure by how much.");
+      " points. Each bar is the chance the final margin lands in that range.");
     window.Chart.bars(plot, { title: "Margin of victory, implied probability", bars: bars,
                               yFormat: function (v) { return (v * 100).toFixed(0) + "%"; } });
     return sec;
@@ -240,20 +212,20 @@
 
   function download(d) {
     var w = d.manifest.workbook || {};
-    var sec = block("download", "Get the data");
+    var sec = block("download", "Download");
     var ul = elem("ul", "plain");
     if (w.available) {
       var a = elem("a", null, "Excel workbook");
       a.href = w.href; a.setAttribute("download", "");
       var li = elem("li"); li.appendChild(a);
-      li.appendChild(document.createTextNode(" · 13 sheets, every formula auditable" +
+      li.appendChild(document.createTextNode(" · 13 sheets" +
         (w.bytes ? ", " + Math.round(w.bytes / 1024) + " KB" : "")));
       ul.appendChild(li);
     }
     var j = elem("a", null, "Daily series as JSON");
     j.href = "data/series-full.json";
     var lj = elem("li"); lj.appendChild(j);
-    lj.appendChild(document.createTextNode(" · full history, both venues"));
+    lj.appendChild(document.createTextNode(" · daily prices, both markets"));
     ul.appendChild(lj);
     sec.appendChild(ul);
     return sec;
@@ -263,10 +235,12 @@
 
   document.addEventListener("data:ready", function (ev) {
     var d = ev.detail, main = document.getElementById("main");
-    [headline, probability, moves, divergence, arbitrage, validation, distribution, download]
+    [headline, probability, moves, divergence, validation, distribution, download]
       .forEach(function (fn) {
         try { main.appendChild(fn(d)); }
         catch (e) { console.error(fn.name, e); }
       });
+    /* live.js mounts its panel and starts polling on this. */
+    document.dispatchEvent(new CustomEvent("dashboard:ready", { detail: d }));
   });
 })();
