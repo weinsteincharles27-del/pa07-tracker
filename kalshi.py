@@ -35,11 +35,15 @@ def _key_id():
         with open(path) as f:
             return f.read().strip()
     except OSError:
-        raise SystemExit(
-            "FATAL: no Kalshi key id. Set KALSHI_KEY_ID, or put the id in %s." % path)
+        raise RuntimeError(
+            "No Kalshi key id. Set KALSHI_KEY_ID, or put the id in %s." % path)
 
 
-KEY_ID = _key_id()
+# Credentials are resolved on the first SIGNED request, not at import. Every
+# collector imports this module, including the Polymarket-only paths and the
+# whole offline test suite, and none of them should need a Kalshi key merely
+# to load. CI in particular runs the tests on pull requests with no secrets.
+KEY_ID = None
 BASE = "https://api.elections.kalshi.com"
 
 ATTEMPTS = 3            # total tries per request
@@ -48,8 +52,21 @@ RETRY_STATUS = (408, 425, 429, 500, 502, 503, 504)
 
 KEY_PATH = os.environ.get("KALSHI_KEY_PATH",
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "kalshi_key.pem"))
-with open(KEY_PATH, "rb") as f:
-    PK = serialization.load_pem_private_key(f.read(), password=None)
+PK = None
+
+
+def _credentials():
+    """Load the private key and key id once, on demand."""
+    global PK, KEY_ID
+    if PK is None:
+        try:
+            with open(KEY_PATH, "rb") as f:
+                PK = serialization.load_pem_private_key(f.read(), password=None)
+        except OSError as e:
+            raise RuntimeError("Kalshi private key unreadable at %s: %s" % (KEY_PATH, e))
+    if KEY_ID is None:
+        KEY_ID = _key_id()
+    return PK, KEY_ID
 
 
 class ApiError(RuntimeError):
@@ -100,12 +117,13 @@ def get(path, params=None):
     url = BASE + path
 
     def send():
+        pk, key_id = _credentials()
         ts = str(int(time.time() * 1000))
         msg = (ts + "GET" + path).encode()
-        sig = PK.sign(msg,
+        sig = pk.sign(msg,
             padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.DIGEST_LENGTH),
             hashes.SHA256())
-        h = {"KALSHI-ACCESS-KEY": KEY_ID,
+        h = {"KALSHI-ACCESS-KEY": key_id,
              "KALSHI-ACCESS-SIGNATURE": base64.b64encode(sig).decode(),
              "KALSHI-ACCESS-TIMESTAMP": ts,
              "Accept": "application/json"}
