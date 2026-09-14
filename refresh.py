@@ -36,7 +36,8 @@ STALE_DAYS = 14                   # poll content age that warrants a nudge
 GAP_HOURS = 8                     # scheduled slots are ~6 h apart
 
 STEPS = ["collect.py", "collect2.py", "collect3.py", "build.py", "build2.py",
-         "build2b.py", "build6.py", "build7.py", "build3.py", "build5.py", "build4.py"]
+         "build2b.py", "build6.py", "build7.py", "build3.py", "build5.py", "build4.py",
+         "export_site.py"]
 
 MOVES = [("consensus_dem", "Consensus P(Dem)"),
          ("pm_dem", "Polymarket Dem"),

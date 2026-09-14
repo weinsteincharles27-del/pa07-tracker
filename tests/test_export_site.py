@@ -236,9 +236,12 @@ def test_a_missing_source_degrades_to_a_gap_not_a_crash():
     with support.sandbox() as d:
         seed(d, data={"problems": []}, data2={"problems": []}, data3={"problems": []})
         written = e.build(out_dir=os.path.join(d, "site", "data"), copy_workbook=False)
-        fin = support.read_json(os.path.join(d, "site", "data", "finance.json"))
+        dv = support.read_json(os.path.join(d, "site", "data", "divergence.json"))
     assert written
-    assert fin == {}
+    # with no history there is nothing to compare, and that must be a gap, not a crash
+    assert dv["divergence"]["days_joined"] == 0
+    assert dv["divergence"]["current"] is None
+    assert dv["divergence"]["episodes"] == []
 
 
 def test_kalshi_is_declared_unreachable_from_a_browser():

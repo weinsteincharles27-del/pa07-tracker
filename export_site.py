@@ -484,6 +484,129 @@ def distributions(data, data2, data3, mids):
     }
 
 
+
+# ------------------------------------------------------------ divergence + moves
+
+GENUINE_PP = 0.08        # a day counts toward an episode above this gap
+EPISODE_MIN_DAYS = 3     # and an episode needs this many consecutive such days
+
+
+def divergence_block(data, series):
+    """When the two venues disagreed, by how much, and which of those days were
+    real disagreements rather than an unquoted book.
+
+    The largest apparent divergences in this history are not disagreements at
+    all: on 14-19 Aug 2026 Kalshi's closing book was a one-cent bid against an
+    84-cent ask, and the midpoint of that is 42.5%, which is arithmetic, not a
+    price. Those days are separated out, not hidden, and every figure here is
+    computed on the tight-book days only. The event annotations are left empty
+    on purpose: they are filled from researched sources, never guessed.
+    """
+    pm = data.get("pm_history") or {}
+    kh = data.get("k_history") or {}
+    rows = []
+    for day in sorted(pm):
+        p = (pm.get(day) or {}).get("D")
+        k = (kh.get(day) or {}).get("D") or {}
+        b, a = k.get("yes_bid"), k.get("yes_ask")
+        if p is None or b is None or a is None:
+            continue
+        rows.append({"date": day, "pm": p, "k": (a + b) / 2, "spread": a - b})
+    tight = [r for r in rows if r["spread"] <= WIDE_SPREAD]
+    wide = [r for r in rows if r["spread"] > WIDE_SPREAD]
+    for r in rows:
+        r["div"] = r["pm"] - r["k"]
+
+    episodes, cur = [], []
+    for r in tight:
+        if abs(r["div"]) >= GENUINE_PP:
+            cur.append(r)
+        else:
+            if len(cur) >= EPISODE_MIN_DAYS:
+                episodes.append(cur)
+            cur = []
+    if len(cur) >= EPISODE_MIN_DAYS:
+        episodes.append(cur)
+
+    def ep(e):
+        peak = max(e, key=lambda r: abs(r["div"]))
+        return {"from": e[0]["date"], "to": e[-1]["date"], "days": len(e),
+                "peak_date": peak["date"], "peak_pp": rnd(peak["div"] * 100, 1),
+                "peak_pm": rnd(peak["pm"], 3), "peak_kalshi": rnd(peak["k"], 3),
+                "mean_pp": rnd(sum(r["div"] for r in e) / len(e) * 100, 1),
+                "direction": "kalshi_higher" if peak["div"] < 0 else "polymarket_higher",
+                "events": []}
+
+    def top(rs, n):
+        return [{"date": r["date"], "pp": rnd(r["div"] * 100, 1), "pm": rnd(r["pm"], 3),
+                 "kalshi": rnd(r["k"], 3), "kalshi_spread": rnd(r["spread"], 3)}
+                for r in sorted(rs, key=lambda r: -abs(r["div"]))[:n]]
+
+    absd = [abs(r["div"]) for r in tight] or [0.0]
+    return {
+        "days_joined": len(rows), "days_tight": len(tight), "days_wide": len(wide),
+        "wide_threshold": WIDE_SPREAD,
+        "mean_abs_pp": rnd(sum(absd) / len(absd) * 100, 1),
+        "max_abs_pp": rnd(max(absd) * 100, 1),
+        "direction_share_kalshi_higher": rnd(sum(1 for r in tight if r["div"] < 0) / max(1, len(tight)), 3),
+        "episodes": [ep(e) for e in episodes],
+        "largest_genuine": top(tight, 8),
+        "artifact_days": top(wide, 8),
+        "current": ({"date": rows[-1]["date"], "pp": rnd(rows[-1]["div"] * 100, 1)} if rows else None),
+    }
+
+
+def moves_block(series, snap):
+    """How the odds have moved, in the terms a reader asks: over a week, a
+    month, since the primary, and the biggest single days."""
+    def at_or_before(points, target):
+        best = None
+        for p in points:
+            if p[0] <= target:
+                best = p
+        return best
+
+    def change(points, days):
+        if not points:
+            return None
+        last = points[-1]
+        target = (datetime.date.fromisoformat(last[0]) - datetime.timedelta(days=days)).isoformat()
+        base = at_or_before(points, target)
+        if base is None:
+            return None
+        gap = (datetime.date.fromisoformat(last[0]) - datetime.date.fromisoformat(base[0])).days
+        if gap > days + 3:
+            return None      # a gap wider than the window makes the label a lie
+        return {"from": base[0], "to": last[0], "pp": rnd((last[1] - base[1]) * 100, 1),
+                "start": rnd(base[1], 3), "end": rnd(last[1], 3)}
+
+    def biggest_days(points, n=5):
+        out = []
+        for a, b in zip(points, points[1:]):
+            da = datetime.date.fromisoformat(a[0]); db = datetime.date.fromisoformat(b[0])
+            if (db - da).days == 1:
+                out.append({"date": b[0], "pp": rnd((b[1] - a[1]) * 100, 1),
+                            "from": rnd(a[1], 3), "to": rnd(b[1], 3)})
+        return sorted(out, key=lambda x: -abs(x["pp"]))[:n]
+
+    out = {}
+    for key, label in (("consensus_dem", "consensus"), ("pm_dem", "polymarket"),
+                       ("k_dem_tight", "kalshi")):
+        pts = series.get(key) or []
+        out[label] = {"d7": change(pts, 7), "d30": change(pts, 30), "d90": change(pts, 90),
+                      "since_primary": (lambda b: b and {"from": b[0], "pp": rnd((pts[-1][1] - b[1]) * 100, 1),
+                                                          "start": rnd(b[1], 3), "end": rnd(pts[-1][1], 3)})(
+                          at_or_before(pts, "2026-05-19")) if pts else None,
+                      "biggest_days": biggest_days(pts)}
+    out["arbitrage"] = {
+        "pair_ask_total": snap.get("pair_ask_total"),
+        "gross_pp": rnd((1 - snap["pair_ask_total"]) * 100, 2) if snap.get("pair_ask_total") else None,
+        "net_pp": rnd(snap["pair_net_edge"] * 100, 2) if snap.get("pair_net_edge") is not None else None,
+        "top_ask_size": snap.get("top_ask_size"),
+    }
+    return out
+
+
 def fmt_k(v):
     return "%gK" % (v / 1000.0)
 
@@ -804,6 +927,53 @@ def assumptions(mids, polls, data2):
     ]
 
 
+def definitions():
+    """How each figure on the page is computed.
+
+    Mirrors the DEFINITIONS block on the workbook's Notes & Sources sheet, in
+    the export rather than in the HTML so the two can be compared and so a test
+    can assert they are all still being shipped. Several of these read like
+    pedantry and are not: "mid, not last trade" and "normalised, not raw" are
+    each the fix for a wrong number that shipped.
+    """
+    return [
+        ("Mid price",
+         "(best bid + best ask) / 2. Used rather than last trade, which on books this thin "
+         "can be days stale."),
+        ("Kalshi YES ask",
+         "Derived as 1 minus the best NO bid. Kalshi's REST market object returns null for "
+         "yes_bid, yes_ask, volume and open interest on these markets, so top of book has to "
+         "come from the order book. Buying YES at p and selling NO at 1-p are the same trade."),
+        ("Normalised probability",
+         "Each outcome's mid divided by the sum of mids across the group, which strips out "
+         "the overround so the set sums to 100%."),
+        ("Overround",
+         "Sum of mids minus 1. On the margin ladder this runs well above 100% because several "
+         "thin brackets are quoted with very wide spreads, and a wide spread inflates its own "
+         "midpoint. Read the normalised figure, never the raw one."),
+        ("Expected margin",
+         "Sum of (normalised probability x signed bracket midpoint) across the ladder, in "
+         "percentage points, positive for a Democratic win."),
+        ("Consensus probability",
+         "Equal-weighted mean of the two venue mids on the winner market. Not "
+         "liquidity-weighted, though Polymarket carries the larger book."),
+        ("Arbitrage edge",
+         "Cheapest Democratic ask plus cheapest Republican ask, minus 1, minus an estimated "
+         "Kalshi fee of 0.07 x p x (1-p) per contract. Gross edge alone is not a signal: a run "
+         "on 29 Aug 2026 showed 1.00pp gross against 2.44pp of fees."),
+        ("Kalshi open interest",
+         "The larger of the two legs rather than their sum, since they are two sides of one "
+         "race. Volume sums both."),
+        ("Date alignment",
+         "Every date here is a UTC day, and every join between venues is on the date value "
+         "rather than on row position, so a refresh that changes row counts cannot shift a "
+         "series against another."),
+        ("Missing values",
+         "A day a venue did not quote is absent from the series, not zero, and the chart "
+         "breaks its line there. Nothing is interpolated."),
+    ]
+
+
 # ------------------------------------------------------------------ freshness
 
 def freshness(data, data2, data3, pollsmax, cs, fec, snap, wb_path):
@@ -851,10 +1021,6 @@ def freshness(data, data2, data3, pollsmax, cs, fec, snap, wb_path):
         {"id": "cityandstate", "label": "City & State PA", "kind": "manual",
          "detail": "Sponsored content. Display only, feeds no calculation.",
          "snapshot_utc": (cs or {}).get("retrieved_utc")},
-        {"id": "fec", "label": "FEC / OpenFEC", "kind": "manual",
-         "detail": "Quarterly candidate filings plus continuously reported outside spending.",
-         "snapshot_utc": (fec or {}).get("retrieved_utc"),
-         "coverage_through": (fec or {}).get("coverage_through")},
         {"id": "workbook", "label": "Excel workbook", "kind": "build",
          "detail": "Rebuilt by every scheduled run, 13 sheets and 13 native charts.",
          "snapshot_utc": mtime(wb_path)},
@@ -905,11 +1071,15 @@ def build(out_dir=OUT_DIR, window_days=WINDOW_DAYS, copy_workbook=True):
     written["caveats.json"] = write_json(os.path.join(out_dir, "caveats.json"), {
         "caveats": caveats(data, data2, data3, snap, polls, fec, cs),
         "assumptions": assumptions(mids, polls, data2),
+        "definitions": [{"term": t, "meaning": m} for t, m in definitions()],
         "city_and_state": {"url": (cs or {}).get("url"),
                            "dem_prob": ((cs or {}).get("market_odds") or {}).get("dem_prob"),
                            "rep_prob": ((cs or {}).get("market_odds") or {}).get("rep_prob"),
                            "retrieved_utc": (cs or {}).get("retrieved_utc"),
                            "display_only": True}})
+    written["divergence.json"] = write_json(os.path.join(out_dir, "divergence.json"), {
+        "divergence": divergence_block(data, series),
+        "moves": moves_block(series, snap)})
     written["headline.json"] = write_json(os.path.join(out_dir, "headline.json"), {
         "snapshot": snap, "notes": notes, "alerts": alerts, "origin": origin})
 

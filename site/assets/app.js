@@ -101,11 +101,10 @@
       get("data/series.json"),
       get("data/distribution.json"),
       get("data/polls.json"),
-      get("data/caveats.json"),
-      get("data/finance.json")
+      get("data/divergence.json")
     ]).then(function (r) {
       State.data = { manifest: r[0], headline: r[1], series: r[2], distribution: r[3],
-                     polls: r[4], caveats: r[5], finance: r[6] };
+                     polls: r[4], divergence: r[5] };
       var man = State.data.manifest;
       renderCountdown(man);
       renderSources(man);

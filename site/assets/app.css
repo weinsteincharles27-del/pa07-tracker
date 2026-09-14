@@ -245,6 +245,13 @@ figure.chart figcaption {
 
 /* ------------------------------------------------------------------ tables */
 
+dl.defs { margin: 0; }
+dl.defs dt { font-weight: 650; font-size: 0.85rem; margin-top: 0.6rem; }
+dl.defs dd { margin: 0.1rem 0 0; color: var(--ink-2); font-size: 0.83rem; }
+
+ul.small { padding-left: 1.1rem; margin: 0.4rem 0 0; }
+ul.small li { margin-bottom: 0.3rem; }
+
 .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 table { border-collapse: collapse; width: 100%; font-size: 0.82rem; }
 th, td { text-align: right; padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line-2); }
@@ -298,3 +305,19 @@ footer.foot {
   left: 0.5rem; top: 0.5rem; z-index: 20;
   background: var(--ground); padding: 0.4rem 0.6rem; border: 1px solid var(--ink);
 }
+
+/* ---- additions for the lean layout ---------------------------------- */
+.tbl { width: 100%; border-collapse: collapse; margin: 0.6rem 0 0.2rem; font-size: 0.92rem; }
+.tbl th, .tbl td { padding: 0.42rem 0.55rem; text-align: left; border-bottom: 1px solid #e6e9ef; vertical-align: top; }
+.tbl th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; font-weight: 600; }
+.tbl td.num { font-variant-numeric: tabular-nums; }
+.up { color: #1f7a3a; font-weight: 600; }
+.down { color: #b42318; font-weight: 600; }
+.muted { color: #9aa3ad; font-style: italic; }
+.stat.up .v { color: #1f7a3a; }
+.stat.down .v { color: #b42318; }
+.stat.lead .v { font-size: 2.1rem; }
+.fine { font-size: 0.82rem; color: #6b7280; margin: 0.6rem 0 0; }
+ul.plain { list-style: disc; padding-left: 1.2rem; margin: 0.5rem 0 0; }
+ul.plain li { margin: 0.3rem 0; line-height: 1.45; }
+.block h3 { font-size: 0.95rem; margin: 1rem 0 0.2rem; color: #374151; }
