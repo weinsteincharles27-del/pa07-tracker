@@ -1,0 +1,54 @@
+# Kalshi, as close to live as GitHub alone can get.
+#
+# A browser cannot read Kalshi: the edge returns 403 to any request carrying an
+# Origin header. A server can, unsigned, for public market data. This job is
+# that server. Every ten minutes it reads both order books and rewrites one
+# small file on the `live-data` branch, which the page then reads from
+# raw.githubusercontent.com (that host does send CORS headers). The branch is
+# kept at a single commit by amending and force-pushing, so main's history
+# stays clean and the side branch never grows.
+#
+# Honest limits: GitHub runs schedules late when busy, raw.githubusercontent
+# caches for five minutes, and schedules stop after 60 days without a push to
+# the repository. The file carries its own timestamp so the page can say how
+# old it really is. If a real /api/kalshi endpoint is ever deployed, the page
+# prefers it and this becomes the fallback.
+name: Kalshi live
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kalshi-live
+  cancel-in-progress: true
+
+jobs:
+  book:
+    runs-on: ubuntu-latest
+    steps:
+      # The script lives on main; the file it writes lives on live-data.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/checkout@v4
+        with:
+          ref: live-data
+          path: live
+          fetch-depth: 1
+
+      - name: Read both books
+        run: python3 kalshi_book.py live/kalshi-live.json
+
+      - name: Replace the branch's only commit
+        working-directory: live
+        run: |
+          git config user.name "kalshi-live"
+          git config user.email "kalshi-live@users.noreply.github.com"
+          git add kalshi-live.json
+          git commit -q --amend -m "Kalshi book $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push -q --force origin HEAD:live-data

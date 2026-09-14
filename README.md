@@ -37,6 +37,25 @@ A launchd agent refreshes everything **at login/wake and at 07:12, 13:12 and 19:
 To change the times, edit the `StartCalendarInterval` block in the plist, then
 unload and load it again.
 
+## Live prices on the site
+
+Polymarket is read straight from the reader's browser once a minute; it sends
+the CORS header that allows it. Kalshi does not, and returns 403 to any request
+that carries an `Origin` header, so a server reads it instead:
+
+- `.github/workflows/kalshi-live.yml` runs `kalshi_book.py` every ten minutes
+  and rewrites `kalshi-live.json` on the `live-data` branch (always a single
+  commit; the job amends and force-pushes). The page reads it from
+  raw.githubusercontent.com, which caches for five minutes, so Kalshi on the
+  page is at most about fifteen minutes old. Public market data needs no key.
+- `api/kalshi.js` is the same read as a Vercel function. If the repository is
+  ever pointed at Vercel, the page finds `/api/kalshi` first and Kalshi becomes
+  live to the second, with no change to the page.
+
+Both live figures sit next to the committed snapshot with their own timestamp
+and never overwrite it. GitHub disables scheduled workflows after 60 days
+without a push; a commit to any branch restarts them.
+
 ## What a refresh does
 
 1. Pulls live books + full daily history from Polymarket (CLOB + Gamma) and Kalshi (Trade API v2).
@@ -57,7 +76,7 @@ older than 14 days, and election day passing.
 python3 tests/run_tests.py
 ```
 
-92 offline tests covering every bug found in the audit rounds — network
+133 offline tests covering every bug found in the audit rounds — network
 failures, auth errors, market renames at settlement, corrupt state, run-lock
 contention, and each alerting rule. They monkeypatch `requests` and the
 filesystem; none of them touch the network.

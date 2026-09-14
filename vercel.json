@@ -1,0 +1,4 @@
+{
+  "outputDirectory": "site",
+  "functions": { "api/kalshi.js": { "maxDuration": 10 } }
+}

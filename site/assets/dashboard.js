@@ -77,7 +77,7 @@
       "Polymarket minus Kalshi"));
     ul.appendChild(tile("Days left", String(d.manifest.race.days_to_election), "3 November 2026"));
     sec.appendChild(ul);
-    var live = elem("p", "fine", "Consensus is the plain average of the two venues. Polymarket updates live on this page; Kalshi is from the last scheduled build.");
+    var live = elem("p", "fine", "Consensus is the plain average of the two venues. Live prices for both are in the next panel.");
     sec.appendChild(live);
     return sec;
   }
@@ -268,5 +268,7 @@
         try { main.appendChild(fn(d)); }
         catch (e) { console.error(fn.name, e); }
       });
+    /* live.js mounts its panel and starts polling on this. */
+    document.dispatchEvent(new CustomEvent("dashboard:ready", { detail: d }));
   });
 })();

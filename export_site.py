@@ -85,11 +85,20 @@ LIVE = {
         "poll_seconds": 60,
     },
     "kalshi": {
+        # Kalshi answers any browser request with 403, so a server reads it and
+        # the page reads the server. Tried in order; the first that answers with
+        # a quote wins. `api/kalshi` is the Vercel function in api/kalshi.js and
+        # only exists if the repository is deployed there; the raw file is
+        # rewritten every ten minutes by .github/workflows/kalshi-live.yml.
         "reachable_from_browser": False,
-        "why": "Kalshi returns no access-control-allow-origin header, answers the CORS "
-               "preflight with a bare 403, and requires every request to be signed with an "
-               "RSA-PSS private key. A public web page can do none of those things, so Kalshi "
-               "figures on this site are as of the last scheduled build.",
+        "endpoints": [
+            "api/kalshi",
+            "https://raw.githubusercontent.com/weinsteincharles27-del/pa07-tracker/"
+            "live-data/kalshi-live.json",
+        ],
+        "why": "Kalshi returns 403 to any request from a browser, so a server reads its order "
+               "book and the page reads that: on request if api/kalshi is deployed, otherwise "
+               "the copy GitHub Actions rewrites every ten minutes.",
     },
 }
 
@@ -994,8 +1003,8 @@ def freshness(data, data2, data3, pollsmax, cs, fec, snap, wb_path):
          "snapshot_utc": mtime("data.json"),
          "last_history_day": last((data or {}).get("pm_history")),
          "days": len((data or {}).get("pm_history") or {})},
-        {"id": "kalshi", "label": "Kalshi", "kind": "snapshot",
-         "detail": LIVE["kalshi"]["why"],
+        {"id": "kalshi", "label": "Kalshi", "kind": "live",
+         "detail": "Read server-side every ten minutes; history from the scheduled build.",
          "snapshot_utc": mtime("data.json"),
          "last_history_day": last((data or {}).get("k_history")),
          "days": len((data or {}).get("k_history") or {})},
