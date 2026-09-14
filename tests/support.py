@@ -285,15 +285,36 @@ class Upstream(object):
         raise AssertionError("test upstream has no rule for %s %r" % (url, params))
 
 
+_TEST_KEY = None
+
+
+def _test_key():
+    """A throwaway RSA key so signed requests can be built without the real
+    PEM. The signature goes nowhere: requests.get is replaced below. Generated
+    once per process; 2048-bit keygen is not free."""
+    global _TEST_KEY
+    if _TEST_KEY is None:
+        from cryptography.hazmat.primitives.asymmetric import rsa
+        _TEST_KEY = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+    return _TEST_KEY
+
+
 @contextlib.contextmanager
 def fake_network(upstream=None):
-    """Replace requests.get everywhere, and drop the retry backoff to zero."""
+    """Replace requests.get everywhere, drop the retry backoff to zero, and
+    supply a throwaway signing key. kalshi.py loads its credentials lazily on
+    the first signed call, and CI runs these tests with no key on disk."""
     import requests
     up = upstream or Upstream()
     kalshi = load("kalshi")
-    zero = {"BACKOFF": 0.0} if hasattr(kalshi, "BACKOFF") else {}
-    with attrs(requests, get=up.get), attrs(kalshi, **zero):
+    patch = {"BACKOFF": 0.0} if hasattr(kalshi, "BACKOFF") else {}
+    patch.update(PK=_test_key(), KEY_ID="test-key-id")
+    with attrs(requests, get=up.get), attrs(kalshi, **patch):
         yield up
+
+
+class Skip(Exception):
+    """Raise from a test to skip it; the runner counts it separately."""
 
 
 def run_script(name):

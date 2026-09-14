@@ -10,6 +10,16 @@ import time
 
 import support
 
+# run.sh is the macOS launchd wrapper; its lock is lockf(1), which does not
+# exist on Linux. CI runs on Linux. These tests describe the Mac and skip
+# everywhere else rather than fail on a tool that was never going to be there.
+_HAVE_LOCKF = os.path.exists("/usr/bin/lockf")
+
+
+def _mac_only():
+    if not _HAVE_LOCKF:
+        raise support.Skip("lockf(1) is macOS-only; run.sh is not used in CI")
+
 RUN_SH = os.path.join(support.SRC, "run.sh")
 
 
@@ -54,6 +64,7 @@ def test_fs1_a_second_run_exits_cleanly_instead_of_piling_up():
     """RunAtLoad fires on every wake and can land on a calendar slot. Two runs
     share _stage1..4.xlsx, data.json and the ref JSONs, and both call wb.save()
     on the same path."""
+    _mac_only()
     with support.sandbox() as d:
         sh = stage(d)
         os.makedirs(os.path.join(d, "logs"), exist_ok=True)
@@ -70,6 +81,7 @@ def test_fs1_a_second_run_exits_cleanly_instead_of_piling_up():
 
 
 def test_fs1_the_lock_is_released_so_the_next_run_proceeds():
+    _mac_only()
     with support.sandbox() as d:
         sh = stage(d)
         first = invoke(sh)
@@ -83,6 +95,7 @@ def test_fs1_the_lock_is_released_so_the_next_run_proceeds():
 def test_fs1_a_lock_file_left_by_a_killed_run_does_not_wedge_the_scheduler():
     """The lock is advisory and held by the kernel, so a file left behind by a
     run that was killed is not a lock — the next run must take it."""
+    _mac_only()
     with support.sandbox() as d:
         sh = stage(d)
         os.makedirs(os.path.join(d, "logs"), exist_ok=True)
@@ -95,6 +108,7 @@ def test_fs1_a_lock_file_left_by_a_killed_run_does_not_wedge_the_scheduler():
 
 
 def test_fs1_the_wrapper_still_reports_the_refresh_exit_code():
+    _mac_only()
     with support.sandbox() as d:
         sh = stage(d, "import sys; print('STUB REFRESH RAN'); sys.exit(2)")
         r = invoke(sh)
@@ -106,6 +120,7 @@ def test_fs1_the_wrapper_still_reports_the_refresh_exit_code():
 # ---------------------------------------------------------------------- FS-4
 
 def test_fs4_log_rotation_keeps_generations_instead_of_discarding_them():
+    _mac_only()
     with support.sandbox() as d:
         sh = stage(d)
         logs = os.path.join(d, "logs")
@@ -123,6 +138,7 @@ def test_fs4_log_rotation_keeps_generations_instead_of_discarding_them():
 
 
 def test_fs4_launchd_logs_rotate_by_copying_so_the_open_descriptor_survives():
+    _mac_only()
     with support.sandbox() as d:
         sh = stage(d)
         logs = os.path.join(d, "logs")
@@ -139,6 +155,7 @@ def test_fs4_launchd_logs_rotate_by_copying_so_the_open_descriptor_survives():
 
 
 def test_fs4_a_small_log_is_left_alone():
+    _mac_only()
     with support.sandbox() as d:
         sh = stage(d)
         invoke(sh)

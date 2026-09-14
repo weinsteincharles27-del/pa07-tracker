@@ -29,7 +29,7 @@ def test_auth2_kalshi_401_raises_with_status_and_body():
     """A revoked key must name itself, not surface as a KeyError three frames on."""
     body = {"error": {"code": "invalid_signature", "message": "signature verification failed"}}
     rec = Recorder((401, body))
-    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0, PK=support._test_key(), KEY_ID="test-key-id"):
         try:
             kalshi.get("/trade-api/v2/markets/HOUSEPA7-26-D")
         except kalshi.ApiError as e:
@@ -45,7 +45,7 @@ def test_auth2_kalshi_401_raises_with_status_and_body():
 def test_auth3_401_message_points_at_key_and_clock():
     """AUTH-3: the signature covers a ms timestamp, so skew looks like a 401."""
     rec = Recorder((403, {"error": "forbidden"}))
-    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0, PK=support._test_key(), KEY_ID="test-key-id"):
         try:
             kalshi.get("/trade-api/v2/exchange/status")
         except kalshi.ApiError as e:
@@ -58,7 +58,7 @@ def test_auth3_401_message_points_at_key_and_clock():
 
 def test_net3_polymarket_non_2xx_raises():
     rec = Recorder((502, {"m": "bad gateway"}))
-    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0, PK=support._test_key(), KEY_ID="test-key-id"):
         try:
             kalshi.fetch("https://gamma-api.polymarket.com/events/106187")
         except kalshi.ApiError as e:
@@ -71,7 +71,7 @@ def test_net3_polymarket_non_2xx_raises():
 def test_net1_retries_transient_failures_then_succeeds():
     """One transient blip must not lose a whole scheduled refresh."""
     rec = Recorder(requests.ConnectionError("reset"), (503, {"m": "later"}), (200, {"market": {"ok": 1}}))
-    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0, PK=support._test_key(), KEY_ID="test-key-id"):
         r = kalshi.get("/trade-api/v2/markets/HOUSEPA7-26-D")
     assert r.status_code == 200
     assert rec.attempts == 3, rec.attempts
@@ -81,7 +81,7 @@ def test_net1_retries_transient_failures_then_succeeds():
 
 def test_net1_gives_up_after_the_attempt_budget():
     rec = Recorder((503, {"m": "later"}))
-    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0, PK=support._test_key(), KEY_ID="test-key-id"):
         try:
             kalshi.fetch("https://clob.polymarket.com/book")
         except kalshi.ApiError as e:
@@ -93,7 +93,7 @@ def test_net1_gives_up_after_the_attempt_budget():
 
 def test_net1_does_not_retry_a_4xx():
     rec = Recorder((404, {"error": "not_found"}))
-    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0, PK=support._test_key(), KEY_ID="test-key-id"):
         try:
             kalshi.get("/trade-api/v2/markets/GONE")
         except kalshi.ApiError:
@@ -103,7 +103,7 @@ def test_net1_does_not_retry_a_4xx():
 
 def test_net1_timeout_is_retried_and_finally_reported():
     rec = Recorder(requests.Timeout("timed out"))
-    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0, PK=support._test_key(), KEY_ID="test-key-id"):
         try:
             kalshi.fetch("https://clob.polymarket.com/prices-history")
         except kalshi.ApiError as e:
@@ -116,7 +116,7 @@ def test_net1_timeout_is_retried_and_finally_reported():
 def test_net3_schema_miss_names_the_url_and_keys():
     """Once status is known good, a missing key is a real schema change."""
     rec = Recorder((200, {"markets": []}))
-    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0, PK=support._test_key(), KEY_ID="test-key-id"):
         r = kalshi.get("/trade-api/v2/markets/HOUSEPA7-26-D")
         try:
             kalshi.field(r, "market")

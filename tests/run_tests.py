@@ -14,6 +14,9 @@ import os
 import sys
 import traceback
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import support
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
@@ -32,13 +35,16 @@ def collect():
 
 def main(argv):
     want = argv[0] if argv else ""
-    passed, failed = 0, []
+    passed, failed, skipped = 0, [], 0
     here = os.getcwd()
     for modname, name, fn in collect():
         if want and want not in name and want not in modname:
             continue
         try:
             fn()
+        except support.Skip:
+            skipped += 1
+            sys.stdout.write("s")
         except Exception:
             failed.append((modname, name, traceback.format_exc()))
             sys.stdout.write("F")
@@ -52,7 +58,7 @@ def main(argv):
     for modname, name, tb in failed:
         print("\n=================== FAILED %s::%s ===================" % (modname, name))
         print(tb.rstrip())
-    print("\n%d passed, %d failed" % (passed, len(failed)))
+    print("\n%d passed, %d failed%s" % (passed, len(failed), (", %d skipped" % skipped) if skipped else ""))
     return 1 if failed else 0
 
 
