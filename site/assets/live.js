@@ -144,8 +144,8 @@
     body.appendChild(wrap);
 
     var note = elem("p", "fine");
-    note.textContent = "Polymarket is read from your browser every " +
-      ((CFG.polymarket || {}).poll_seconds || 60) + " seconds. Kalshi is read by a server" +
+    note.textContent = "Polymarket updates every " +
+      ((CFG.polymarket || {}).poll_seconds || 60) + " seconds, Kalshi" +
       (L.k && L.k.source === "vercel" ? " on request." : " every ten minutes.") +
       (L.pmError ? " Polymarket: " + L.pmError + "." : "") +
       (L.kError ? " Kalshi: " + L.kError + "." : "");
@@ -215,10 +215,6 @@
       chart.opts.markers = marks;
       chart.redraw();
     }
-    var pmChip = document.querySelector('#sources .src[data-id="polymarket"] .when');
-    if (pmChip) pmChip.textContent = L.pmError ? "live poll failed" : "live, " + ago(L.pm && L.pm.at);
-    var kChip = document.querySelector('#sources .src[data-id="kalshi"] .when');
-    if (kChip && (L.k || L.kError)) kChip.textContent = L.kError ? "live read failed" : "live, " + ago(L.k.at);
   }
 
   function schedule(d) {
