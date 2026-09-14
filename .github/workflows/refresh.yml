@@ -13,8 +13,13 @@ on:
     - cron: "17 11,17,23 * * *"
   workflow_dispatch:
 
+# The commit this job makes is authored with GITHUB_TOKEN, and GitHub never
+# lets one workflow's token trigger another, so pages.yml would not fire.
+# This job deploys the site itself, in the same run, right after committing.
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: refresh
@@ -23,6 +28,9 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -59,3 +67,11 @@ jobs:
             git commit -m "Refresh data $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push
           fi
+
+      - name: Publish the site
+        uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
