@@ -1,0 +1,61 @@
+# Pull live market data, rebuild the workbook, export the site payload, and
+# commit the result. A commit to site/ triggers the Pages deploy.
+#
+# refresh.py exits 2 when its own audit finds a problem in the freshly built
+# workbook. That fails this job on purpose: nothing is committed, and the
+# published site keeps the last version that passed.
+name: Refresh data
+
+on:
+  schedule:
+    # 11:17, 17:17, 23:17 UTC: roughly 07:17, 13:17 and 19:17 US Eastern in summer.
+    # Off the hour deliberately; GitHub's scheduler is congested on the hour.
+    - cron: "17 11,17,23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install --quiet openpyxl requests cryptography
+
+      - name: Materialise the Kalshi key from the repository secret
+        env:
+          KALSHI_PRIVATE_KEY: ${{ secrets.KALSHI_PRIVATE_KEY }}
+        run: |
+          test -n "$KALSHI_PRIVATE_KEY" || { echo "KALSHI_PRIVATE_KEY secret is not set"; exit 1; }
+          umask 077
+          printf '%s\n' "$KALSHI_PRIVATE_KEY" > kalshi_key.pem
+
+      - name: Run the pipeline
+        env:
+          KALSHI_KEY_ID: ${{ secrets.KALSHI_KEY_ID }}
+          KALSHI_KEY_PATH: kalshi_key.pem
+          PA07_POLLS_CSV: tests/fixtures/house_pa07.csv
+          PA07_PUBLISH_TO: .
+        run: python refresh.py
+
+      - name: Commit the refreshed payload
+        run: |
+          git config user.name "pa07-refresh"
+          git config user.email "pa07-refresh@users.noreply.github.com"
+          git add site/data site/PA-07_House_Election_Tracker.xlsx
+          if git diff --cached --quiet; then
+            echo "No change in the published payload."
+          else
+            git commit -m "Refresh data $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

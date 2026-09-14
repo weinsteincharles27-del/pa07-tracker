@@ -1,0 +1,40 @@
+# The offline test suite, on every pull request and every push to main.
+#
+# The tests inspect a BUILT workbook and the collector JSON behind it, none of
+# which is committed. So CI rebuilds both from the frozen fixtures first: no
+# network, no secrets, the same inputs every time. A pull request cannot break
+# because Polymarket was slow that morning.
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths-ignore: ["site/data/**", "site/*.xlsx"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      PA07_POLLS_CSV: tests/fixtures/house_pa07.csv
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --quiet openpyxl requests cryptography
+
+      - name: Seed the build from frozen fixtures
+        run: cp tests/fixtures/data.json tests/fixtures/data2.json tests/fixtures/data3.json .
+
+      - name: Build the workbook offline
+        run: |
+          for b in build.py build2.py build2b.py build6.py build7.py build3.py build5.py build4.py export_site.py; do
+            python "$b" || exit 1
+          done
+
+      - name: Structural audit
+        run: python check.py
+
+      - name: Offline test suite
+        run: python tests/run_tests.py
