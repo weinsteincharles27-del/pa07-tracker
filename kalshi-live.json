@@ -1,0 +1,22 @@
+{
+ "at": "2026-09-19T15:49:48Z",
+ "source": "github-actions",
+ "tickers": {
+  "D": "HOUSEPA7-26-D",
+  "R": "HOUSEPA7-26-R"
+ },
+ "D": {
+  "yes_bid": 0.79,
+  "yes_ask": 0.8,
+  "mid": 0.795,
+  "bid_size": 12.52,
+  "ask_size": 12.52
+ },
+ "R": {
+  "yes_bid": 0.2,
+  "yes_ask": 0.22,
+  "mid": 0.21,
+  "bid_size": 34.26,
+  "ask_size": 88.17
+ }
+}
