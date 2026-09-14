@@ -22,31 +22,32 @@ _stage*.xlsx
 # is meaningless on another machine; status.json is the last run's result.
 logs/
 archive/
-status.json
-state.json
-state.json.corrupt
-pollstamp.json
+/status.json
+/state.json
+/state.json.corrupt
+/pollstamp.json
 *.prev
 
-# Collected data. Whether these are committed depends on the deployment: a
+# Collected data, anchored to the root: unanchored `data.json` also matched
+# tests/fixtures/data.json, which CI depends on. Whether these are committed depends on the deployment: a
 # GitHub Actions cron would commit refreshed copies into data/ so the static
 # site can read them. Until that exists they are local build output.
-data.json
-data2.json
-data3.json
-refs.json
-prefs.json
-movrefs.json
-vrefs.json
-k3refs.json
-f7refs.json
+/data.json
+/data2.json
+/data3.json
+/refs.json
+/prefs.json
+/movrefs.json
+/vrefs.json
+/k3refs.json
+/f7refs.json
 
 # The full NYT/538 house-poll file is ~2.9 MB and covers every 2026 House race.
 # Only the PA-07 rows are needed, and those are committed as a fixture.
-house.csv
+/house.csv
 
 # ------------------------------------------------------------------- generated
-PA-07_House_Election_Tracker.xlsx
+/PA-07_House_Election_Tracker.xlsx
 
 # ------------------------------------------------------------------------ site
 # site/data/*.json and site/PA-07_House_Election_Tracker.xlsx ARE committed:

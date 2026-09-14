@@ -1,0 +1,3995 @@
+{
+ "mov_d": {
+  "event": "KXMIDTERMMOV-PA07D",
+  "series": "KXMIDTERMMOV",
+  "label": "Democratic margin",
+  "title": "Pennsylvania's 7th District margin of victory",
+  "sub_title": "Pennsylvania's 7th District",
+  "rungs": [
+   {
+    "ticker": "KXMIDTERMMOV-PA07D-P3",
+    "label": "Democrats, 3+ pts",
+    "strike": 3.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.56,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.35,
+    "yes_ask": 0.65
+   },
+   {
+    "ticker": "KXMIDTERMMOV-PA07D-P6",
+    "label": "Democrats, 6+ pts",
+    "strike": 6.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.42,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.49,
+    "yes_ask": 0.51
+   },
+   {
+    "ticker": "KXMIDTERMMOV-PA07D-P9",
+    "label": "Democrats, 9+ pts",
+    "strike": 9.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.3,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.64,
+    "yes_ask": 0.36
+   },
+   {
+    "ticker": "KXMIDTERMMOV-PA07D-P12",
+    "label": "Democrats, 12+ pts",
+    "strike": 12.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.17,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.74,
+    "yes_ask": 0.26
+   },
+   {
+    "ticker": "KXMIDTERMMOV-PA07D-P15",
+    "label": "Democrats, 15+ pts",
+    "strike": 15.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.1,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.81,
+    "yes_ask": 0.19
+   }
+  ]
+ },
+ "mov_d_history": {
+  "2026-05-06": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.63,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.5,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.36,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.23,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  },
+  "2026-05-07": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.68,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.56
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.38,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.25,
+    "ask": 0.29
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.12,
+    "ask": 0.15
+   }
+  },
+  "2026-05-08": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.68,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.52,
+    "ask": 0.53
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.41,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.28,
+    "ask": 0.29
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.15
+   }
+  },
+  "2026-05-09": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.68,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.52,
+    "ask": 0.53
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.41,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.28,
+    "ask": 0.29
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.15
+   }
+  },
+  "2026-05-10": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.68,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.52,
+    "ask": 0.53
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.41,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.28,
+    "ask": 0.29
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.15
+   }
+  },
+  "2026-05-11": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.63,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.5,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.36,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.23,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.17
+   }
+  },
+  "2026-05-12": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.63,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.5,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.36,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.23,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.17
+   }
+  },
+  "2026-05-13": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.63,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.5,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.36,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.23,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.17
+   }
+  },
+  "2026-05-14": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.63,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.5,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.36,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.23,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  },
+  "2026-05-19": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.63,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.5,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.36,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.23,
+    "ask": 0.31
+   }
+  },
+  "2026-05-20": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.73
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.45
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.18
+   }
+  },
+  "2026-05-22": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.5,
+    "ask": 0.87
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.36,
+    "ask": 0.72
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.23,
+    "ask": 0.59
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.09,
+    "ask": 0.45
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.012,
+    "ask": 0.32
+   }
+  },
+  "2026-05-23": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.72
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.5,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.45
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.23,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.18
+   }
+  },
+  "2026-05-28": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  },
+  "2026-06-05": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.16
+   }
+  },
+  "2026-06-06": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.58
+   }
+  },
+  "2026-06-28": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-07-02": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  },
+  "2026-07-03": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-07-04": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-07-05": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-07-10": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  },
+  "2026-07-11": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-07-12": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-07-18": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-07-19": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-07-22": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  },
+  "2026-07-23": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.66
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.54
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.16
+   }
+  },
+  "2026-07-24": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.66
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.54
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.17
+   }
+  },
+  "2026-07-25": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.66
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.54
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.41
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.17
+   }
+  },
+  "2026-07-26": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.71
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.58
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  },
+  "2026-07-27": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.67
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.55
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.17
+   }
+  },
+  "2026-07-28": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.67
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.54
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.14,
+    "ask": 0.17
+   }
+  },
+  "2026-07-29": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.67
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.55
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.42
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.15,
+    "ask": 0.17
+   }
+  },
+  "2026-07-30": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.68
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.56
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.25,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.15,
+    "ask": 0.17
+   }
+  },
+  "2026-07-31": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.56
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.25,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.16,
+    "ask": 0.17
+   }
+  },
+  "2026-08-01": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.26,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.16,
+    "ask": 0.17
+   }
+  },
+  "2026-08-02": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.56
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.25,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.16,
+    "ask": 0.17
+   }
+  },
+  "2026-08-03": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-08-04": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-08-05": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.38,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.27,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.16,
+    "ask": 0.17
+   }
+  },
+  "2026-08-06": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-08-07": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.51,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.38,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.27,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.16,
+    "ask": 0.17
+   }
+  },
+  "2026-08-08": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.69
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.52,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.4,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.28,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.16,
+    "ask": 0.17
+   }
+  },
+  "2026-08-09": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.64,
+    "ask": 0.7
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.52,
+    "ask": 0.57
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.4,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.28,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.16,
+    "ask": 0.17
+   }
+  },
+  "2026-08-10": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.19,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.18
+   }
+  },
+  "2026-08-11": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.19,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.18
+   }
+  },
+  "2026-08-12": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.3,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.19,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.12,
+    "ask": 0.17
+   }
+  },
+  "2026-08-13": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-14": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-15": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-16": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-17": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-18": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.18
+   }
+  },
+  "2026-08-19": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-20": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-21": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.53,
+    "ask": 0.6
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.39,
+    "ask": 0.45
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.25,
+    "ask": 0.32
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.16,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.097,
+    "ask": 0.17
+   }
+  },
+  "2026-08-22": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.44,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.18
+   }
+  },
+  "2026-08-23": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.44,
+    "ask": 0.45
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-24": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.63
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.44,
+    "ask": 0.49
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.17
+   }
+  },
+  "2026-08-25": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.44,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.18
+   }
+  },
+  "2026-08-26": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.57,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.29,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.18,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.18
+   }
+  },
+  "2026-08-27": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.37
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-08-28": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.37
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-08-29": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.37
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-08-30": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.37
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-08-31": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.37
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-09-01": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-09-02": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.18
+   }
+  },
+  "2026-09-03": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.43,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-09-04": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-09-05": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.18
+   }
+  },
+  "2026-09-07": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.18
+   }
+  },
+  "2026-09-09": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   }
+  },
+  "2026-09-10": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.5
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.35
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.18
+   }
+  },
+  "2026-09-11": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.36
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-09-12": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.37
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-09-13": {
+   "KXMIDTERMMOV-PA07D-P3": {
+    "bid": 0.56,
+    "ask": 0.65
+   },
+   "KXMIDTERMMOV-PA07D-P6": {
+    "bid": 0.42,
+    "ask": 0.51
+   },
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.28,
+    "ask": 0.37
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.17,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.1,
+    "ask": 0.19
+   }
+  },
+  "2026-05-25": {
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.45
+   }
+  },
+  "2026-05-26": {
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.45
+   }
+  },
+  "2026-05-27": {
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.45
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.18
+   }
+  },
+  "2026-06-30": {
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.44
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.31
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  },
+  "2026-07-01": {
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.37,
+    "ask": 0.43
+   },
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-09-14": {
+   "KXMIDTERMMOV-PA07D-P9": {
+    "bid": 0.3,
+    "ask": 0.36
+   }
+  },
+  "2026-05-30": {
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.31
+   }
+  },
+  "2026-07-17": {
+   "KXMIDTERMMOV-PA07D-P12": {
+    "bid": 0.24,
+    "ask": 0.3
+   },
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.16
+   }
+  },
+  "2026-06-02": {
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.16
+   }
+  },
+  "2026-06-08": {
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.11,
+    "ask": 0.16
+   }
+  },
+  "2026-06-22": {
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.11
+   }
+  },
+  "2026-06-23": {
+   "KXMIDTERMMOV-PA07D-P15": {
+    "bid": 0.099,
+    "ask": 0.17
+   }
+  }
+ },
+ "mov_r": {
+  "event": "KXMIDTERMMOV-PA07R",
+  "series": "KXMIDTERMMOV",
+  "label": "Republican margin",
+  "title": "Pennsylvania's 7th District margin of victory",
+  "sub_title": "Pennsylvania's 7th District",
+  "rungs": [
+   {
+    "ticker": "KXMIDTERMMOV-PA07R-P3",
+    "label": "Republicans, 3+ pts",
+    "strike": 3.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.15,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.78,
+    "yes_ask": 0.22
+   },
+   {
+    "ticker": "KXMIDTERMMOV-PA07R-P6",
+    "label": "Republicans, 6+ pts",
+    "strike": 6.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.13,
+    "yes_bid_size": 100.0,
+    "no_bid": 0.82,
+    "yes_ask": 0.18
+   },
+   {
+    "ticker": "KXMIDTERMMOV-PA07R-P9",
+    "label": "Republicans, 9+ pts",
+    "strike": 9.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.051,
+    "yes_bid_size": 100.0,
+    "no_bid": 0.89,
+    "yes_ask": 0.11
+   }
+  ]
+ },
+ "mov_r_history": {
+  "2026-05-06": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.29
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.21
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.043,
+    "ask": 0.13
+   }
+  },
+  "2026-05-07": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.23,
+    "ask": 0.24
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.17,
+    "ask": 0.18
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.1,
+    "ask": 0.11
+   }
+  },
+  "2026-05-08": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.099,
+    "ask": 0.1
+   }
+  },
+  "2026-05-09": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.099,
+    "ask": 0.1
+   }
+  },
+  "2026-05-10": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.099,
+    "ask": 0.1
+   }
+  },
+  "2026-05-11": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.099,
+    "ask": 0.1
+   }
+  },
+  "2026-05-12": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.099,
+    "ask": 0.1
+   }
+  },
+  "2026-05-13": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.099,
+    "ask": 0.1
+   }
+  },
+  "2026-05-14": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.099,
+    "ask": 0.1
+   }
+  },
+  "2026-05-17": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.043,
+    "ask": 0.1
+   }
+  },
+  "2026-05-25": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.17
+   }
+  },
+  "2026-05-26": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.29
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.21
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.043,
+    "ask": 0.13
+   }
+  },
+  "2026-05-27": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.29
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.21
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.043,
+    "ask": 0.13
+   }
+  },
+  "2026-05-28": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-05-29": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-05-30": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-05-31": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-01": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-02": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-22": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   }
+  },
+  "2026-06-28": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-06-30": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-07-01": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-02": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-07-03": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-04": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-05": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-10": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-07-11": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-12": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-17": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-18": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-19": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-22": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.15
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-07-23": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.057,
+    "ask": 0.09
+   }
+  },
+  "2026-07-24": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.057,
+    "ask": 0.09
+   }
+  },
+  "2026-07-25": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.057,
+    "ask": 0.09
+   }
+  },
+  "2026-07-26": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-07-27": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.06,
+    "ask": 0.1
+   }
+  },
+  "2026-07-28": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.06,
+    "ask": 0.1
+   }
+  },
+  "2026-07-29": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.057,
+    "ask": 0.097
+   }
+  },
+  "2026-07-30": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.056,
+    "ask": 0.096
+   }
+  },
+  "2026-07-31": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.16
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.053,
+    "ask": 0.093
+   }
+  },
+  "2026-08-01": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.16
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.051,
+    "ask": 0.091
+   }
+  },
+  "2026-08-02": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.16
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.052,
+    "ask": 0.092
+   }
+  },
+  "2026-08-03": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-04": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-05": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.16
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.049,
+    "ask": 0.089
+   }
+  },
+  "2026-08-06": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-07": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.16
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.05,
+    "ask": 0.09
+   }
+  },
+  "2026-08-08": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.15
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.086
+   }
+  },
+  "2026-08-09": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.15
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.085
+   }
+  },
+  "2026-08-10": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-11": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.0,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.64
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.034,
+    "ask": 0.3
+   }
+  },
+  "2026-08-12": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.25
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.07,
+    "ask": 0.11
+   }
+  },
+  "2026-08-13": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-14": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-15": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-16": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-17": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-18": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-08-19": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-20": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-08-21": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-08-22": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-08-23": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.16
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.1
+   }
+  },
+  "2026-08-24": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.26
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.057,
+    "ask": 0.1
+   }
+  },
+  "2026-08-25": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.23,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.11
+   }
+  },
+  "2026-08-26": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.12
+   }
+  },
+  "2026-08-27": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.12
+   }
+  },
+  "2026-08-28": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.12
+   }
+  },
+  "2026-08-29": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.22,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.12
+   }
+  },
+  "2026-08-30": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.11
+   }
+  },
+  "2026-08-31": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.23,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.053,
+    "ask": 0.12
+   }
+  },
+  "2026-09-01": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.23,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.056,
+    "ask": 0.12
+   }
+  },
+  "2026-09-02": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.11,
+    "ask": 0.16
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.042,
+    "ask": 0.1
+   }
+  },
+  "2026-09-03": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.17,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.12,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.05,
+    "ask": 0.12
+   }
+  },
+  "2026-09-04": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.28
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-09-05": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.21,
+    "ask": 0.27
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.11
+   }
+  },
+  "2026-09-07": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.23,
+    "ask": 0.29
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.11
+   }
+  },
+  "2026-09-09": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.17,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.17
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.061,
+    "ask": 0.1
+   }
+  },
+  "2026-09-10": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.17,
+    "ask": 0.23
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.11
+   }
+  },
+  "2026-09-11": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.12,
+    "ask": 0.18
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.077,
+    "ask": 0.14
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.091
+   }
+  },
+  "2026-09-12": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.15,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.12,
+    "ask": 0.18
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.041,
+    "ask": 0.11
+   }
+  },
+  "2026-09-13": {
+   "KXMIDTERMMOV-PA07R-P3": {
+    "bid": 0.15,
+    "ask": 0.22
+   },
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.18
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.051,
+    "ask": 0.11
+   }
+  },
+  "2026-06-03": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-04": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-05": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-06": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-07": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-08": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-09": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-10": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-11": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-12": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-13": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-14": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-15": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-16": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-17": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-18": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-06-19": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.048,
+    "ask": 0.12
+   }
+  },
+  "2026-09-06": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.14,
+    "ask": 0.19
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.058,
+    "ask": 0.11
+   }
+  },
+  "2026-09-08": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.061,
+    "ask": 0.11
+   }
+  },
+  "2026-09-14": {
+   "KXMIDTERMMOV-PA07R-P6": {
+    "bid": 0.13,
+    "ask": 0.18
+   },
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.051,
+    "ask": 0.11
+   }
+  },
+  "2026-05-22": {
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.029,
+    "ask": 0.1
+   }
+  },
+  "2026-05-23": {
+   "KXMIDTERMMOV-PA07R-P9": {
+    "bid": 0.043,
+    "ask": 0.1
+   }
+  }
+ },
+ "turnout": {
+  "event": "KXMIDTERMVOTETURN-PA07",
+  "series": "KXMIDTERMVOTETURN",
+  "label": "Voter turnout",
+  "title": "Pennsylvania 07 House General Election: voter turnout",
+  "sub_title": "Pennsylvania 07 House General Election",
+  "rungs": [
+   {
+    "ticker": "KXMIDTERMVOTETURN-PA07-310000",
+    "label": "Above 310K",
+    "strike": 310000.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.72,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.21,
+    "yes_ask": 0.79
+   },
+   {
+    "ticker": "KXMIDTERMVOTETURN-PA07-320000",
+    "label": "Above 320K",
+    "strike": 320000.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.59,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.34,
+    "yes_ask": 0.66
+   },
+   {
+    "ticker": "KXMIDTERMVOTETURN-PA07-340000",
+    "label": "Above 340K",
+    "strike": 340000.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.47,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.46,
+    "yes_ask": 0.54
+   },
+   {
+    "ticker": "KXMIDTERMVOTETURN-PA07-360000",
+    "label": "Above 360K",
+    "strike": 360000.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.34,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.59,
+    "yes_ask": 0.41
+   },
+   {
+    "ticker": "KXMIDTERMVOTETURN-PA07-370000",
+    "label": "Above 370K",
+    "strike": 370000.0,
+    "status": "active",
+    "cap": null,
+    "yes_bid": 0.22,
+    "yes_bid_size": 200.0,
+    "no_bid": 0.71,
+    "yes_ask": 0.29
+   }
+  ]
+ },
+ "turnout_history": {
+  "2026-05-08": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.71,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.67
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.46,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.33,
+    "ask": 0.42
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  },
+  "2026-05-22": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.17,
+    "ask": 0.98
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.45,
+    "ask": 0.81
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.32,
+    "ask": 0.68
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.19,
+    "ask": 0.56
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.07,
+    "ask": 0.43
+   }
+  },
+  "2026-05-23": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.71,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.67
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.46,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.33,
+    "ask": 0.42
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  },
+  "2026-06-02": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   }
+  },
+  "2026-06-07": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  },
+  "2026-06-08": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  },
+  "2026-06-09": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  },
+  "2026-06-10": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  },
+  "2026-06-22": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.71,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.22
+   }
+  },
+  "2026-08-11": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-12": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-13": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-14": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-15": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-18": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-19": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-20": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-21": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.78
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.53
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.28
+   }
+  },
+  "2026-08-22": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-08-27": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-08-28": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-01": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-02": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-03": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-04": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-05": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-10": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-11": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-12": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-09-13": {
+   "KXMIDTERMVOTETURN-PA07-310000": {
+    "bid": 0.72,
+    "ask": 0.79
+   },
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.47,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.22,
+    "ask": 0.29
+   }
+  },
+  "2026-05-14": {
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.67
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.46,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.33,
+    "ask": 0.42
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  },
+  "2026-05-19": {
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.67
+   },
+   "KXMIDTERMVOTETURN-PA07-340000": {
+    "bid": 0.46,
+    "ask": 0.54
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.33,
+    "ask": 0.42
+   },
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  },
+  "2026-05-28": {
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.59,
+    "ask": 0.66
+   },
+   "KXMIDTERMVOTETURN-PA07-360000": {
+    "bid": 0.34,
+    "ask": 0.41
+   }
+  },
+  "2026-06-04": {
+   "KXMIDTERMVOTETURN-PA07-320000": {
+    "bid": 0.6,
+    "ask": 0.65
+   }
+  },
+  "2026-06-23": {
+   "KXMIDTERMVOTETURN-PA07-370000": {
+    "bid": 0.21,
+    "ask": 0.29
+   }
+  }
+ },
+ "problems": []
+}

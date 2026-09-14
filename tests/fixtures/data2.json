@@ -1,0 +1,1339 @@
+{
+ "mov_event": {
+  "title": "PA-07 House Election Margin of Victory",
+  "slug": "pa-07-house-margin-of-victory-2026",
+  "id": "834502",
+  "volume": 2056.361321,
+  "liquidity": 53476.92831,
+  "startDate": "2026-08-11T18:44:43Z",
+  "endDate": "2026-11-03T12:00:00Z"
+ },
+ "mov": [
+  {
+   "bracket": "Republican 6%+",
+   "midpoint": -8.0,
+   "slug": "will-the-republican-party-candidate-win-the-2026-pa-07-house-election-by-6-or-more",
+   "token": "78347436099163105252622678941453809553399456148265167599875596268512411487350",
+   "best_bid": 0.1,
+   "best_ask": 0.14,
+   "bid_size": 76.0,
+   "ask_size": 5.0,
+   "last": 0.1,
+   "volume": 632.130643,
+   "liquidity": 8417.8382
+  },
+  {
+   "bracket": "Republican 3-6%",
+   "midpoint": -4.5,
+   "slug": "will-the-republican-party-candidate-win-the-2026-pa-07-house-election-by-3-6",
+   "token": "89600697080710718428060333169860461779272482884743907112343972145678611219495",
+   "best_bid": 0.1,
+   "best_ask": 0.11,
+   "bid_size": 377.19,
+   "ask_size": 39.68,
+   "last": 0.097,
+   "volume": 179.32,
+   "liquidity": 9064.36392
+  },
+  {
+   "bracket": "Republican 0-3%",
+   "midpoint": -1.5,
+   "slug": "will-the-republican-party-candidate-win-the-2026-pa-07-house-election-by-0-3",
+   "token": "82651440274219396309707636899937399325805343095283098224506222477688565986273",
+   "best_bid": 0.02,
+   "best_ask": 0.16,
+   "bid_size": 56.27,
+   "ask_size": 50.0,
+   "last": 0.14,
+   "volume": 156.33333199999998,
+   "liquidity": 364.0957
+  },
+  {
+   "bracket": "Democrat 0-3%",
+   "midpoint": 1.5,
+   "slug": "will-the-democratic-party-candidate-win-the-2026-pa-07-house-election-by-0-3",
+   "token": "18232979478478123848087631832647863749858750677728804331156418041985597845735",
+   "best_bid": 0.11,
+   "best_ask": 0.15,
+   "bid_size": 244.99,
+   "ask_size": 250.0,
+   "last": 0.14,
+   "volume": 101.03,
+   "liquidity": 8623.3774
+  },
+  {
+   "bracket": "Democrat 3-6%",
+   "midpoint": 4.5,
+   "slug": "will-the-democratic-party-candidate-win-the-2026-pa-07-house-election-by-3-6",
+   "token": "30677245652045233839987451335264505974955463657808445192610349811222835647321",
+   "best_bid": 0.12,
+   "best_ask": 0.13,
+   "bid_size": 276.98,
+   "ask_size": 276.98,
+   "last": 0.12,
+   "volume": 229.186665,
+   "liquidity": 8672.8924
+  },
+  {
+   "bracket": "Democrat 6-9%",
+   "midpoint": 7.5,
+   "slug": "will-the-democratic-party-candidate-win-the-2026-pa-07-house-election-by-6-9",
+   "token": "10874861590459651698165094929927567216467338284306437595013910667389739570250",
+   "best_bid": 0.088,
+   "best_ask": 0.097,
+   "bid_size": 40.0,
+   "ask_size": 45.3,
+   "last": 0.083,
+   "volume": 223.63542099999998,
+   "liquidity": 8863.29336
+  },
+  {
+   "bracket": "Democrat 9-12%",
+   "midpoint": 10.5,
+   "slug": "will-the-democratic-party-candidate-win-the-2026-pa-07-house-election-by-9-12",
+   "token": "4328387860763926360213040402010664503485367288345754237287172881129560816600",
+   "best_bid": 0.03,
+   "best_ask": 0.12,
+   "bid_size": 144.34,
+   "ask_size": 103.0,
+   "last": 0.16,
+   "volume": 122.03,
+   "liquidity": 382.6018
+  },
+  {
+   "bracket": "Democrat 12-15%",
+   "midpoint": 13.5,
+   "slug": "will-the-democratic-party-candidate-win-the-2026-pa-07-house-election-by-12-15",
+   "token": "37798617214886173972677137873870189069875520040087390970897189308385587272385",
+   "best_bid": 0.02,
+   "best_ask": 0.08,
+   "bid_size": 57.05,
+   "ask_size": 23.0,
+   "last": 0.08,
+   "volume": 143.03,
+   "liquidity": 8422.1122
+  },
+  {
+   "bracket": "Democrat 15-18%",
+   "midpoint": 16.5,
+   "slug": "will-the-democratic-party-candidate-win-the-2026-pa-07-house-election-by-15-18",
+   "token": "11055124709856164015641580844312609184531274811022761750117901564083719964977",
+   "best_bid": 0.011,
+   "best_ask": 0.099,
+   "bid_size": 5.82,
+   "ask_size": 13.0,
+   "last": 0.06,
+   "volume": 154.03,
+   "liquidity": 248.77633
+  },
+  {
+   "bracket": "Democrat 18%+",
+   "midpoint": 20.0,
+   "slug": "will-the-democratic-party-candidate-win-the-2026-pa-07-house-election-by-18-or-more",
+   "token": "61357658679444888963643541880987969642209586297223229845377674140002550197460",
+   "best_bid": 0.07,
+   "best_ask": 0.14,
+   "bid_size": 50.0,
+   "ask_size": 83.0,
+   "last": 0.09,
+   "volume": 115.63526,
+   "liquidity": 386.87
+  }
+ ],
+ "mov_history": {
+  "2026-08-12": {
+   "Republican 6%+": 0.365,
+   "Republican 3-6%": 0.365,
+   "Republican 0-3%": 0.365,
+   "Democrat 0-3%": 0.365,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.365,
+   "Democrat 9-12%": 0.365,
+   "Democrat 12-15%": 0.365,
+   "Democrat 15-18%": 0.365,
+   "Democrat 18%+": 0.365
+  },
+  "2026-08-13": {
+   "Republican 6%+": 0.365,
+   "Republican 3-6%": 0.365,
+   "Republican 0-3%": 0.365,
+   "Democrat 0-3%": 0.365,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.365,
+   "Democrat 9-12%": 0.365,
+   "Democrat 12-15%": 0.365,
+   "Democrat 15-18%": 0.365,
+   "Democrat 18%+": 0.365
+  },
+  "2026-08-14": {
+   "Republican 6%+": 0.37,
+   "Republican 3-6%": 0.37,
+   "Republican 0-3%": 0.37,
+   "Democrat 0-3%": 0.37,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.365,
+   "Democrat 9-12%": 0.37,
+   "Democrat 12-15%": 0.37,
+   "Democrat 15-18%": 0.37,
+   "Democrat 18%+": 0.37
+  },
+  "2026-08-15": {
+   "Republican 6%+": 0.365,
+   "Republican 3-6%": 0.365,
+   "Republican 0-3%": 0.365,
+   "Democrat 0-3%": 0.365,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.365,
+   "Democrat 9-12%": 0.365,
+   "Democrat 12-15%": 0.365,
+   "Democrat 15-18%": 0.365,
+   "Democrat 18%+": 0.365
+  },
+  "2026-08-16": {
+   "Republican 6%+": 0.365,
+   "Republican 3-6%": 0.365,
+   "Republican 0-3%": 0.365,
+   "Democrat 0-3%": 0.365,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.365,
+   "Democrat 9-12%": 0.365,
+   "Democrat 12-15%": 0.365,
+   "Democrat 15-18%": 0.365,
+   "Democrat 18%+": 0.365
+  },
+  "2026-08-17": {
+   "Republican 6%+": 0.365,
+   "Republican 3-6%": 0.365,
+   "Republican 0-3%": 0.365,
+   "Democrat 0-3%": 0.375,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.37,
+   "Democrat 9-12%": 0.365,
+   "Democrat 12-15%": 0.36,
+   "Democrat 15-18%": 0.365,
+   "Democrat 18%+": 0.365
+  },
+  "2026-08-18": {
+   "Republican 6%+": 0.365,
+   "Republican 3-6%": 0.365,
+   "Republican 0-3%": 0.365,
+   "Democrat 0-3%": 0.365,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.365,
+   "Democrat 9-12%": 0.37,
+   "Democrat 12-15%": 0.375,
+   "Democrat 15-18%": 0.37,
+   "Democrat 18%+": 0.37
+  },
+  "2026-08-19": {
+   "Republican 6%+": 0.365,
+   "Republican 3-6%": 0.365,
+   "Republican 0-3%": 0.365,
+   "Democrat 0-3%": 0.365,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.365,
+   "Democrat 9-12%": 0.365,
+   "Democrat 12-15%": 0.365,
+   "Democrat 15-18%": 0.365,
+   "Democrat 18%+": 0.365
+  },
+  "2026-08-20": {
+   "Republican 6%+": 0.355,
+   "Republican 3-6%": 0.365,
+   "Republican 0-3%": 0.365,
+   "Democrat 0-3%": 0.355,
+   "Democrat 3-6%": 0.365,
+   "Democrat 6-9%": 0.365,
+   "Democrat 9-12%": 0.365,
+   "Democrat 12-15%": 0.365,
+   "Democrat 15-18%": 0.365,
+   "Democrat 18%+": 0.345
+  },
+  "2026-08-21": {
+   "Republican 6%+": 0.105,
+   "Republican 3-6%": 0.115,
+   "Republican 0-3%": 0.11,
+   "Democrat 0-3%": 0.295,
+   "Democrat 3-6%": 0.25,
+   "Democrat 6-9%": 0.27,
+   "Democrat 9-12%": 0.315,
+   "Democrat 12-15%": 0.255,
+   "Democrat 15-18%": 0.255,
+   "Democrat 18%+": 0.24
+  },
+  "2026-08-22": {
+   "Republican 6%+": 0.08,
+   "Republican 3-6%": 0.4,
+   "Republican 0-3%": 0.29,
+   "Democrat 0-3%": 0.36,
+   "Democrat 3-6%": 0.375,
+   "Democrat 6-9%": 0.265,
+   "Democrat 9-12%": 0.235,
+   "Democrat 12-15%": 0.375,
+   "Democrat 15-18%": 0.345,
+   "Democrat 18%+": 0.355
+  },
+  "2026-08-23": {
+   "Republican 6%+": 0.08,
+   "Republican 3-6%": 0.31,
+   "Republican 0-3%": 0.315,
+   "Democrat 0-3%": 0.27,
+   "Democrat 3-6%": 0.38,
+   "Democrat 6-9%": 0.13,
+   "Democrat 9-12%": 0.245,
+   "Democrat 12-15%": 0.29,
+   "Democrat 15-18%": 0.295,
+   "Democrat 18%+": 0.37
+  },
+  "2026-08-24": {
+   "Republican 6%+": 0.095,
+   "Republican 3-6%": 0.13,
+   "Republican 0-3%": 0.2,
+   "Democrat 0-3%": 0.2,
+   "Democrat 3-6%": 0.195,
+   "Democrat 6-9%": 0.135,
+   "Democrat 9-12%": 0.195,
+   "Democrat 12-15%": 0.34,
+   "Democrat 15-18%": 0.27,
+   "Democrat 18%+": 0.3
+  },
+  "2026-08-25": {
+   "Republican 6%+": 0.1,
+   "Republican 3-6%": 0.14,
+   "Republican 0-3%": 0.165,
+   "Democrat 0-3%": 0.23,
+   "Democrat 3-6%": 0.155,
+   "Democrat 6-9%": 0.202,
+   "Democrat 9-12%": 0.33,
+   "Democrat 12-15%": 0.16,
+   "Democrat 15-18%": 0.15,
+   "Democrat 18%+": 0.145
+  },
+  "2026-08-26": {
+   "Republican 6%+": 0.13,
+   "Republican 3-6%": 0.05,
+   "Republican 0-3%": 0.145,
+   "Democrat 0-3%": 0.15,
+   "Democrat 3-6%": 0.14,
+   "Democrat 6-9%": 0.155,
+   "Democrat 9-12%": 0.145,
+   "Democrat 12-15%": 0.155,
+   "Democrat 15-18%": 0.125,
+   "Democrat 18%+": 0.15
+  },
+  "2026-08-27": {
+   "Republican 6%+": 0.125,
+   "Republican 3-6%": 0.055,
+   "Republican 0-3%": 0.13,
+   "Democrat 0-3%": 0.145,
+   "Democrat 3-6%": 0.15,
+   "Democrat 6-9%": 0.117,
+   "Democrat 9-12%": 0.14,
+   "Democrat 12-15%": 0.14,
+   "Democrat 15-18%": 0.09,
+   "Democrat 18%+": 0.125
+  },
+  "2026-08-28": {
+   "Republican 6%+": 0.12,
+   "Republican 3-6%": 0.052,
+   "Republican 0-3%": 0.13,
+   "Democrat 0-3%": 0.145,
+   "Democrat 3-6%": 0.11,
+   "Democrat 6-9%": 0.1855,
+   "Democrat 9-12%": 0.135,
+   "Democrat 12-15%": 0.16,
+   "Democrat 15-18%": 0.07,
+   "Democrat 18%+": 0.145
+  },
+  "2026-08-29": {
+   "Republican 6%+": 0.16,
+   "Republican 3-6%": 0.0545,
+   "Republican 0-3%": 0.125,
+   "Democrat 0-3%": 0.145,
+   "Democrat 3-6%": 0.075,
+   "Democrat 6-9%": 0.137,
+   "Democrat 9-12%": 0.12,
+   "Democrat 12-15%": 0.16,
+   "Democrat 15-18%": 0.07,
+   "Democrat 18%+": 0.19
+  },
+  "2026-08-30": {
+   "Republican 6%+": 0.165,
+   "Republican 3-6%": 0.0605,
+   "Republican 0-3%": 0.13,
+   "Democrat 0-3%": 0.15,
+   "Democrat 3-6%": 0.125,
+   "Democrat 6-9%": 0.183,
+   "Democrat 9-12%": 0.125,
+   "Democrat 12-15%": 0.065,
+   "Democrat 15-18%": 0.07,
+   "Democrat 18%+": 0.095
+  },
+  "2026-08-31": {
+   "Republican 6%+": 0.115,
+   "Republican 3-6%": 0.083,
+   "Republican 0-3%": 0.15,
+   "Democrat 0-3%": 0.16,
+   "Democrat 3-6%": 0.145,
+   "Democrat 6-9%": 0.1475,
+   "Democrat 9-12%": 0.11,
+   "Democrat 12-15%": 0.075,
+   "Democrat 15-18%": 0.05,
+   "Democrat 18%+": 0.055
+  },
+  "2026-09-01": {
+   "Republican 6%+": 0.075,
+   "Republican 3-6%": 0.1035,
+   "Republican 0-3%": 0.15,
+   "Democrat 0-3%": 0.165,
+   "Democrat 3-6%": 0.145,
+   "Democrat 6-9%": 0.1345,
+   "Democrat 9-12%": 0.11,
+   "Democrat 12-15%": 0.07,
+   "Democrat 15-18%": 0.045,
+   "Democrat 18%+": 0.065
+  },
+  "2026-09-02": {
+   "Republican 6%+": 0.06,
+   "Republican 3-6%": 0.095,
+   "Republican 0-3%": 0.15,
+   "Democrat 0-3%": 0.16,
+   "Democrat 3-6%": 0.145,
+   "Democrat 6-9%": 0.1355,
+   "Democrat 9-12%": 0.1,
+   "Democrat 12-15%": 0.07,
+   "Democrat 15-18%": 0.045,
+   "Democrat 18%+": 0.06
+  },
+  "2026-09-03": {
+   "Republican 6%+": 0.09,
+   "Republican 3-6%": 0.095,
+   "Republican 0-3%": 0.15,
+   "Democrat 0-3%": 0.16,
+   "Democrat 3-6%": 0.145,
+   "Democrat 6-9%": 0.1045,
+   "Democrat 9-12%": 0.11,
+   "Democrat 12-15%": 0.07,
+   "Democrat 15-18%": 0.04,
+   "Democrat 18%+": 0.065
+  },
+  "2026-09-04": {
+   "Republican 6%+": 0.11,
+   "Republican 3-6%": 0.0555,
+   "Republican 0-3%": 0.15,
+   "Democrat 0-3%": 0.16,
+   "Democrat 3-6%": 0.145,
+   "Democrat 6-9%": 0.055,
+   "Democrat 9-12%": 0.105,
+   "Democrat 12-15%": 0.07,
+   "Democrat 15-18%": 0.04,
+   "Democrat 18%+": 0.065
+  },
+  "2026-09-05": {
+   "Republican 6%+": 0.13,
+   "Republican 3-6%": 0.1305,
+   "Republican 0-3%": 0.155,
+   "Democrat 0-3%": 0.165,
+   "Democrat 3-6%": 0.135,
+   "Democrat 6-9%": 0.091,
+   "Democrat 9-12%": 0.11,
+   "Democrat 12-15%": 0.055,
+   "Democrat 15-18%": 0.05,
+   "Democrat 18%+": 0.08
+  },
+  "2026-09-06": {
+   "Republican 6%+": 0.135,
+   "Republican 3-6%": 0.135,
+   "Republican 0-3%": 0.155,
+   "Democrat 0-3%": 0.165,
+   "Democrat 3-6%": 0.135,
+   "Democrat 6-9%": 0.0915,
+   "Democrat 9-12%": 0.09,
+   "Democrat 12-15%": 0.055,
+   "Democrat 15-18%": 0.0635,
+   "Democrat 18%+": 0.065
+  },
+  "2026-09-07": {
+   "Republican 6%+": 0.13,
+   "Republican 3-6%": 0.1305,
+   "Republican 0-3%": 0.155,
+   "Democrat 0-3%": 0.165,
+   "Democrat 3-6%": 0.135,
+   "Democrat 6-9%": 0.0915,
+   "Democrat 9-12%": 0.095,
+   "Democrat 12-15%": 0.055,
+   "Democrat 15-18%": 0.062,
+   "Democrat 18%+": 0.085
+  },
+  "2026-09-08": {
+   "Republican 6%+": 0.135,
+   "Republican 3-6%": 0.1305,
+   "Republican 0-3%": 0.155,
+   "Democrat 0-3%": 0.165,
+   "Democrat 3-6%": 0.135,
+   "Democrat 6-9%": 0.0915,
+   "Democrat 9-12%": 0.095,
+   "Democrat 12-15%": 0.055,
+   "Democrat 15-18%": 0.056,
+   "Democrat 18%+": 0.065
+  },
+  "2026-09-09": {
+   "Republican 6%+": 0.13,
+   "Republican 3-6%": 0.1345,
+   "Republican 0-3%": 0.15,
+   "Democrat 0-3%": 0.165,
+   "Democrat 3-6%": 0.135,
+   "Democrat 6-9%": 0.0915,
+   "Democrat 9-12%": 0.095,
+   "Democrat 12-15%": 0.045,
+   "Democrat 15-18%": 0.055,
+   "Democrat 18%+": 0.1
+  },
+  "2026-09-10": {
+   "Republican 6%+": 0.13,
+   "Republican 3-6%": 0.1325,
+   "Republican 0-3%": 0.15,
+   "Democrat 0-3%": 0.165,
+   "Democrat 3-6%": 0.135,
+   "Democrat 6-9%": 0.0915,
+   "Democrat 9-12%": 0.095,
+   "Democrat 12-15%": 0.05,
+   "Democrat 15-18%": 0.055,
+   "Democrat 18%+": 0.1
+  },
+  "2026-09-11": {
+   "Republican 6%+": 0.13,
+   "Republican 3-6%": 0.1335,
+   "Republican 0-3%": 0.15,
+   "Democrat 0-3%": 0.165,
+   "Democrat 3-6%": 0.135,
+   "Democrat 6-9%": 0.0915,
+   "Democrat 9-12%": 0.09,
+   "Democrat 12-15%": 0.05,
+   "Democrat 15-18%": 0.0545,
+   "Democrat 18%+": 0.055
+  },
+  "2026-09-12": {
+   "Republican 6%+": 0.11,
+   "Republican 3-6%": 0.1125,
+   "Republican 0-3%": 0.145,
+   "Democrat 0-3%": 0.135,
+   "Democrat 3-6%": 0.125,
+   "Democrat 6-9%": 0.0915,
+   "Democrat 9-12%": 0.06,
+   "Democrat 12-15%": 0.05,
+   "Democrat 15-18%": 0.055,
+   "Democrat 18%+": 0.075
+  },
+  "2026-09-13": {
+   "Republican 6%+": 0.1,
+   "Republican 3-6%": 0.1115,
+   "Republican 0-3%": 0.09,
+   "Democrat 0-3%": 0.13,
+   "Democrat 3-6%": 0.12,
+   "Democrat 6-9%": 0.0915,
+   "Democrat 9-12%": 0.06,
+   "Democrat 12-15%": 0.05,
+   "Democrat 15-18%": 0.055,
+   "Democrat 18%+": 0.095
+  },
+  "2026-09-14": {
+   "Republican 6%+": 0.12,
+   "Republican 3-6%": 0.105,
+   "Republican 0-3%": 0.09,
+   "Democrat 0-3%": 0.13,
+   "Democrat 3-6%": 0.125,
+   "Democrat 6-9%": 0.0925,
+   "Democrat 9-12%": 0.075,
+   "Democrat 12-15%": 0.05,
+   "Democrat 15-18%": 0.055,
+   "Democrat 18%+": 0.105
+  }
+ },
+ "seats": [
+  {
+   "ticker": "KXHOUSEWINSTATE-PAD-B7",
+   "label": "Below 7",
+   "midpoint": 6,
+   "yes_bid": null,
+   "yes_bid_size": null,
+   "no_bid": 0.99,
+   "yes_ask": 0.01
+  },
+  {
+   "ticker": "KXHOUSEWINSTATE-PAD-E7",
+   "label": "7",
+   "midpoint": 7,
+   "yes_bid": 0.04,
+   "yes_bid_size": 40.0,
+   "no_bid": 0.94,
+   "yes_ask": 0.06
+  },
+  {
+   "ticker": "KXHOUSEWINSTATE-PAD-E8",
+   "label": "8",
+   "midpoint": 8,
+   "yes_bid": 0.02,
+   "yes_bid_size": 35.0,
+   "no_bid": 0.9,
+   "yes_ask": 0.1
+  },
+  {
+   "ticker": "KXHOUSEWINSTATE-PAD-E9",
+   "label": "9",
+   "midpoint": 9,
+   "yes_bid": 0.31,
+   "yes_bid_size": 10.0,
+   "no_bid": 0.65,
+   "yes_ask": 0.35
+  },
+  {
+   "ticker": "KXHOUSEWINSTATE-PAD-E10",
+   "label": "10",
+   "midpoint": 10,
+   "yes_bid": 0.15,
+   "yes_bid_size": 20.0,
+   "no_bid": 0.81,
+   "yes_ask": 0.19
+  },
+  {
+   "ticker": "KXHOUSEWINSTATE-PAD-E11",
+   "label": "11",
+   "midpoint": 11,
+   "yes_bid": 0.27,
+   "yes_bid_size": 100.0,
+   "no_bid": 0.63,
+   "yes_ask": 0.37
+  },
+  {
+   "ticker": "KXHOUSEWINSTATE-PAD-E12",
+   "label": "12",
+   "midpoint": 12,
+   "yes_bid": 0.02,
+   "yes_bid_size": 500.0,
+   "no_bid": 0.96,
+   "yes_ask": 0.04
+  },
+  {
+   "ticker": "KXHOUSEWINSTATE-PAD-A12",
+   "label": "Above 12",
+   "midpoint": 13,
+   "yes_bid": null,
+   "yes_bid_size": null,
+   "no_bid": 0.98,
+   "yes_ask": 0.02
+  }
+ ],
+ "seat_history": {
+  "2026-08-20": {
+   "KXHOUSEWINSTATE-PAD-B7": {
+    "bid": 0.01,
+    "ask": 0.02
+   },
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.02,
+    "ask": 0.03
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.12,
+    "ask": 0.14
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.4,
+    "ask": 0.41
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.29,
+    "ask": 0.3
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.14,
+    "ask": 0.15
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.02,
+    "ask": 0.03
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.01,
+    "ask": 0.02
+   }
+  },
+  "2026-08-21": {
+   "KXHOUSEWINSTATE-PAD-B7": {
+    "bid": 0.01,
+    "ask": 0.02
+   },
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.02,
+    "ask": 0.03
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.12,
+    "ask": 0.13
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.35,
+    "ask": 0.36
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.29,
+    "ask": 0.3
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.21,
+    "ask": 0.22
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.01,
+    "ask": 0.02
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.01,
+    "ask": 0.02
+   }
+  },
+  "2026-08-22": {
+   "KXHOUSEWINSTATE-PAD-B7": {
+    "bid": 0.01,
+    "ask": 0.02
+   },
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.02,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.12,
+    "ask": 0.13
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.35,
+    "ask": 0.36
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.29,
+    "ask": 0.3
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.22,
+    "ask": 0.24
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.01,
+    "ask": 0.02
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.01,
+    "ask": 0.02
+   }
+  },
+  "2026-08-23": {
+   "KXHOUSEWINSTATE-PAD-B7": {
+    "bid": 0.0,
+    "ask": 0.01
+   },
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.03,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.07,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.28,
+    "ask": 0.32
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.24,
+    "ask": 0.28
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.25,
+    "ask": 0.27
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.01,
+    "ask": 0.02
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.0,
+    "ask": 0.02
+   }
+  },
+  "2026-08-24": {
+   "KXHOUSEWINSTATE-PAD-B7": {
+    "bid": 0.0,
+    "ask": 0.01
+   },
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.03,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.06,
+    "ask": 0.07
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.26,
+    "ask": 0.31
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.23,
+    "ask": 0.24
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.24,
+    "ask": 0.27
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.03,
+    "ask": 0.04
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.0,
+    "ask": 0.02
+   }
+  },
+  "2026-08-27": {
+   "KXHOUSEWINSTATE-PAD-B7": {
+    "bid": 0.0,
+    "ask": 0.01
+   },
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.07
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.29,
+    "ask": 0.33
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.17,
+    "ask": 0.2
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.25,
+    "ask": 0.29
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.02,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.0,
+    "ask": 0.02
+   }
+  },
+  "2026-08-31": {
+   "KXHOUSEWINSTATE-PAD-B7": {
+    "bid": 0.0,
+    "ask": 0.01
+   },
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.07
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.34
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.31,
+    "ask": 0.37
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.03,
+    "ask": 0.04
+   }
+  },
+  "2026-09-04": {
+   "KXHOUSEWINSTATE-PAD-B7": {
+    "bid": 0.0,
+    "ask": 0.01
+   },
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.09
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.36
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.01,
+    "ask": 0.04
+   }
+  },
+  "2026-08-25": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.03,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.05,
+    "ask": 0.07
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.29,
+    "ask": 0.32
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.23,
+    "ask": 0.24
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.24,
+    "ask": 0.27
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.02,
+    "ask": 0.05
+   }
+  },
+  "2026-08-26": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.03,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.29,
+    "ask": 0.33
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.23,
+    "ask": 0.24
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.24,
+    "ask": 0.27
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.02,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.0,
+    "ask": 0.01
+   }
+  },
+  "2026-08-28": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.02,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.29,
+    "ask": 0.31
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.17,
+    "ask": 0.2
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.28,
+    "ask": 0.37
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.02,
+    "ask": 0.07
+   }
+  },
+  "2026-08-29": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.03,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.01,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.33
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.19,
+    "ask": 0.2
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.29,
+    "ask": 0.37
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.04,
+    "ask": 0.07
+   }
+  },
+  "2026-08-30": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.03,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.03,
+    "ask": 0.07
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.18,
+    "ask": 0.2
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.31,
+    "ask": 0.36
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.03,
+    "ask": 0.07
+   }
+  },
+  "2026-09-02": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.09
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.29,
+    "ask": 0.36
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.01,
+    "ask": 0.04
+   }
+  },
+  "2026-09-03": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.08
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.34
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.29,
+    "ask": 0.37
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.0,
+    "ask": 0.04
+   }
+  },
+  "2026-09-06": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.32,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.37
+   }
+  },
+  "2026-09-11": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.11
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.33,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.17,
+    "ask": 0.2
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.26,
+    "ask": 0.32
+   }
+  },
+  "2026-09-12": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.07
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.15,
+    "ask": 0.2
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.32
+   }
+  },
+  "2026-09-13": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.05
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.02,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.32
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.0,
+    "ask": 0.01
+   }
+  },
+  "2026-09-14": {
+   "KXHOUSEWINSTATE-PAD-E7": {
+    "bid": 0.04,
+    "ask": 0.06
+   },
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.02,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.17,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.31
+   },
+   "KXHOUSEWINSTATE-PAD-A12": {
+    "bid": 0.0,
+    "ask": 0.02
+   }
+  },
+  "2026-09-01": {
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.11
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.34
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.17,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.29,
+    "ask": 0.37
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.01,
+    "ask": 0.04
+   }
+  },
+  "2026-09-05": {
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.31,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.37
+   },
+   "KXHOUSEWINSTATE-PAD-E12": {
+    "bid": 0.02,
+    "ask": 0.04
+   }
+  },
+  "2026-09-07": {
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.32,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.33
+   }
+  },
+  "2026-09-08": {
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.34,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.31
+   }
+  },
+  "2026-09-09": {
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.32,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.16,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.31
+   }
+  },
+  "2026-09-10": {
+   "KXHOUSEWINSTATE-PAD-E8": {
+    "bid": 0.04,
+    "ask": 0.1
+   },
+   "KXHOUSEWINSTATE-PAD-E9": {
+    "bid": 0.34,
+    "ask": 0.35
+   },
+   "KXHOUSEWINSTATE-PAD-E10": {
+    "bid": 0.17,
+    "ask": 0.19
+   },
+   "KXHOUSEWINSTATE-PAD-E11": {
+    "bid": 0.27,
+    "ask": 0.35
+   }
+  }
+ },
+ "kalshi_inventory": [
+  {
+   "series": "HOUSEPA7",
+   "event": "HOUSEPA7-26",
+   "title": "PA-07 House winner?",
+   "sub": "In 2026",
+   "n_markets": 2,
+   "tickers": [
+    "HOUSEPA7-26-R",
+    "HOUSEPA7-26-D"
+   ]
+  },
+  {
+   "series": "HOUSEPA7",
+   "event": "HOUSEPA7-24",
+   "title": "Who will win the House race for PA-7?",
+   "sub": "In 2024",
+   "n_markets": 0,
+   "tickers": []
+  },
+  {
+   "series": "KXPA07D",
+   "event": "KXPA07D-26",
+   "title": "PA-07 Democratic nominee?",
+   "sub": "In 2026",
+   "n_markets": 0,
+   "tickers": []
+  }
+ ],
+ "problems": []
+}
