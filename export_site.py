@@ -65,8 +65,7 @@ WIDE_SPREAD = 0.25
 # them in k3refs.json; these exist so an export can still run against a checkout
 # that has data*.json but has not built the workbook yet (CI does exactly that
 # when a build step fails). They are asserted equal to build6.py's by the tests.
-FALLBACK_MIDS = {"D_TOP_MID": 18.0, "R_TOP_MID": -11.0,
-                 "TURN_LOW_MID": 295000, "TURN_TOP_MID": 385000}
+FALLBACK_MIDS = {"TURN_LOW_MID": 295000, "TURN_TOP_MID": 385000}
 
 # The only venue a browser can poll for itself. Polymarket answers gamma and
 # clob requests with access-control-allow-origin: *; Kalshi sends no CORS header
@@ -239,7 +238,6 @@ def market_series(data, data2, data3, pollsmax, mids):
     out["divergence"] = [[d, rnd(pm_by_day[d] - k_by_day[d])] for d in both]
 
     out["pm_margin"] = pm_expected_margin(data2)
-    out["k_margin"] = k_expected_margin(data, data3, mids)
 
     trend = ((pollsmax or {}).get("extra") or {}).get("forecast_trend_series") or {}
     wp = trend.get("win_probability_pct") or {}
@@ -280,104 +278,10 @@ def pm_expected_margin(data2):
     return out
 
 
-def kalshi_buckets(mov_d, mov_r, win_d, win_r, mids):
-    """Kalshi's nested thresholds differenced into exclusive buckets.
-
-    Mirrors build6.py exactly, including the two things that are easy to get
-    wrong and were both live bugs:
-
-    - Buckets come off STRIKE values, never off row adjacency. The Republican
-      rungs are displayed descending, and differencing neighbouring rows once
-      inflated that side from 0.235 to 0.572 and produced a distribution
-      summing to 1.33.
-    - Kalshi quotes no 0-3 rung, so each side's tossup bucket is P(wins) from
-      the winner market minus P(wins by 3+) from this ladder: a subtraction
-      across two independently quoted markets, which can come out negative. It
-      is clamped at zero, and the amount discarded is returned rather than
-      thrown away: on the workbook that number lives only in a consistency
-      check, and it is the difference between "the tossup is worth nothing" and
-      "these two markets disagree".
-
-    Rungs arrive as {strike: mid or None}, INCLUDING the rungs with no mid. That
-    matters: on 10 Sep 2026 the Democratic ladder had a resting ask on every rung
-    and a resting bid on almost none, so a dict of only the quoted strikes
-    collapsed a five-rung ladder to one and re-labelled "6+ pts" with the 15+
-    representative value of +18. The bucket set is defined by the ladder, not by
-    what happens to be two-sided this minute; an unquoted bucket reports None and
-    the page draws a gap.
-    """
-    rows, discarded = [], {}
-    for side, ladder, win, top, sign in (("R", mov_r, win_r, mids["R_TOP_MID"], -1),
-                                         ("D", mov_d, win_d, mids["D_TOP_MID"], +1)):
-        strikes = sorted(ladder)
-        side_rows = []
-        for i, st in enumerate(strikes):
-            outer = strikes[i + 1] if i + 1 < len(strikes) else None
-            if outer is None:
-                p, label, rep = ladder[st], "%g+ pts" % st, top
-            elif None in (ladder[st], ladder[outer]):
-                p, label, rep = None, "%g-%g pts" % (st, outer), sign * (st + outer) / 2.0
-            else:
-                p = max(0.0, ladder[st] - ladder[outer])
-                label, rep = "%g-%g pts" % (st, outer), sign * (st + outer) / 2.0
-            side_rows.append({"side": side, "label": label, "points": rep,
-                              "prob": rnd(p, 4), "derived": False})
-        inner = ladder[strikes[0]] if strikes else None
-        raw = None if None in (win, inner) else win - inner
-        if strikes:
-            discarded[side] = rnd(min(0.0, raw), 4) if raw is not None else None
-            side_rows.insert(0, {"side": side, "label": "0-%g pts" % strikes[0],
-                                 "points": sign * strikes[0] / 2.0,
-                                 "prob": rnd(max(0.0, raw), 4) if raw is not None else None,
-                                 "derived": True,
-                                 "raw": rnd(raw, 4) if raw is not None else None})
-        # One continuous axis: biggest Republican win first, tossups in the
-        # middle, biggest Democratic win last, so a bar chart of this reads as a
-        # distribution instead of a spike at each edge.
-        rows.extend(reversed(side_rows) if side == "R" else side_rows)
-    return rows, discarded
-
-
-def k_expected_margin(data, data3, mids):
-    """Kalshi's implied margin per day, from the two threshold ladders plus the
-    winner market for the 0-3 buckets."""
-    def ladder_by_day(key):
-        """{day: {strike: mid or None}} for every rung the ladder declares.
-
-        A day where any rung failed to quote is kept but incomplete, and the
-        caller drops it. Averaging over a partial ladder produces a confident
-        expected margin computed from half a distribution.
-        """
-        declared = {}
-        for x in (((data3 or {}).get(key) or {}).get("rungs") or []):
-            declared[float(x["strike"])] = x["ticker"]
-        out = {}
-        for day, row in ((data3 or {}).get(key + "_history") or {}).items():
-            quotes = {}
-            for strike, ticker in declared.items():
-                q = (row or {}).get(ticker) or {}
-                quotes[strike] = mid(q.get("bid"), q.get("ask"))
-            if quotes:
-                out[day] = quotes
-        return out
-
-    d_days, r_days = ladder_by_day("mov_d"), ladder_by_day("mov_r")
-    win = (data or {}).get("k_history") or {}
-    out = []
-    for day in sorted(set(d_days) & set(r_days)):
-        w = win.get(day) or {}
-        wd = mid((w.get("D") or {}).get("yes_bid"), (w.get("D") or {}).get("yes_ask"))
-        wr = mid((w.get("R") or {}).get("yes_bid"), (w.get("R") or {}).get("yes_ask"))
-        rows, _ = kalshi_buckets(d_days[day], r_days[day], wd, wr, mids)
-        if not rows or any(r["prob"] is None for r in rows):
-            continue
-        total = sum(r["prob"] for r in rows)
-        if total <= 0:
-            continue
-        # Normalised for the same reason as Polymarket: these buckets come off
-        # two markets and are not obliged to sum to 1.00.
-        out.append([day, rnd(sum(r["prob"] / total * r["points"] for r in rows), 4)])
-    return out
+# Kalshi's margin ladder (KXMIDTERMMOV-PA07D/R) is collected into data3.json
+# but not published: most rungs carry no two-sided quote, and an expected
+# margin over the one that does is a confident number from a fifth of a
+# distribution. The bucket arithmetic that used to live here is in git history.
 
 
 # --------------------------------------------------------------- distribution
@@ -401,16 +305,9 @@ def distributions(data, data2, data3, mids):
         })
 
     def rung_mids(block):
-        """Every declared rung, quoted or not. See kalshi_buckets on why."""
+        """Every declared rung, quoted or not."""
         return {float(x["strike"]): mid(x.get("yes_bid"), x.get("yes_ask"))
                 for x in ((block or {}).get("rungs") or [])}
-
-    km = (data or {}).get("k_meta") or {}
-    kbuckets, discarded = kalshi_buckets(
-        rung_mids((data3 or {}).get("mov_d")), rung_mids((data3 or {}).get("mov_r")),
-        mid((km.get("D") or {}).get("yes_bid"), (km.get("D") or {}).get("yes_ask")),
-        mid((km.get("R") or {}).get("yes_bid"), (km.get("R") or {}).get("yes_ask")),
-        mids)
 
     turnout = {k: v for k, v in rung_mids((data3 or {}).get("turnout")).items()
                if v is not None}
@@ -452,14 +349,6 @@ def distributions(data, data2, data3, mids):
     return {
         "polymarket_margin": {"brackets": pm, "raw_total": rnd(raw_total, 4),
                               "event": (data2 or {}).get("mov_event")},
-        # A total over a ladder with unquoted rungs is a sum of half a
-        # distribution and reads as "Kalshi thinks this race is 20% likely to
-        # happen". Withheld rather than shown small.
-        "kalshi_margin": {"buckets": kbuckets,
-                          "total": (None if any(b["prob"] is None for b in kbuckets)
-                                    else rnd(sum(b["prob"] for b in kbuckets), 4)),
-                          "unquoted": sum(1 for b in kbuckets if b["prob"] is None),
-                          "clamp_discarded": discarded},
         "turnout": {"rungs": [{"strike": s, "mid": rnd(turnout[s], 4)} for s in tstrikes],
                     "buckets": tbuckets,
                     "event": ((data3 or {}).get("turnout") or {}).get("event")},
@@ -864,11 +753,6 @@ def assumptions(mids, polls, data2):
                   % (mov.get("Democrat 18%+", 20.0), mov.get("Republican 6%+", -8.0)),
          "why": "Closed brackets use their true centre. The two open-ended ones have no centre, "
                 "so a representative point was chosen. They drive the expected-margin figure."},
-        {"what": "Kalshi open-ended rung midpoints",
-         "value": "Democrats 15+ = %+.1f, Republicans 9+ = %+.1f"
-                  % (mids["D_TOP_MID"], mids["R_TOP_MID"]),
-         "why": "Same judgement call on the threshold ladder, where the outermost rung is "
-                "unbounded above."},
         {"what": "Turnout representative points",
          "value": "below 310K = %s, above 370K = %s"
                   % ("{:,}".format(int(mids["TURN_LOW_MID"])),
@@ -989,11 +873,11 @@ def freshness(data, data2, data3, pollsmax, cs, fec, snap, wb_path):
          "snapshot_utc": mtime("data2.json"),
          "last_history_day": last((data2 or {}).get("mov_history")),
          "days": len((data2 or {}).get("mov_history") or {})},
-        {"id": "kalshi_ladders", "label": "Kalshi margin and turnout ladders", "kind": "snapshot",
-         "detail": "Nested thresholds, signed requests only.",
+        {"id": "kalshi_ladders", "label": "Kalshi turnout ladder", "kind": "snapshot",
+         "detail": "Nested thresholds, from the scheduled build.",
          "snapshot_utc": mtime("data3.json"),
-         "last_history_day": last((data3 or {}).get("mov_d_history")),
-         "days": len((data3 or {}).get("mov_d_history") or {})},
+         "last_history_day": last((data3 or {}).get("turnout_history")),
+         "days": len((data3 or {}).get("turnout_history") or {})},
         {"id": "polls", "label": "Polls (NYT/538 house file)", "kind": "manual",
          "detail": "Re-read on every scheduled run, but only changes when a new CSV is saved by "
                    "hand into the project directory.",
@@ -1007,7 +891,7 @@ def freshness(data, data2, data3, pollsmax, cs, fec, snap, wb_path):
          "detail": "Sponsored content. Display only, feeds no calculation.",
          "snapshot_utc": (cs or {}).get("retrieved_utc")},
         {"id": "workbook", "label": "Excel workbook", "kind": "build",
-         "detail": "Rebuilt by every scheduled run, 13 sheets and 13 native charts.",
+         "detail": "Rebuilt by every scheduled run, 13 sheets and 12 native charts.",
          "snapshot_utc": mtime(wb_path)},
     ]
 

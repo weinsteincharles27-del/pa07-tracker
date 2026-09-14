@@ -3,14 +3,15 @@
 Self-updating workbook tracking the Pennsylvania 7th congressional district race
 (Bob Brooks (D) vs Rep. Ryan Mackenzie (R)), election **3 November 2026**.
 
-Output: `PA-07_House_Election_Tracker.xlsx` — 13 sheets, ~6,400 formulas, 13 native charts.
+Output: `PA-07_House_Election_Tracker.xlsx` — 13 sheets, ~6,400 formulas, 12 native charts.
 
 Sheet order: Summary · Charts · Distributions · Polymarket · Kalshi ·
 Margin of Victory · Voter Turnout · PA Seat Count · Polls ·
 **Forecast & Aggregators** · **Campaign Finance** · Venue Comparison · Notes & Sources.
 
-Margin of victory is tracked on BOTH venues and compared on one sheet; voter
-turnout is Kalshi-only.
+Margin of victory is Polymarket's ladder; voter turnout is Kalshi-only. Kalshi
+also quotes a margin ladder, but too thinly to use (see below), so it is
+collected and not shown.
 
 The two chart sheets hold native Excel charts bound to cell ranges on the data
 sheets — nothing is rasterised, so every chart redraws itself on each refresh.
@@ -138,15 +139,15 @@ The two venues sell different instruments for the same question:
   `P(value >= strike)`, so probabilities must FALL as the strike rises.
 
 Differencing adjacent Kalshi rungs recovers buckets; `collect3.py` checks the
-monotonicity that makes that valid. Kalshi quotes no 0-3 rung, so the two tossup
-buckets are derived as `P(wins) - P(wins by 3+)` — reaching across two
-independently quoted markets, which can invert. That case is clamped at zero and
-reported by the CONSISTENCY CHECK block rather than rendered as a negative
-probability.
+monotonicity that makes that valid. That is how the turnout sheet is built.
 
-**A note on interpreting the Kalshi ladder:** an inversion is not automatically a
-mispricing. Check the verdict cell — it distinguishes a midpoint artifact (the
-spreads overlap) from a genuinely executable edge, using bid/ask rather than mids.
+Kalshi's margin-of-victory ladder (KXMIDTERMMOV-PA07D/R) is collected every
+run into `data3.json` but not built into the workbook or published on the
+site. As of mid-September 2026 four of its five Democratic rungs had no
+two-sided quote, and an expected margin summed over the one rung that did was
+a confident-looking number from a fifth of a distribution. The section that
+built it, its charts and its tests are in git history before 15 Sep 2026 if
+the ladder ever fills in.
 
 ## Updating the polls
 
@@ -172,8 +173,8 @@ cases and the run reports which file it used.
 | `build.py` | Polymarket and Kalshi sheets |
 | `build2.py` | Polls sheet (reads the CSV) |
 | `build2b.py` | Margin of Victory and PA Seat Count sheets |
-| `collect3.py` | Kalshi margin-of-victory and voter-turnout ladders |
-| `build6.py` | Kalshi margin section + Voter Turnout sheet (runs after `build2b.py`) |
+| `collect3.py` | Kalshi margin-of-victory and voter-turnout ladders (margin collected, not shown) |
+| `build6.py` | Voter Turnout sheet (runs after `build2b.py`) |
 | `build7.py` | Forecast & Aggregators + Campaign Finance, from `sources/*.json` |
 | `build3.py` | Venue Comparison and Summary sheets |
 | `build5.py` | Charts and Distributions sheets (runs before `build4.py`) |
