@@ -65,6 +65,10 @@ jobs:
             echo "No change in the published payload."
           else
             git commit -m "Refresh data $(date -u '+%Y-%m-%d %H:%M UTC')"
+            # A pull request may have merged since checkout. This job only
+            # ever touches site/data and the workbook, which nothing else
+            # edits, so a rebase onto the new tip cannot conflict.
+            git pull --rebase --quiet origin main
             git push
           fi
 

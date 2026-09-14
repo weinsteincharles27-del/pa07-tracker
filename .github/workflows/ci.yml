@@ -19,6 +19,24 @@ jobs:
       PA07_POLLS_CSV: tests/fixtures/house_pa07.csv
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # site/data and the workbook are rewritten on main by the refresh job
+      # three times a day. A branch that edits them too will conflict with the
+      # bot by the time it is reviewed, so it is refused here instead. Page
+      # configuration belongs in site/assets; data comes from the pipeline.
+      - name: Refuse changes to files the refresh job owns
+        if: github.event_name == 'pull_request'
+        run: |
+          owned=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- 'site/data/**' 'site/*.xlsx')
+          if [ -n "$owned" ]; then
+            echo "These files are written by the refresh job and must not change on a branch:"
+            echo "$owned"
+            echo "Drop them from the branch (git checkout origin/main -- <file>) and push again."
+            exit 1
+          fi
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"

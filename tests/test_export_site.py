@@ -244,21 +244,25 @@ def test_a_missing_source_degrades_to_a_gap_not_a_crash():
     assert dv["divergence"]["episodes"] == []
 
 
+def live_config():
+    """The page's live-price config is hand-maintained JS whose object literal
+    is strict JSON, so the tests can read exactly what the browser reads."""
+    src = open(support.script("site/assets/live-config.js")).read()
+    obj = src[src.index("{", src.index("window.PA07_LIVE")):src.rindex("}") + 1]
+    return json.loads(obj)
+
+
 def test_kalshi_goes_through_a_server_never_the_browser():
     """Kalshi answers any browser request with 403, so the page must never be
     told to call it directly. Every endpoint it is given is either a path next
     to the page (a deployed function) or the raw copy of the live-data branch,
     and the direct Kalshi host must not appear."""
-    e = ex()
-    k = e.LIVE["kalshi"]
-    assert k["reachable_from_browser"] is False
+    k = live_config()["kalshi"]
     assert k["endpoints"], "no live endpoint for Kalshi"
     for u in k["endpoints"]:
         assert "kalshi.com" not in u
         assert u == "api/kalshi" or u.startswith("https://raw.githubusercontent.com/")
     assert any(u.endswith("/live-data/kalshi-live.json") for u in k["endpoints"])
-    assert "polymarket" in e.LIVE
-    assert e.LIVE["polymarket"]["slugs"]["D"].startswith("will-the-democratic-party")
 
 
 def test_kalshi_live_endpoints_agree_with_the_workflow_and_the_function():
@@ -274,7 +278,7 @@ def test_kalshi_live_endpoints_agree_with_the_workflow_and_the_function():
         assert t in reader and t in fn
     assert "kalshi_book.py live/kalshi-live.json" in wf
     assert "ref: live-data" in wf
-    raw = [u for u in e.LIVE["kalshi"]["endpoints"] if u.startswith("https://")][0]
+    raw = [u for u in live_config()["kalshi"]["endpoints"] if u.startswith("https://")][0]
     assert raw.endswith("/live-data/kalshi-live.json")
     # the freshness chip and the live panel both key on this id
     assert any(f["id"] == "kalshi" and f["kind"] == "live"
@@ -285,10 +289,24 @@ def test_live_config_matches_the_collector():
     """The page and collect.py must look up the same markets. Polymarket renamed
     these outcomes mid-cycle while the slugs held, so the slug is the stable key
     and there must be exactly one copy of it in the repository."""
-    e = ex()
     src = open(support.script("collect.py")).read()
-    for slug in e.LIVE["polymarket"]["slugs"].values():
+    pm = live_config()["polymarket"]
+    assert pm["slugs"]["D"].startswith("will-the-democratic-party")
+    for slug in pm["slugs"].values():
         assert slug.split("will-the-")[1].split("-win")[0] in src
+    assert pm["winner_event"].startswith("https://gamma-api.polymarket.com/events/")
+    assert pm["poll_seconds"] >= 30, "polling a public API faster than this is rude"
+
+
+def test_the_page_never_reads_live_config_from_the_manifest():
+    """site/data is written by the refresh job and only by the refresh job. A
+    branch that also edited a file there conflicted with the bot on merge, so
+    page configuration must not pass through the manifest."""
+    e = ex()
+    assert not hasattr(e, "LIVE")
+    for name in ("live.js", "app.js", "dashboard.js"):
+        assert "manifest.live" not in open(support.script("site/assets/" + name)).read(), name
+    assert "live-config.js" in open(support.script("site/index.html")).read()
 
 
 def test_ladder_midpoints_agree_with_the_builder():
@@ -353,7 +371,7 @@ def test_freshness_is_reported_per_source():
         man = support.read_json(os.path.join(d, "site", "data", "manifest.json"))
     kinds = {f["id"]: f["kind"] for f in man["freshness"]}
     assert kinds["polymarket"] == "live"
-    assert kinds["kalshi"] == "live"           # via a server, see LIVE["kalshi"]
+    assert kinds["kalshi"] == "live"           # via a server, see live-config.js
     assert kinds["kalshi_ladders"] == "snapshot"
     assert kinds["pollsmax"] == "manual"
     assert all(f.get("detail") for f in man["freshness"])

@@ -54,7 +54,17 @@ that carries an `Origin` header, so a server reads it instead:
 
 Both live figures sit next to the committed snapshot with their own timestamp
 and never overwrite it. GitHub disables scheduled workflows after 60 days
-without a push; a commit to any branch restarts them.
+without a push; a commit to any branch restarts them. Endpoints and poll
+interval are in `site/assets/live-config.js`.
+
+## Who writes what
+
+`site/data/*.json` and `site/PA-07_House_Election_Tracker.xlsx` are written
+by the refresh job on `main`, three times a day, and by nothing else. Never
+edit or commit them on a branch: CI refuses a pull request that touches them,
+because by review time the bot will have rewritten them and the branch will
+conflict. Page configuration goes in `site/assets/`; anything data-shaped
+comes out of the pipeline on the next run.
 
 ## What a refresh does
 

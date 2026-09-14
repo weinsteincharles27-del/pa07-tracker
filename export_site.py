@@ -73,34 +73,10 @@ FALLBACK_MIDS = {"D_TOP_MID": 18.0, "R_TOP_MID": -11.0,
 # at all, its preflight is a bare 403, and every request must carry an RSA-PSS
 # signature over a private key. Kalshi can therefore never be called from a page,
 # so everything Kalshi on the site is a committed snapshot and the UI says so.
-LIVE = {
-    "polymarket": {
-        "winner_event": "https://gamma-api.polymarket.com/events/106187",
-        "margin_event": "https://gamma-api.polymarket.com/events/834502",
-        # Match on slug, never on the display label. Polymarket renamed these
-        # outcomes from "Democratic Party" to "Bob Brooks (D)" on 10 Sep 2026
-        # while the slugs stayed put, and a label lookup found nothing at all.
-        "slugs": {"D": "will-the-democratic-party-win-the-pa-07-house-seat",
-                  "R": "will-the-republican-party-win-the-pa-07-house-seat"},
-        "poll_seconds": 60,
-    },
-    "kalshi": {
-        # Kalshi answers any browser request with 403, so a server reads it and
-        # the page reads the server. Tried in order; the first that answers with
-        # a quote wins. `api/kalshi` is the Vercel function in api/kalshi.js and
-        # only exists if the repository is deployed there; the raw file is
-        # rewritten every ten minutes by .github/workflows/kalshi-live.yml.
-        "reachable_from_browser": False,
-        "endpoints": [
-            "api/kalshi",
-            "https://raw.githubusercontent.com/weinsteincharles27-del/pa07-tracker/"
-            "live-data/kalshi-live.json",
-        ],
-        "why": "Kalshi returns 403 to any request from a browser, so a server reads its order "
-               "book and the page reads that: on request if api/kalshi is deployed, otherwise "
-               "the copy GitHub Actions rewrites every ten minutes.",
-    },
-}
+# Where the page polls live prices from is page configuration, not data, and
+# lives in site/assets/live-config.js. Nothing under site/data is edited by
+# hand: the refresh job owns that directory, and a branch that also touched it
+# would conflict with the bot on every merge.
 
 
 # ------------------------------------------------------------------- plumbing
@@ -1104,7 +1080,6 @@ def build(out_dir=OUT_DIR, window_days=WINDOW_DAYS, copy_workbook=True):
                  "election": ELECTION.isoformat(),
                  "days_to_election": (ELECTION - today).days},
         "colours": {"D": "#2E5FA3", "R": "#C0392B"},
-        "live": LIVE,
         "freshness": freshness(data, data2, data3, pollsmax, cs, fec, snap, wb_here),
         "collector_problems": (list(data.get("problems") or [])
                                + list(data2.get("problems") or [])

@@ -1,13 +1,13 @@
-/* Live prices for both venues.
+/* Live prices for both venues. Endpoints are in live-config.js.
  *
  *   Polymarket sends access-control-allow-origin: *, so the page reads it
  *   directly, once a minute.
  *
  *   Kalshi returns 403 to any browser request, so a server reads it for us.
- *   The page tries each endpoint listed in manifest.live.kalshi.endpoints in
- *   order: a /api/kalshi function if one is deployed next to the page, then
- *   the file that a GitHub Actions job rewrites every ten minutes. Whatever
- *   answers first wins and its own timestamp is shown, so the age is honest.
+ *   The page tries each configured endpoint in order: a /api/kalshi function
+ *   if one is deployed next to the page, then the file that a GitHub Actions
+ *   job rewrites every ten minutes. Whatever answers first wins and its own
+ *   timestamp is shown, so the age is honest.
  *
  * Live numbers never overwrite the snapshot. Both sit side by side with the
  * difference between them, and on the headline chart the live prices are
@@ -16,7 +16,7 @@
 (function () {
   "use strict";
 
-  var elem = window.PA07.elem, C = window.PA07.colours;
+  var elem = window.PA07.elem, C = window.PA07.colours, CFG = window.PA07_LIVE || {};
   var L = { timer: null, paused: false, pm: null, k: null, pmError: null, kError: null };
 
   function pct(v, dp) {
@@ -145,7 +145,7 @@
 
     var note = elem("p", "fine");
     note.textContent = "Polymarket is read from your browser every " +
-      (d.manifest.live.polymarket.poll_seconds || 60) + " seconds. Kalshi is read by a server" +
+      ((CFG.polymarket || {}).poll_seconds || 60) + " seconds. Kalshi is read by a server" +
       (L.k && L.k.source === "vercel" ? " on request." : " every ten minutes.") +
       (L.pmError ? " Polymarket: " + L.pmError + "." : "") +
       (L.kError ? " Kalshi: " + L.kError + "." : "");
@@ -160,7 +160,7 @@
   /* --------------------------------------------------------------- polling */
 
   function pullPolymarket(d) {
-    var cfg = d.manifest.live.polymarket;
+    var cfg = CFG.polymarket || {};
     var points = d.distribution.polymarket_margin.brackets.reduce(function (acc, b) {
       acc[b.bracket] = b.points;
       return acc;
@@ -191,7 +191,7 @@
 
   /* First endpoint that answers with a usable D mid wins. */
   function pullKalshi(d) {
-    var cfg = d.manifest.live.kalshi || {}, urls = cfg.endpoints || [];
+    var cfg = CFG.kalshi || {}, urls = cfg.endpoints || [];
     var chain = Promise.reject(new Error("no endpoint configured"));
     urls.forEach(function (u) {
       chain = chain.catch(function () {
@@ -223,7 +223,7 @@
 
   function schedule(d) {
     clearTimeout(L.timer);
-    var secs = d.manifest.live.polymarket.poll_seconds || 60;
+    var secs = (CFG.polymarket || {}).poll_seconds || 60;
     L.timer = setTimeout(tick, secs * 1000);
   }
 
