@@ -53,34 +53,12 @@
     return isNaN(t) ? iso : new Date(t).toISOString().replace("T", " ").slice(0, 16) + " UTC";
   }
 
-  /* ------------------------------------------------------------- freshness */
-
-  function renderSources(man) {
-    var ul = $("sources");
-    ul.innerHTML = "";
-    man.freshness.forEach(function (f) {
-      var li = elem("li", "src");
-      li.setAttribute("data-id", f.id);     // live.js updates the Polymarket chip
-      li.appendChild(elem("span", "tag " + f.kind, f.kind));
-      li.appendChild(elem("b", null, f.label));
-      var when = elem("span", "when", ago(f.snapshot_utc));
-      li.appendChild(when);
-      /* The one-line reason each source is live, frozen or hand-fed lives in
-         the tooltip rather than a docs page nobody opens. */
-      li.title = f.detail + (f.snapshot_utc ? "\n\nAs of " + utc(f.snapshot_utc) : "") +
-                 (f.coverage_through ? "\nCovers through " + f.coverage_through : "") +
-                 (f.days ? "\n" + f.days + " days of daily history" : "");
-      ul.appendChild(li);
-    });
-  }
-
   function renderCountdown(man) {
     var days = man.race.days_to_election;
     $("countdown").textContent =
       (days > 0 ? days + " days to the election" : "Election day has passed") +
       " · 3 November 2026";
-    $("built").textContent = "Snapshot built " + utc(man.generated_utc) +
-      " · " + Object.keys(man.files).length + " data files";
+    $("built").textContent = "Data updated " + utc(man.generated_utc);
   }
 
   /* ------------------------------------------------------------------ boot */
@@ -107,7 +85,6 @@
                      polls: r[4], divergence: r[5] };
       var man = State.data.manifest;
       renderCountdown(man);
-      renderSources(man);
       var boot = $("boot");
       if (boot) boot.remove();
       document.dispatchEvent(new CustomEvent("data:ready", { detail: State.data }));
