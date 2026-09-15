@@ -6,6 +6,7 @@ the last chance to catch one before it becomes a chart.
 """
 import json
 import os
+import re
 
 import support
 
@@ -368,3 +369,53 @@ def test_json_is_written_compactly():
         e.build(out_dir=out, copy_workbook=False)
         text = open(os.path.join(out, "series.json")).read()
     assert ", " not in text and json.loads(text)
+
+
+# ------------------------------------------------------------------ events
+
+def test_every_curated_event_is_dated_and_sourced():
+    """sources/events.json is the one place a "why" can enter the site, and
+    every entry must carry a date and a public source. No source, no event."""
+    ev = support.read_json(support.script("sources/events.json"))
+    assert ev["events"], "no events"
+    for e in ev["events"]:
+        assert re.match(r"^\d{4}-\d{2}-\d{2}$", e["date"]), e
+        assert e["text"].strip() and len(e["text"]) < 120, e
+        assert e["url"].startswith("https://"), e
+    for start, note in ev["episodes"].items():
+        assert re.match(r"^\d{4}-\d{2}-\d{2}$", start), start
+        assert note.strip()
+
+
+def test_annotate_keys_notes_by_first_day_and_events_by_same_day():
+    e = ex()
+    with support.sandbox() as d:
+        os.makedirs(os.path.join(d, "sources"))
+        support.write_json(os.path.join(d, "sources", "events.json"), {
+            "events": [{"date": "2026-01-10", "text": "inside", "url": "https://x"},
+                       {"date": "2026-03-01", "text": "outside", "url": "https://y"},
+                       {"date": "2026-05-19", "text": "primary", "url": "https://z"}],
+            "episodes": {"2026-01-01": "the note"}})
+        block = e.annotate({
+            "divergence": {"episodes": [{"from": "2026-01-01", "to": "2026-01-31"},
+                                        {"from": "2026-02-01", "to": "2026-02-03"}]},
+            "moves": {"polymarket": {"biggest_days": [{"date": "2026-05-19"}, {"date": "2026-05-23"}]},
+                      "kalshi": {"biggest_days": []}}})
+    eps = block["divergence"]["episodes"]
+    assert eps[0]["note"] == "the note"
+    assert [x["text"] for x in eps[0]["events"]] == ["inside"]
+    assert eps[1]["note"] is None and eps[1]["events"] == []
+    days = block["moves"]["polymarket"]["biggest_days"]
+    assert [x["text"] for x in days[0]["events"]] == ["primary"]
+    assert days[1]["events"] == []
+    assert len(block["events"]) == 3
+
+
+def test_annotate_without_the_events_file_leaves_the_fields_empty():
+    """The page must say "not yet annotated", never crash, when the file is gone."""
+    e = ex()
+    with support.sandbox():
+        block = e.annotate({"divergence": {"episodes": [{"from": "2026-01-01", "to": "2026-01-02"}]},
+                            "moves": {}})
+    assert block["divergence"]["episodes"][0]["note"] is None
+    assert block["events"] == []

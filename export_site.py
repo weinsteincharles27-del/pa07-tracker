@@ -361,6 +361,30 @@ def distributions(data, data2, data3, mids):
 
 # ------------------------------------------------------------ divergence + moves
 
+def annotate(block, events_path=os.path.join("sources", "events.json")):
+    """Attach the hand-curated, sourced events to the computed episodes and
+    biggest days. Nothing here is inferred from prices: an episode note is
+    keyed by the episode's first day and written by a person against cited
+    reporting, and a biggest-day entry only gets an event dated that same day.
+    Missing file, missing key: the fields stay empty and the page says so."""
+    ev = read_json(events_path) or {}
+    events = sorted((e for e in (ev.get("events") or []) if e.get("date") and e.get("text")),
+                    key=lambda e: e["date"])
+    notes = ev.get("episodes") or {}
+    by_day = {}
+    for e in events:
+        by_day.setdefault(e["date"], []).append({"text": e["text"], "url": e.get("url")})
+    for ep in block["divergence"].get("episodes") or []:
+        ep["note"] = notes.get(ep["from"])
+        ep["events"] = [{"date": e["date"], "text": e["text"], "url": e.get("url")}
+                        for e in events if ep["from"] <= e["date"] <= ep["to"]]
+    for venue in ("polymarket", "kalshi"):
+        for day in ((block["moves"].get(venue) or {}).get("biggest_days") or []):
+            day["events"] = by_day.get(day["date"], [])
+    block["events"] = [{"date": e["date"], "text": e["text"], "url": e.get("url")} for e in events]
+    return block
+
+
 GENUINE_PP = 0.08        # a day counts toward an episode above this gap
 EPISODE_MIN_DAYS = 3     # and an episode needs this many consecutive such days
 
@@ -373,8 +397,8 @@ def divergence_block(data, series):
     all: on 14-19 Aug 2026 Kalshi's closing book was a one-cent bid against an
     84-cent ask, and the midpoint of that is 42.5%, which is arithmetic, not a
     price. Those days are separated out, not hidden, and every figure here is
-    computed on the tight-book days only. The event annotations are left empty
-    on purpose: they are filled from researched sources, never guessed.
+    computed on the tight-book days only. The event annotations are attached
+    afterwards by annotate(), from sources/events.json, never guessed here.
     """
     pm = data.get("pm_history") or {}
     kh = data.get("k_history") or {}
@@ -946,9 +970,9 @@ def build(out_dir=OUT_DIR, window_days=WINDOW_DAYS, copy_workbook=True):
                            "rep_prob": ((cs or {}).get("market_odds") or {}).get("rep_prob"),
                            "retrieved_utc": (cs or {}).get("retrieved_utc"),
                            "display_only": True}})
-    written["divergence.json"] = write_json(os.path.join(out_dir, "divergence.json"), {
+    written["divergence.json"] = write_json(os.path.join(out_dir, "divergence.json"), annotate({
         "divergence": divergence_block(data, series),
-        "moves": moves_block(series, snap)})
+        "moves": moves_block(series, snap)}))
     written["headline.json"] = write_json(os.path.join(out_dir, "headline.json"), {
         "snapshot": snap, "notes": notes, "alerts": alerts, "origin": origin})
 

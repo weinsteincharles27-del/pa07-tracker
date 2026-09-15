@@ -1,0 +1,28 @@
+{
+  "source": "Hand-curated from the cited reporting. Never inferred from prices.",
+  "rule": "An entry needs a date and a public source. A same-day entry beside a price move is a coincidence in time, not a claim of cause.",
+  "events": [
+    {"date": "2025-12-15", "text": "Shapiro endorses Brooks",
+     "url": "https://www.politicspa.com/pa-07-brooks-gains-endorsement-from-shapiro/145210/"},
+    {"date": "2025-12-16", "text": "Polymarket opens its PA-07 market; Kalshi had quoted the seat since July",
+     "url": "https://gamma-api.polymarket.com/events/106187"},
+    {"date": "2026-02-03", "text": "Q4 money: Mackenzie $652K, Crosswell $434K, Brooks $302K",
+     "url": "https://www.lehighvalleypublicmedia.org/elections/lehigh-valley-congressional-candidates-raised-1-5-million-new-campaign-finance-reports-show"},
+    {"date": "2026-02-18", "text": "Pinsley leaves the Democratic primary",
+     "url": "https://www.lehighvalleynews.com/elections/lehigh-county-controller-mark-pinsley-drops-out-of-crowded-lehigh-valley-congressional-race"},
+    {"date": "2026-04-29", "text": "Brooks in court over a family debt",
+     "url": "https://www.lehighvalleypublicmedia.org/news/elections/bob-brooks-heads-to-court-for-a-decades-old-family-debt-as-the-lehigh-valley-congressional-race-heats-up/"},
+    {"date": "2026-05-19", "text": "Primary day: Brooks wins the nomination",
+     "url": "https://www.spotlightpa.org/news/2026/05/primary-election-results-bob-brooks-ryan-mackenzie-federal-government/"},
+    {"date": "2026-07-09", "text": "House Majority PAC poll: Brooks 47, Mackenzie 43",
+     "url": "https://www.thehousemajoritypac.com/news/hmp-poll-bob-brooks-leads-ryan-mackenzie"},
+    {"date": "2026-09-08", "text": "Brooks's first TV ad",
+     "url": "https://www.inquirer.com/politics/election/general-election-lehigh-valley-bob-brooks-20260908.html"},
+    {"date": "2026-09-12", "text": "A 50,000-contract sell wall appears on Kalshi at 69c overnight; no news identified",
+     "url": "https://www.oddsshopper.com/articles/prediction-markets/pa-7-house-race-odds"}
+  ],
+  "episodes": {
+    "2025-12-17": "Polymarket had just opened, near 50%. Kalshi had priced the seat in the 60s since July. The gap closed as Polymarket rose through early February.",
+    "2026-02-12": "A two-day dip on Polymarket, unwound by 15 February. Kalshi did not move. Nothing race-specific was reported in the window."
+  }
+}

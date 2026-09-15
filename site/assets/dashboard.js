@@ -54,6 +54,15 @@
     return t;
   }
 
+  /* A sourced event as a link, or plain text if it has no URL. */
+  function eventLink(e) {
+    if (!e) return "";
+    if (!e.url) return elem("span", null, e.text);
+    var a = elem("a", null, e.text);
+    a.href = e.url; a.target = "_blank"; a.rel = "noopener";
+    return a;
+  }
+
   function signed(v) {
     var s = elem("span", v > 0 ? "up" : v < 0 ? "down" : null, pp(v));
     return s;
@@ -113,11 +122,12 @@
     ["polymarket", "kalshi"].forEach(function (v) {
       ((m[v] || {}).biggest_days || []).slice(0, 4).forEach(function (b) {
         rows.push([v === "polymarket" ? "Polymarket" : "Kalshi", day(b.date),
-                   signed(b.pp), pct(b.from) + " → " + pct(b.to)]);
+                   signed(b.pp), pct(b.from) + " → " + pct(b.to),
+                   eventLink((b.events || [])[0])]);
       });
     });
     rows.sort(function (a, b) { return Math.abs(parseFloat(b[2].textContent)) - Math.abs(parseFloat(a[2].textContent)); });
-    table(sec, ["Venue", "Day", "Move", "From → to"], rows.slice(0, 6));
+    table(sec, ["Venue", "Day", "Move", "From → to", "Same day"], rows.slice(0, 6));
     return sec;
   }
 
@@ -143,12 +153,15 @@
       table(sec, ["Period", "Length", "Peak gap", "Higher on Brooks", "What was happening"],
         eps.map(function (e) {
           var who = e.direction === "kalshi_higher" ? "Kalshi" : "Polymarket";
-          var why = e.events && e.events.length
-            ? e.events.map(function (x) { return x.headline; }).join("; ")
-            : "not yet annotated";
-          var whyEl = elem("span", e.events && e.events.length ? null : "muted", why);
+          var cell = elem("span", e.note ? null : "muted", e.note || "not yet annotated");
+          (e.events || []).forEach(function (x) {
+            cell.appendChild(document.createTextNode(" "));
+            var a = eventLink(x);
+            a.className = "fine";
+            cell.appendChild(a);
+          });
           return [day(e.from) + " to " + day(e.to), e.days + " days",
-                  signed(e.peak_pp), who, whyEl];
+                  signed(e.peak_pp), who, cell];
         }));
     }
 
