@@ -68,3 +68,16 @@ def test_collect3_survives_a_delisted_event():
     assert any(p["kind"] == "missing_event" for p in d3["problems"]), d3["problems"]
     assert d3["turnout"]["rungs"] == []
     assert d3["mov_d"]["rungs"], "the other ladders should still have been collected"
+
+
+def test_polymarket_bracket_mid_is_blank_when_one_sided():
+    """On 15 Sep 2026 "Republican 0-3%" had an ask and no bid. The unguarded
+    (C+D)/2 read the blank bid as zero, check.py refused the workbook, and the
+    scheduled refresh published nothing. The mid must be blank on a one-sided
+    quote, which is also what export_site.mid() does."""
+    wb = load_workbook(support.project(WB))
+    mv = wb["Margin of Victory"]
+    refs = json.load(open(support.project("movrefs.json")))
+    for r in range(refs["L0"], refs["LN"] + 1):
+        f = (mv.cell(r, 5).value or "").replace(" ", "")
+        assert f.startswith("=IF(COUNT(C%d:D%d)=2," % (r, r)), f

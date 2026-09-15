@@ -97,7 +97,11 @@ for i, b in enumerate(D2["mov"]):
     put(mv, rr, 2, b["midpoint"], BLUE, '+0.0;-0.0;0.0')
     put(mv, rr, 3, b["best_bid"], BLUE, PCT)
     put(mv, rr, 4, b["best_ask"], BLUE, PCT)
-    put(mv, rr, 5, '=(C{0}+D{0})/2'.format(rr), BLACK, PCT2)
+    # A bracket with no resting bid arrives with C blank, and (C+D)/2 would read
+    # the blank as zero. Blank instead, matching export_site.mid(), so the sheet
+    # and the site drop the same one-sided bracket rather than pricing it two
+    # different ways.
+    put(mv, rr, 5, '=IF(COUNT(C{0}:D{0})=2,(C{0}+D{0})/2,"")'.format(rr), BLACK, PCT2)
     put(mv, rr, 6, '=IFERROR(E{0}/$E${1},"")'.format(rr, TOT), BLACK, PCT2)
     put(mv, rr, 7, '=IFERROR(SUM($F${0}:F{1}),"")'.format(L0, rr), BLACK, PCT)
     put(mv, rr, 8, b["volume"], BLUE, USD)
