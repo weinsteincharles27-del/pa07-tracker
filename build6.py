@@ -1,21 +1,17 @@
-"""Kalshi margin-of-victory ladder and the Voter Turnout sheet.
+"""The Voter Turnout sheet, from Kalshi's threshold ladder.
 
-Kalshi states margin and turnout as THRESHOLD markets ("3+ pts", "Above 340K"),
-so each rung is P(value >= strike) — a survival curve, not a set of mutually
-exclusive brackets. Differencing adjacent rungs turns it back into buckets.
+Kalshi states turnout as THRESHOLD markets ("Above 340K"), so each rung is
+P(value >= strike), a survival curve rather than a set of mutually exclusive
+brackets. Differencing adjacent rungs turns it back into buckets.
 
-Two consequences drive the design here:
-
-  * The lowest margin rung is ">= 3 pts", so the 0-3 bucket is not quoted. It has
-    to come from the winner market: P(win by 0-3) = P(win) - P(win by 3+). That
-    reaches across two independent Kalshi markets.
-  * Those two markets are quoted independently and can disagree. When the margin
-    rung is bid above the winner market, the subtraction goes NEGATIVE, which is
-    not a probability. The display clamps at zero and the CONSISTENCY CHECK block
-    reports, from live cells, whether the inversion is only a midpoint artifact
-    (the spreads overlap) or a genuinely executable edge. Do not restate today's
-    numbers here — they move, and a frozen figure in a comment goes stale on the
-    very next run.
+Kalshi also quotes a margin-of-victory ladder (KXMIDTERMMOV-PA07D / -PA07R).
+collect3.py still collects it into data3.json every run, so the history is
+kept, but it is deliberately not built into the workbook or published on the
+site: as of mid-September 2026 four of the five Democratic rungs had no
+two-sided quote, and an expected margin summed over the one rung that did
+read as a confident number computed from a fifth of a distribution. The
+section that built it is in git history (before 15 Sep 2026) if the ladder
+ever fills in.
 """
 import json, datetime
 from openpyxl import load_workbook
@@ -23,8 +19,6 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.comments import Comment
 
 D3 = json.load(open("data3.json"))
-R = json.load(open("refs.json"))
-MV = json.load(open("movrefs.json"))
 ASOF = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 
 F = "Arial"
@@ -46,8 +40,6 @@ KVOT = '#,##0,"K"'
 
 # Open-ended rungs have no upper edge, so their representative value is a
 # judgement call. Everything else uses the true centre of the bucket.
-D_TOP_MID = 18.0        # "Democrats, 15+ pts"
-R_TOP_MID = -11.0       # "Republicans, 9+ pts"
 TURN_LOW_MID = 295000   # below the lowest quoted threshold (310K)
 TURN_TOP_MID = 385000   # above the highest quoted threshold (370K)
 TURNOUT_2024 = 403314   # actual 2024 PA-07 House vote, Mackenzie 50.5 / Wild 49.5
@@ -90,188 +82,6 @@ def need(n, what):
                          "range. Re-run collect3.py before building." % what)
     return n
 
-
-KD, KR = R["K_MID_D"], R["K_MID_R"]          # Kalshi winner mid rows
-mv = wb["Margin of Victory"]
-
-# =====================================================================
-# Kalshi margin ladder, appended to the existing Margin of Victory sheet
-# =====================================================================
-if "KALSHI MARGIN LADDER" in str([mv.cell(x, 1).value for x in range(1, mv.max_row + 1)]):
-    raise SystemExit("FATAL: the Kalshi margin section is already on this sheet. build6.py "
-                     "appends below whatever build2b.py wrote and is not idempotent — "
-                     "rebuild from build2b.py rather than re-running this script.")
-r = mv.max_row + 3
-r = section(mv, r, "KALSHI MARGIN LADDER — threshold form (KXMIDTERMMOV-PA07D / -PA07R)", 11)
-LH = headers(mv, r, ["Rung", "Threshold (pts)", "YES Bid", "YES Ask", "Mid P(margin ≥ strike)",
-                     "Bucket", "Bucket Prob", "Representative (pts)", "Prob × Points",
-                     "Ticker", ""])
-K0 = LH
-
-rungs = {}
-for side, key in (("D", "mov_d"), ("R", "mov_r")):
-    rungs[side] = sorted(D3[key]["rungs"], key=lambda x: x["strike"])
-    need(len(rungs[side]), "Kalshi %s margin ladder" % side)
-
-# One continuous axis: biggest Republican win at the top, down through the two
-# tossup buckets in the MIDDLE, out to the biggest Democratic win. The 0-3 rows
-# sit where they belong on that axis rather than being tacked on the end, so a
-# bar chart of column G reads as a distribution instead of a spike at the edge.
-order = ([("rung", "R", x) for x in reversed(rungs["R"])]
-         + [("derived", "R", None), ("derived", "D", None)]
-         + [("rung", "D", x) for x in rungs["D"]])
-
-rowof, derived_row = {}, {}
-for i, (kind, side, rung) in enumerate(order):
-    rr = LH + i
-    fill = DEMF if side == "D" else REPF
-    if kind == "rung":
-        rowof[(side, rung["strike"])] = rr
-        put(mv, rr, 1, rung["label"], BOLD, None, fill)
-        put(mv, rr, 2, rung["strike"], BLUE, '0')
-        put(mv, rr, 3, rung.get("yes_bid"), BLUE, PCT)
-        put(mv, rr, 4, rung.get("yes_ask"), BLUE, PCT)
-        put(mv, rr, 5, '=IF(COUNT(C{0}:D{0})=2,(C{0}+D{0})/2,"")'.format(rr), BLACK, PCT2)
-        put(mv, rr, 10, rung["ticker"], BLUE)
-    else:
-        derived_row[side] = rr
-        put(mv, rr, 1, "%s, 0-3 pts" % ("Democrats" if side == "D" else "Republicans"),
-            BOLD, None, fill)
-        put(mv, rr, 10, "(from winner market)", BLUE)
-KN = LH + len(order) - 1
-
-# Bucket probabilities are derived from STRIKE VALUES, never from row adjacency.
-# The Republican rungs are displayed descending, and differencing neighbouring
-# ROWS on that side shifts every Republican bucket by one — it inflated the
-# Republican side from 0.235 to 0.572 before this was keyed off the strikes.
-for side, win_row, top_mid, sign in (("R", KR, R_TOP_MID, -1), ("D", KD, D_TOP_MID, +1)):
-    strikes = [x["strike"] for x in rungs[side]]
-    for i, st in enumerate(strikes):
-        rr = rowof[(side, st)]
-        outer = strikes[i + 1] if i + 1 < len(strikes) else None
-        if outer is not None:
-            put(mv, rr, 6, "%g-%g pts (%s)" % (st, outer, side), BLACK)
-            put(mv, rr, 7, '=IFERROR(MAX(0,E{0}-E{1}),"")'.format(rr, rowof[(side, outer)]),
-                BLACK, PCT2)
-            put(mv, rr, 8, sign * (st + outer) / 2.0, BLUE, '+0.0;-0.0;0.0')
-        else:
-            put(mv, rr, 6, "%g+ pts (%s)" % (st, side), BLACK)
-            put(mv, rr, 7, '=IFERROR(E{0},"")'.format(rr), BLACK, PCT2)
-            put(mv, rr, 8, top_mid, BLUE, '+0.0;-0.0;0.0')
-        put(mv, rr, 9, '=IFERROR(G{0}*H{0},"")'.format(rr), BLACK, '0.000')
-
-    # innermost rung: the 0-3 bucket has to come from the winner market
-    inner = rowof[(side, strikes[0])]
-    dr = derived_row[side]
-    put(mv, dr, 6, "0-3 pts (%s)" % side, BLACK)
-    put(mv, dr, 7, '=IFERROR(MAX(0,Kalshi!E{0}-E{1}),"")'.format(win_row, inner), BLACK, PCT2, YEL)
-    put(mv, dr, 8, sign * 1.5, BLUE, '+0.0;-0.0;0.0')
-    put(mv, dr, 9, '=IFERROR(G{0}*H{0},"")'.format(dr), BLACK, '0.000')
-
-INNER_R = rowof[("R", rungs["R"][0]["strike"])]
-INNER_D = rowof[("D", rungs["D"][0]["strike"])]
-R03, D03 = derived_row["R"], derived_row["D"]
-BLAST = KN
-
-mv.cell(LH - 1, 8).comment = Comment(
-    "ASSUMPTION: the representative margin for each bucket, signed so Democratic wins are "
-    "positive. Closed buckets use their true centre. The two open-ended rungs are judgement "
-    "calls — 'Democrats, %g+ pts' is taken as %+.1f and 'Republicans, %g+ pts' as %+.1f. Both "
-    "feed the expected margin below; change them here and it updates."
-    % (rungs["D"][-1]["strike"], D_TOP_MID, rungs["R"][-1]["strike"], R_TOP_MID), "Tracker")
-mv.cell(R03, 7).comment = Comment(
-    "Kalshi quotes no 0-3 rung, so this is P(wins) from the winner market minus P(wins by 3+) "
-    "from this ladder — two independently quoted markets. When their spreads overlap the "
-    "subtraction can go NEGATIVE; MAX(0,...) keeps a negative probability out of the "
-    "distribution, and the CONSISTENCY CHECK below reports whether the inversion is a midpoint "
-    "artifact or a genuinely executable edge. Whatever the clamp discards is not shown "
-    "anywhere else, so read that check before trusting this bucket.", "Tracker")
-
-r = KN + 1
-r += 1
-put(mv, r, 1, "TOTAL", BOLD, None, GREY)
-put(mv, r, 7, '=SUM(G{0}:G{1})'.format(K0, BLAST), BOLD, PCT2, YEL)
-put(mv, r, 9, '=SUM(I{0}:I{1})'.format(K0, BLAST), BOLD, '0.000')
-KTOT = r
-mv.cell(r, 7).comment = Comment(
-    "Buckets are derived from two separate markets, so this does not have to land on exactly "
-    "100%. A large miss means the winner market and the margin ladder disagree about the race.",
-    "Tracker")
-r += 2
-
-r = section(mv, r, "KALSHI IMPLIED READ & CROSS-VENUE COMPARISON", 11)
-put(mv, r, 1, "Kalshi expected margin (D−R)", BOLD)
-put(mv, r, 2, '=IFERROR(SUM(I{0}:I{1}),"")'.format(K0, BLAST), BOLD, PTS, YEL); KEM = r; r += 1
-put(mv, r, 1, "Polymarket expected margin (D−R)", BOLD)
-put(mv, r, 2, '=B{0}'.format(MV["EM"]), GREEN, PTS); PEM = r; r += 1
-put(mv, r, 1, "Difference (Kalshi − Polymarket)", BOLD)
-put(mv, r, 2, '=IFERROR(B{0}-B{1},"")'.format(KEM, PEM), BOLD, PTS, YEL); r += 1
-put(mv, r, 1, "Kalshi P(D wins by 3+ pts)", BOLD)
-put(mv, r, 2, '=IFERROR(E{0},"")'.format(INNER_D), BLACK, PCT2); r += 1
-put(mv, r, 1, "Kalshi P(margin under 3 pts either way)", BOLD)
-put(mv, r, 2, '=IFERROR(G{0}+G{1},"")'.format(R03, D03), BLACK, PCT2, YEL)
-mv.cell(r, 2).comment = Comment(
-    "This is the sum of the two clamped 0-3 buckets, so it is the figure MOST exposed to the "
-    "clamp: whenever an inversion is clamped away, the discarded probability is silently "
-    "missing from here and this reads too high. The expected margin above barely moves under "
-    "the clamp (a 0-3 bucket carries a small representative value either way), but this one "
-    "does. Check the consistency verdict below before quoting it.", "Tracker")
-r += 2
-
-r = section(mv, r, "CONSISTENCY CHECK — winner market vs margin ladder", 11)
-put(mv, r, 1, "P(R wins) − P(R wins by 3+), on mids", BOLD)
-put(mv, r, 2, '=IFERROR(Kalshi!E{0}-E{1},"")'.format(KR, INNER_R), BLACK, DIFF); CHK = r; r += 1
-put(mv, r, 1, "Same, using executable prices", BOLD)
-put(mv, r, 2, '=IFERROR(C{0}-Kalshi!D{1},"")'.format(INNER_R, KR), BLACK, DIFF); CHK2 = r
-mv.cell(r, 2).comment = Comment(
-    "Sell the 3+ rung at its bid, buy the winner at its ask. Positive means the inversion "
-    "is actually tradeable; negative means it sits inside the spread and is only an artifact "
-    "of quoting both markets at their midpoints.", "Tracker")
-r += 1
-put(mv, r, 1, "Verdict", BOLD)
-# CHK is P(wins) - P(wins by 3+) on mids: an inversion makes it NEGATIVE.
-# CHK2 is the executable version; positive means the edge is actually tradeable.
-put(mv, r, 2, ('=IF(B{0}="","",IF(B{0}>0,"REAL — the 3+ rung is bid above the winner ask",'
-               'IF(B{1}<0,"Artifact — mids invert but the spread covers it; bucket clamped to 0",'
-               '"Consistent — no inversion")))').format(CHK2, CHK), BOLD, None, YEL)
-mv.merge_cells(start_row=r, start_column=2, end_row=r, end_column=11)
-r += 1
-r = note(mv, r, "Kalshi and Polymarket describe the same margin with different instruments: Kalshi "
-                "sells thresholds (\"3+ pts\"), Polymarket sells brackets (\"3-6%\"). Neither is more "
-                "correct; a persistent gap between the two expected margins is a genuine disagreement "
-                "worth reading, not a bug.", 11)
-r += 1
-
-r = section(mv, r, "KALSHI MARGIN — DAILY HISTORY (mid of closing bid and ask)", 11)
-mh = {}
-for key in ("mov_d_history", "mov_r_history"):
-    for day, per in (D3.get(key) or {}).items():
-        mh.setdefault(day, {}).update(per)
-# Only the quoted rungs have a ticker and a history; the two derived 0-3 rows
-# come from the winner market and have no series of their own.
-tickers = [rung["ticker"] for kind, _side, rung in order if kind == "rung"]
-labels = [rung["label"] for kind, _side, rung in order if kind == "rung"]
-HH = headers(mv, r, ["Date"] + labels + [""] * max(0, 10 - len(labels)))
-mdays = sorted(mh)
-for i, day in enumerate(mdays):
-    rr = HH + i
-    put(mv, rr, 1, datetime.datetime.strptime(day, "%Y-%m-%d"), BLUE, DATE)
-    for j, tk in enumerate(tickers):
-        rec = (mh.get(day) or {}).get(tk)
-        v = None
-        if rec:
-            b, a = rec.get("bid"), rec.get("ask")
-            if b is not None and a is not None: v = (b + a) / 2
-            elif a is not None: v = a
-            elif b is not None: v = b
-        put(mv, rr, 2 + j, v, BLUE, PCT)
-    if i % 2:
-        for c in range(1, len(tickers) + 2): mv.cell(rr, c).fill = BAND
-KHF = HH
-KHL = HH + need(len(mdays), "Kalshi margin history") - 1
-r = KHL + 1
-r = note(mv, r, "Each column is P(margin ≥ that threshold), so the columns are nested rather than "
-                "exclusive and must fall from left to right within each party.", 11)
 
 # =====================================================================
 # SHEET: Voter Turnout
@@ -387,17 +197,14 @@ r = note(tn, r, "Columns are nested, not exclusive: each is P(turnout ≥ that t
                 % (min(tdays) if tdays else "n/a"), 10)
 tn.freeze_panes = tn.cell(TH2, 2)
 
-# D_TOP_MID/R_TOP_MID travel out with the row anchors for the same reason the
-# turnout midpoints already did: export_site.py has to reproduce this ladder's
-# expected margin, and a second copy of the constants in a second file is a
-# guaranteed future disagreement between the sheet and the site.
+# The turnout midpoints travel out with the row anchors: export_site.py has to
+# reproduce this ladder's expected turnout, and a second copy of the constants
+# in a second file is a guaranteed future disagreement between the sheet and
+# the site.
 json.dump({"TURN_LOW_MID": TURN_LOW_MID, "TURN_TOP_MID": TURN_TOP_MID,
-           "D_TOP_MID": D_TOP_MID, "R_TOP_MID": R_TOP_MID,
            "TURNOUT_2024": TURNOUT_2024,
-           "K0": K0, "KN": KN, "KTOT": KTOT, "KEM": KEM, "R03": R03, "D03": D03,
-           "KHF": KHF, "KHL": KHL, "T0": T0, "TN": TN, "TTOT": TTOT, "TEXP": TEXP,
-           "TF": TF, "TL": TL, "N_MOV": len(order), "N_TURN": len(rungs)},
+           "T0": T0, "TN": TN, "TTOT": TTOT, "TEXP": TEXP,
+           "TF": TF, "TL": TL, "N_TURN": len(rungs)},
           open("k3refs.json", "w"))
 wb.save("_stage2c.xlsx")
-print("stage2c ok — Kalshi margin rows %d-%d, turnout rows %d-%d, hist %d/%d days"
-      % (K0, KN, T0, TN, len(mdays), len(tdays)))
+print("stage2c ok — turnout rows %d-%d, hist %d days" % (T0, TN, len(tdays)))

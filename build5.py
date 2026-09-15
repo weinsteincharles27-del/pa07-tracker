@@ -392,17 +392,7 @@ c10.legend = None
 c10.dLbls = DataLabelList(); c10.dLbls.showVal = True
 ds.add_chart(c10, "A149")
 
-# --- 11. Kalshi margin threshold curve --------------------------------
-c11 = BarChart(); c11.type = "col"; c11.gapWidth = 40
-ref = Reference(wb["Margin of Victory"], min_col=7, min_row=K3["K0"] - 1, max_row=K3["D03"])
-cats = Reference(wb["Margin of Victory"], min_col=6, min_row=K3["K0"], max_row=K3["D03"])
-c11.add_data(ref, titles_from_data=True); c11.set_categories(cats)
-c11.series[0].graphicalProperties.solidFill = C_KAL
-style(c11, "Kalshi margin — probability by bucket", "Derived probability", ynum='0%')
-c11.legend = None
-ds.add_chart(c11, "A62")
-
-# --- 12. Turnout: nested thresholds, so a survival curve reads better --
+# --- 11. Turnout: nested thresholds, so a survival curve reads better --
 c12 = LineChart()
 ref = Reference(wb["Voter Turnout"], min_col=5, min_row=K3["T0"] + 1, max_row=K3["TN"])
 cats = Reference(wb["Voter Turnout"], min_col=1, min_row=K3["T0"] + 1, max_row=K3["TN"])
@@ -412,14 +402,13 @@ c12.set_categories(cats)
 style(c12, "Voter turnout — P(turnout at or above each threshold)", "Probability", ynum='0%')
 yscale(c12, 0.0, 0.80, 0.20)
 c12.legend = None
-ds.add_chart(c12, "A91")
+ds.add_chart(c12, "A62")
 
 r = CR + n + 2
 r = note(ds, r, "Every primary poll understated Brooks, the last of them by 15 points, because 31-53% of "
                 "respondents were undecided. Worth remembering when reading the single general-election poll.", 16)
-r = note(ds, r, "Chart 11 differences Kalshi's nested thresholds into buckets; the two 0-3 buckets come from "
-                "the winner market, since Kalshi quotes no 0-3 rung. Chart 12 is deliberately a curve, not bars — "
-                "those thresholds are nested, so bars would imply an exclusivity the market does not have.", 16)
+r = note(ds, r, "Chart 11 is deliberately a curve, not bars: turnout thresholds are nested, so bars would "
+                "imply an exclusivity the market does not have.", 16)
 r = note(ds, r, "The margin chart mixes sources on purpose: the poll bars come from one Democratic-sponsored "
                 "survey, the market bar from Polymarket's bracket ladder. Treat the gap as a question, not a signal.", 16)
 

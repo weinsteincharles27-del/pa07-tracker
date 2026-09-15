@@ -23,11 +23,6 @@ def seed(d, **files):
         support.write_json(os.path.join(d, path), obj)
 
 
-def ladder(*pairs):
-    return {"rungs": [{"ticker": "KX-P%g" % s, "label": "%g+" % s, "strike": s,
-                       "yes_bid": b, "yes_ask": a} for s, b, a in pairs]}
-
-
 # ------------------------------------------------------------------ flattening
 
 def test_history_flattens_to_sorted_date_value_pairs():
@@ -82,62 +77,19 @@ def test_consensus_only_exists_on_days_both_venues_quoted():
 
 # --------------------------------------------------------------- Kalshi ladder
 
-def test_bucket_labels_come_from_the_ladder_not_from_what_is_quoted():
-    """On 10 Sep 2026 the Democratic ladder had an ask on every rung and a bid on
-    almost none. Keying the buckets off only the two-sided rungs collapsed five
-    rungs to one and re-labelled "6+ pts" with the 15+ representative value."""
+def test_the_kalshi_margin_ladder_is_not_published():
+    """Withheld on purpose (see build6.py). The turnout ladder still is."""
     e = ex()
-    rows, _ = e.kalshi_buckets({3.0: None, 6.0: 0.30, 9.0: None, 12.0: None, 15.0: None},
-                               {3.0: 0.20, 6.0: 0.10, 9.0: 0.05},
-                               0.79, 0.21, e.FALLBACK_MIDS)
-    d_labels = [r["label"] for r in rows if r["side"] == "D"]
-    assert d_labels == ["0-3 pts", "3-6 pts", "6-9 pts", "9-12 pts", "12-15 pts", "15+ pts"]
-    top = [r for r in rows if r["label"] == "15+ pts"][0]
-    assert top["points"] == e.FALLBACK_MIDS["D_TOP_MID"]
-    assert [r["prob"] for r in rows if r["side"] == "D"].count(None) == 6
-
-
-def test_buckets_are_keyed_to_strikes_not_row_order():
-    """Republican rungs are displayed descending. Differencing neighbouring rows
-    on that side once inflated the Republican mass from 0.235 to 0.572."""
-    e = ex()
-    rows, _ = e.kalshi_buckets({3.0: 0.30}, {3.0: 0.20, 6.0: 0.10, 9.0: 0.05},
-                               0.79, 0.21, e.FALLBACK_MIDS)
-    by = {r["label"]: r["prob"] for r in rows if r["side"] == "R"}
-    assert by["3-6 pts"] == 0.10          # 0.20 - 0.10, not 0.10 - 0.05
-    assert by["6-9 pts"] == 0.05
-    assert by["9+ pts"] == 0.05
-
-
-def test_negative_tossup_bucket_is_clamped_and_the_discard_is_reported():
-    """P(wins) - P(wins by 3+) reaches across two independently quoted markets
-    and can invert. The clamp keeps the chart readable; the discarded amount is
-    the whole evidence that the two markets disagree, so it must survive."""
-    e = ex()
-    rows, discarded = e.kalshi_buckets({3.0: 0.60}, {3.0: 0.20},
-                                       0.50, 0.30, e.FALLBACK_MIDS)
-    tossup = [r for r in rows if r["side"] == "D" and r["derived"]][0]
-    assert tossup["prob"] == 0.0
-    assert tossup["raw"] == -0.1
-    assert discarded["D"] == -0.1
-    assert discarded["R"] == 0.0
-
-
-def test_expected_margin_skips_days_with_an_incomplete_ladder():
-    """An expectation over half a distribution is a confident wrong number."""
-    e = ex()
-    data3 = {"mov_d": ladder((3.0, 0.5, 0.6), (6.0, 0.3, 0.4)),
-             "mov_r": ladder((3.0, 0.1, 0.2)),
-             "mov_d_history": {"2026-01-01": {"KX-P3": {"bid": .5, "ask": .6},
-                                              "KX-P6": {"bid": .3, "ask": .4}},
-                               "2026-01-02": {"KX-P3": {"bid": .5, "ask": .6}}},
-             "mov_r_history": {"2026-01-01": {"KX-P3": {"bid": .1, "ask": .2}},
-                               "2026-01-02": {"KX-P3": {"bid": .1, "ask": .2}}}}
-    data = {"k_history": {d: {"D": {"yes_bid": .7, "yes_ask": .8},
-                              "R": {"yes_bid": .2, "yes_ask": .3}}
-                          for d in ("2026-01-01", "2026-01-02")}}
-    got = e.k_expected_margin(data, data3, e.FALLBACK_MIDS)
-    assert [d for d, _ in got] == ["2026-01-01"]
+    with support.sandbox(data=True) as d:
+        seed(d, data3={"problems": []})
+        e.build(out_dir=os.path.join(d, "site", "data"), copy_workbook=False)
+        dist = support.read_json(os.path.join(d, "site", "data", "distribution.json"))
+        series = support.read_json(os.path.join(d, "site", "data", "series.json"))["series"]
+        man = support.read_json(os.path.join(d, "site", "data", "manifest.json"))
+    assert "kalshi_margin" not in dist and "turnout" in dist
+    assert "k_margin" not in series and "pm_margin" in series
+    assert not any("margin" in f["label"].lower() and "kalshi" in f["label"].lower()
+                   for f in man["freshness"])
 
 
 # ---------------------------------------------------------- Polymarket ladder

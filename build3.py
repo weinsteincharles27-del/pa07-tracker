@@ -240,7 +240,6 @@ SUBH = headers(sm, r, ["Subject", "Venue", "Key figure", "Value", "Sheet", "", "
 subs = [("Winner (party)", "Polymarket + Kalshi", "Consensus P(Dem)", '=B{0}'.format(HEAD), "Polymarket / Kalshi", PCT2),
         ("Margin of victory", "Polymarket only", "Expected margin (D−R)", "='Margin of Victory'!B{0}".format(MV["EM"]), "Margin of Victory", PTS),
         ("Margin of victory", "Polymarket only", "P(margin under 3 pts)", "='Margin of Victory'!B{0}".format(MV["P3"]), "Margin of Victory", PCT2),
-        ("Margin of victory", "Kalshi", "Expected margin (D−R)", "='Margin of Victory'!B{0}".format(K3["KEM"]), "Margin of Victory", PTS),
         ("Voter turnout", "Kalshi only", "Expected ballots cast", "='Voter Turnout'!B{0}".format(K3["TEXP"]), "Voter Turnout", '#,##0'),
         ("PA Democratic seats", "Kalshi only", "Expected seats of 17", "='PA Seat Count'!B{0}".format(MV["ES"]), "PA Seat Count", SEATS),
         ("Dem primary (settled)", "Kalshi + polls", "Brooks actual result", "=Polls!H{0}".format(P["ACT"]), "Polls", PCT)]
@@ -252,11 +251,10 @@ for i, (subj, ven, key, val, sheet, fmt) in enumerate(subs):
         for c in range(1, 9):
             if c != 4: sm.cell(rr, c).fill = BAND
 r = SUBH + len(subs)
-r = note(sm, r, "Margin of victory is quoted on BOTH venues — Polymarket as exclusive brackets, "
-                "Kalshi as thresholds (KXMIDTERMMOV-PA07D/R) — and the two expected margins are compared on "
-                "the Margin of Victory sheet. Turnout is Kalshi-only. PA-07 still has no entry in Kalshi's "
-                "closest-race market, and its PA-07 nominee and 2024 events return no tradeable markets. "
-                "Full inventory on Notes & Sources.", 8)
+r = note(sm, r, "Kalshi also quotes a margin-of-victory ladder (KXMIDTERMMOV-PA07D/R), but too thinly to "
+                "use: most rungs have no two-sided quote, so it is collected and not shown. Turnout is "
+                "Kalshi-only. PA-07 still has no entry in Kalshi's closest-race market, and its PA-07 "
+                "nominee and 2024 events return no tradeable markets. Full inventory on Notes & Sources.", 8)
 r += 1
 
 r = section(sm, r, "CROSS-VENUE ARBITRAGE CHECK (live, executable prices)", 8)
