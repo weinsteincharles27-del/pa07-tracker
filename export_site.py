@@ -603,8 +603,9 @@ def poll_block(pollsmax):
              "dem_win_prob": f.get("dem_win_prob"), "rep_win_prob": f.get("rep_win_prob"),
              "projected_margin": f.get("projected_margin"),
              "rating": ((pollsmax or {}).get("ratings") or {}).get("forecast_rating"),
-             "methodology": (pollsmax or {}).get("methodology") or {},
-             "extraction_problems": (pollsmax or {}).get("extraction_problems") or []}
+             "methodology": (pollsmax or {}).get("methodology") or {}}
+    # extraction_problems stays in sources/pollsmax.json. It is the extractor's
+    # working log, not something a reader of the public data can act on.
 
     return {"origin": origin, "polls": rows, "average": avg, "model": model,
             "assumptions": {"half_life_days": half_life,
@@ -647,7 +648,6 @@ def finance_block(fec):
             {"target": t, "support_oppose": so, "amount": round(v, 2)}
             for (t, so), v in sorted(by_target.items(), key=lambda kv: -kv[1])],
         "notes": fec.get("notes") or [],
-        "extraction_problems": fec.get("extraction_problems") or [],
     }
 
 
@@ -888,7 +888,7 @@ def freshness(data, data2, data3, pollsmax, cs, fec, snap, wb_path):
          "last_history_day": last((data or {}).get("pm_history")),
          "days": len((data or {}).get("pm_history") or {})},
         {"id": "kalshi", "label": "Kalshi", "kind": "live",
-         "detail": "Read server-side every ten minutes; history from the scheduled build.",
+         "detail": "Read server-side by a scheduled job; history from the scheduled build.",
          "snapshot_utc": mtime("data.json"),
          "last_history_day": last((data or {}).get("k_history")),
          "days": len((data or {}).get("k_history") or {})},
@@ -931,7 +931,7 @@ def build(out_dir=OUT_DIR, window_days=WINDOW_DAYS, copy_workbook=True):
     cs = read_json(os.path.join("sources", "cityandstate.json"))
     fec = read_json(os.path.join("sources", "fec.json"))
 
-    snap, notes, alerts, origin = figures()
+    snap, _notes, _alerts, origin = figures()
     mids = midpoints()
 
     os.makedirs(out_dir, exist_ok=True)
@@ -973,8 +973,12 @@ def build(out_dir=OUT_DIR, window_days=WINDOW_DAYS, copy_workbook=True):
     written["divergence.json"] = write_json(os.path.join(out_dir, "divergence.json"), annotate({
         "divergence": divergence_block(data, series),
         "moves": moves_block(series, snap)}))
+    # notes and alerts are messages to the operator, not the reader: they name
+    # local paths under the home directory ("PUBLISH FAILED: /Users/...") and
+    # say what to download by hand. site/data is public, so they stay in
+    # status.json and the workbook, and the page never needed them.
     written["headline.json"] = write_json(os.path.join(out_dir, "headline.json"), {
-        "snapshot": snap, "notes": notes, "alerts": alerts, "origin": origin})
+        "snapshot": snap, "origin": origin})
 
     # The manifest lists the payload files and not itself: it is written last,
     # so its own size is not known while it is being serialised, and a size it

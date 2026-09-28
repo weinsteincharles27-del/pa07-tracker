@@ -299,19 +299,26 @@ def test_every_assumption_says_why_it_was_chosen():
         assert a["what"] and a["value"] and a["why"]
 
 
-def test_headline_reuses_the_notes_the_pipeline_already_wrote():
-    """diff() produces the alert strings. Re-deriving them in the browser would
-    be a second implementation of the alerting rules."""
+def test_headline_keeps_operator_messages_off_the_public_site():
+    """The snapshot comes from the last run's status.json, but its notes and
+    alerts are messages to the operator: they named local paths under the home
+    directory and were readable by anyone at site/data/headline.json. The same
+    goes for an extractor's working log."""
     e = ex()
     with support.sandbox(data=True) as d:
         seed(d, data3={"problems": []},
              status={"snapshot": {"pm_dem": 0.79, "consensus_dem": 0.79},
-                     "notes": ["a note"], "alerts": ["LARGE MOVE: something"]})
+                     "notes": ["a note"], "alerts": ["PUBLISH FAILED: /Users/someone/x.xlsx"]})
         e.build(out_dir=os.path.join(d, "site", "data"), copy_workbook=False)
-        head = support.read_json(os.path.join(d, "site", "data", "headline.json"))
+        out = os.path.join(d, "site", "data")
+        head = support.read_json(os.path.join(out, "headline.json"))
+        polls = support.read_json(os.path.join(out, "polls.json"))
+        public = "".join(open(os.path.join(out, f)).read() for f in os.listdir(out))
     assert head["origin"] == "status.json"
-    assert head["alerts"] == ["LARGE MOVE: something"]
     assert head["snapshot"]["consensus_dem"] == 0.79
+    assert "alerts" not in head and "notes" not in head
+    assert "extraction_problems" not in polls["model"]
+    assert "/Users/" not in public
 
 
 def test_freshness_is_reported_per_source():
