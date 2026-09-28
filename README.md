@@ -47,8 +47,12 @@ that carries an `Origin` header, so a server reads it instead:
 - `.github/workflows/kalshi-live.yml` runs `kalshi_book.py` every ten minutes
   and rewrites `kalshi-live.json` on the `live-data` branch (always a single
   commit; the job amends and force-pushes). The page reads it from
-  raw.githubusercontent.com, which caches for five minutes, so Kalshi on the
-  page is at most about fifteen minutes old. Public market data needs no key.
+  raw.githubusercontent.com, which caches for five minutes. Public market
+  data needs no key. In practice GitHub runs this schedule every few hours,
+  not every ten minutes (the run history in late September 2026 shows gaps
+  of three to six hours), so the page never promises a cadence: it shows
+  each venue's own age, and uses whichever of the live file and the last
+  build is newer.
 - `api/kalshi.js` is the same read as a Vercel function. If the repository is
   ever pointed at Vercel, the page finds `/api/kalshi` first and Kalshi becomes
   live to the second, with no change to the page.

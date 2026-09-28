@@ -5,30 +5,23 @@
  *
  *   Kalshi returns 403 to any browser request, so a server reads it for us.
  *   The page tries each configured endpoint in order: a /api/kalshi function
- *   if one is deployed next to the page, then the file that a GitHub Actions
- *   job rewrites every ten minutes. Whatever answers first wins and its own
- *   timestamp is shown, so the age is honest.
+ *   if one is deployed next to the page, then the file that a scheduled
+ *   GitHub Actions job rewrites. An endpoint that answers 404 is not deployed
+ *   here and is skipped for the rest of the visit, rather than logging an
+ *   error into the console every minute.
  *
- * Live numbers never overwrite the snapshot. Both sit side by side with the
- * difference between them, and on the headline chart the live prices are
- * separate markers past the end of the committed lines.
+ * Live readings do not get a panel of their own. They go to the lead through
+ * PA07.lead(), which shows whichever reading is newer for each venue, the
+ * build's or the live one, with its own age. On the headline chart the live
+ * prices are separate markers past the end of the committed lines.
  */
 (function () {
   "use strict";
 
-  var elem = window.PA07.elem, C = window.PA07.colours, CFG = window.PA07_LIVE || {};
-  var L = { timer: null, paused: false, pm: null, k: null, pmError: null, kError: null };
+  var P = window.PA07, C = P.colours, elem = P.elem, CFG = window.PA07_LIVE || {};
+  var L = { timer: null, paused: false, pm: null, k: null, pmError: null, kError: null, gone: {} };
 
-  function pct(v, dp) {
-    return v === null || v === undefined ? "n/a" : (v * 100).toFixed(dp === undefined ? 1 : dp) + "%";
-  }
-  function pp(v) {
-    return v === null || v === undefined ? "" :
-      (Math.abs(v) < 0.00005 ? "0.0" : (v > 0 ? "+" : "") + (v * 100).toFixed(1)) + " pp";
-  }
   function today() { return new Date().toISOString().slice(0, 10); }
-  function ago(iso) { return window.PA07.ago(iso); }
-  function ageMinutes(iso) { var t = Date.parse(iso || ""); return isNaN(t) ? Infinity : (Date.now() - t) / 60000; }
 
   /* Polymarket seeds unused outcome slots on every event, flagged inactive and
      quoted 0 bid / 1 ask. Anything not active, or closed, or archived, is not
@@ -44,117 +37,43 @@
 
   function fetchJson(url) {
     return fetch(url, { cache: "no-store", mode: "cors" }).then(function (r) {
-      if (!r.ok) throw new Error("HTTP " + r.status + " from " + new URL(r.url, location.href).host);
+      if (!r.ok) {
+        var err = new Error("HTTP " + r.status + " from " + new URL(r.url, location.href).host);
+        err.status = r.status;
+        throw err;
+      }
       return r.json();
     });
   }
 
-  /* ------------------------------------------------------------- the panel */
+  /* ------------------------------------------------------------- the bar */
 
-  function panel(d) {
-    var sec = elem("section", "block");
-    sec.id = "livebox";
-    var h = elem("header");
-    h.appendChild(elem("h2", null, "Live"));
-    sec.appendChild(h);
-    var body = elem("div");
-    body.id = "livebody";
-    sec.appendChild(body);
-
-    var controls = elem("div", "controls");
-    controls.style.marginTop = "0.75rem";
-    var pause = elem("button", null, "Pause");
+  function bar() {
+    var host = document.getElementById("livebar");
+    if (!host) return;
+    var status = elem("span");
+    status.id = "livestatus";
+    var pause = elem("button", "text", "Pause live prices");
+    pause.type = "button";
+    pause.setAttribute("aria-pressed", "false");
     pause.addEventListener("click", function () {
       L.paused = !L.paused;
-      pause.textContent = L.paused ? "Resume" : "Pause";
+      pause.textContent = L.paused ? "Resume live prices" : "Pause live prices";
       pause.setAttribute("aria-pressed", L.paused ? "true" : "false");
-      if (!L.paused) tick();
+      if (L.paused) { clearTimeout(L.timer); say("Live prices paused."); }
+      else tick();
     });
-    var now = elem("button", null, "Refresh");
-    now.addEventListener("click", function () { tick(); });
-    controls.appendChild(pause);
-    controls.appendChild(now);
-    var status = elem("span", "small muted");
-    status.id = "livestatus";
-    controls.appendChild(status);
-    sec.appendChild(controls);
-    return sec;
+    host.appendChild(status);
+    host.appendChild(pause);
   }
 
-  /* One row: label, committed figure, live figure, change, and where the live
-     figure came from. `deltaFmt` is separate because the margin row moves in
-     margin points, not percentage points. */
-  function row(label, snap, now, fmt, deltaFmt, threshold, asOf) {
-    var tr = document.createElement("tr");
-    var delta = (snap === null || snap === undefined || now === null || now === undefined) ? null : now - snap;
-    [label, fmt(snap), now === null || now === undefined ? "waiting" : fmt(now),
-     delta === null ? "" : (deltaFmt || pp)(delta), asOf || ""].forEach(function (v, i) {
-      var td = document.createElement("td");
-      td.textContent = v;
-      if (i && i < 4) td.className = "num";
-      if (i === 4) td.className = "small muted";
-      if (i === 3 && delta !== null && Math.abs(delta) >= (threshold || 0.005)) {
-        td.style.color = delta > 0 ? "var(--dem)" : "var(--rep)";
-        td.style.fontWeight = "600";
-      }
-      tr.appendChild(td);
-    });
-    return tr;
+  function say(text) {
+    var s = document.getElementById("livestatus");
+    if (s) s.textContent = text;
   }
 
   function marginFmt(x) {
-    return x === null || x === undefined ? "n/a" : (x > 0 ? "D+" : x < 0 ? "R+" : "") + Math.abs(x).toFixed(2);
-  }
-
-  function render(d) {
-    var body = document.getElementById("livebody");
-    if (!body) return;
-    var s = d.headline.snapshot || {};
-    var pm = L.pm || {}, k = L.k || {};
-    var kAge = L.k ? ageMinutes(L.k.at) : null;
-
-    var wrap = elem("div", "scroll");
-    var t = document.createElement("table");
-    var thead = document.createElement("thead"), hr = document.createElement("tr");
-    ["", "Last build", "Live", "Change", "As of"].forEach(function (x, i) {
-      var th = document.createElement("th");
-      th.textContent = x;
-      if (i && i < 4) th.className = "num";
-      hr.appendChild(th);
-    });
-    thead.appendChild(hr);
-    t.appendChild(thead);
-    var tb = document.createElement("tbody");
-
-    var pmWhen = L.pmError ? "poll failed" : (L.pm ? ago(L.pm.at) : "");
-    var kWhen = L.kError ? "unavailable" : (L.k ? ago(L.k.at) + (kAge > 45 ? ", stale" : "") : "");
-
-    var rD = row("Brooks (D), Polymarket", s.pm_dem, pm.pm_dem, pct, null, null, pmWhen); rD.className = "d";
-    var rK = row("Brooks (D), Kalshi", s.kalshi_dem, k.dem, pct, null, null, kWhen); rK.className = "d";
-    tb.appendChild(rD);
-    tb.appendChild(rK);
-    var cons = pm.pm_dem !== null && pm.pm_dem !== undefined && k.dem !== null && k.dem !== undefined
-      ? (pm.pm_dem + k.dem) / 2 : null;
-    tb.appendChild(row("Consensus", s.consensus_dem, cons, pct, null, null, ""));
-    tb.appendChild(row("Implied margin, Polymarket", s.expected_margin_pts, pm.margin, marginFmt,
-      function (x) { return (x > 0 ? "+" : "") + x.toFixed(2) + " pts"; }, 0.005, pmWhen));
-    t.appendChild(tb);
-    wrap.appendChild(t);
-    body.innerHTML = "";
-    body.appendChild(wrap);
-
-    var note = elem("p", "fine");
-    note.textContent = "Polymarket updates every " +
-      ((CFG.polymarket || {}).poll_seconds || 60) + " seconds, Kalshi" +
-      (L.k && L.k.source === "vercel" ? " on request." : " every ten minutes.") +
-      (L.pmError ? " Polymarket: " + L.pmError + "." : "") +
-      (L.kError ? " Kalshi: " + L.kError + "." : "");
-    body.appendChild(note);
-  }
-
-  function status(text) {
-    var s = document.getElementById("livestatus");
-    if (s) s.textContent = text;
+    return (x > 0 ? "D+" : x < 0 ? "R+" : "") + Math.abs(x).toFixed(1);
   }
 
   /* --------------------------------------------------------------- polling */
@@ -190,64 +109,74 @@
   }
 
   /* First endpoint that answers with a usable D mid wins. */
-  function pullKalshi(d) {
-    var cfg = CFG.kalshi || {}, urls = cfg.endpoints || [];
+  function pullKalshi() {
+    var urls = ((CFG.kalshi || {}).endpoints || []).filter(function (u) { return !L.gone[u]; });
     var chain = Promise.reject(new Error("no endpoint configured"));
     urls.forEach(function (u) {
       chain = chain.catch(function () {
         return fetchJson(u).then(function (j) {
           if (!j || !j.D || j.D.mid === null || j.D.mid === undefined) throw new Error("no quote in " + u);
-          return { at: j.at, source: j.source, dem: j.D.mid, rep: j.R ? j.R.mid : null,
-                   bid: j.D.yes_bid, ask: j.D.yes_ask };
+          return { at: j.at, source: j.source, dem: j.D.mid };
+        }, function (err) {
+          if (err.status === 404) L.gone[u] = true;
+          throw err;
         });
       });
     });
     return chain;
   }
 
-  function paint(d) {
-    render(d);
-    var chart = (window.PA07.charts || {}).probability;
+  function paint() {
+    var shown = P.lead({ pm: L.pm && { v: L.pm.pm_dem, at: L.pm.at },
+                         k: L.k && { v: L.k.dem, at: L.k.at } });
+
+    /* The bars stay the build's, so the caption says which number is which. */
+    var s = P.state.data.headline.snapshot || {};
+    if (L.pm && L.pm.margin !== null) {
+      var now = document.getElementById("margin-now"), when = document.getElementById("margin-when");
+      if (now) now.textContent = marginFmt(L.pm.margin);
+      if (when) when.textContent = " live; the bars are from the last build" +
+        (s.expected_margin_pts !== null && s.expected_margin_pts !== undefined
+          ? ", when it was " + marginFmt(s.expected_margin_pts) : "");
+    }
+
+    var chart = (P.charts || {}).probability;
     if (chart) {
       var marks = [];
-      if (L.pm && L.pm.pm_dem !== null) marks.push({ date: today(), value: L.pm.pm_dem, color: C.D, label: "live" });
-      if (L.k && L.k.dem !== null) marks.push({ date: today(), value: L.k.dem, color: "#fff", stroke: C.D });
+      if (shown.pm.live) marks.push({ date: today(), value: shown.pm.v, color: C.D, label: "live" });
+      if (shown.k.live) marks.push({ date: today(), value: shown.k.v, color: "#fff", stroke: C.D });
       chart.opts.markers = marks;
       chart.redraw();
     }
   }
 
-  function schedule(d) {
+  function schedule() {
     clearTimeout(L.timer);
-    var secs = (CFG.polymarket || {}).poll_seconds || 60;
-    L.timer = setTimeout(tick, secs * 1000);
+    L.timer = setTimeout(tick, ((CFG.polymarket || {}).poll_seconds || 60) * 1000);
   }
 
   function tick() {
-    var d = window.PA07.state.data;
-    if (!d || !d.manifest) return;
-    if (L.paused) { status("Paused."); return; }
+    var d = P.state.data;
+    if (!d || !d.manifest || L.paused) return;
     /* A backgrounded tab should not keep hitting a public API. */
-    if (document.hidden) { schedule(d); return; }
-    status("Polling...");
+    if (document.hidden) { schedule(); return; }
     var pmDone = pullPolymarket(d).then(function (v) { L.pm = v; L.pmError = null; })
       .catch(function (err) { L.pmError = String(err.message || err); });
-    var kDone = pullKalshi(d).then(function (v) { L.k = v; L.kError = null; })
+    var kDone = pullKalshi().then(function (v) { L.k = v; L.kError = null; })
       .catch(function (err) { L.kError = String(err.message || err); });
     Promise.all([pmDone, kDone]).then(function () {
-      paint(d);
-      status((L.pmError && L.kError ? "Both reads failed." : "Updated ") + new Date().toLocaleTimeString());
-      schedule(d);
+      paint();
+      var t = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+      say(L.pmError && L.kError ? "Live prices could not be read (" + t + "). Showing the last build." :
+          L.pmError ? "Polymarket could not be read live (" + L.pmError + ")." :
+          "Live prices checked at " + t + ", every " + ((CFG.polymarket || {}).poll_seconds || 60) + " seconds.");
+      schedule();
     });
   }
 
-  document.addEventListener("dashboard:ready", function (ev) {
-    var d = ev.detail, main = document.getElementById("main");
-    var probability = document.getElementById("probability");
-    var box = panel(d);
-    if (probability) main.insertBefore(box, probability);
-    else main.appendChild(box);
-    render(d);
+  document.addEventListener("dashboard:ready", function () {
+    bar();
+    say("Checking live prices…");
     tick();
     document.addEventListener("visibilitychange", function () {
       if (!document.hidden && !L.paused) tick();

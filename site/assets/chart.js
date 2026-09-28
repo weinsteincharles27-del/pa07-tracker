@@ -92,9 +92,8 @@
     var draw = function () {
       var width = Math.max(260, host.clientWidth || 320);
       var narrow = width < 420;
-      var height = opt.height || (narrow ? 220 : 280);
       var m = { l: narrow ? 36 : 44, r: 10, t: 10, b: 22 };
-      var iw = width - m.l - m.r, ih = height - m.t - m.b;
+      var iw = width - m.l - m.r;
 
       var xs = [], ys = [];
       series.forEach(function (s) {
@@ -104,6 +103,24 @@
       if (!xs.length) return;
       var x0 = opt.xMin !== undefined ? ms(opt.xMin) : Math.min.apply(null, xs);
       var x1 = opt.xMax !== undefined ? ms(opt.xMax) : Math.max.apply(null, xs);
+      var X = function (t) { return m.l + (x1 === x0 ? iw / 2 : (t - x0) / (x1 - x0) * iw); };
+
+      /* Moments are numbered pins on a rail above the plot, one per dated
+         event, with a period shaded when it has an end date. Pins that would
+         touch drop to a second row instead of overlapping, so the rail grows
+         with the density of the story rather than hiding half of it. */
+      var PIN = 7.5, ROW = 2 * PIN + 3, rowEnd = [];
+      var pins = (opt.moments || []).map(function (mo) {
+        var a = ms(mo.date), b = mo.to ? ms(mo.to) : a;
+        var px = X((a + b) / 2), row = 0;
+        if (px < m.l || px > width - m.r) return null;
+        while (rowEnd[row] !== undefined && px - PIN - 2 < rowEnd[row]) row++;
+        rowEnd[row] = px + PIN;
+        return { mo: mo, a: a, b: b, px: px, row: row };
+      }).filter(Boolean);
+      if (rowEnd.length) m.t = 6 + rowEnd.length * ROW + 4;
+      var height = (opt.height || (narrow ? 220 : 280)) + m.t - 10;
+      var ih = height - m.t - m.b;
       var lo = opt.yMin !== undefined ? opt.yMin : Math.min.apply(null, ys);
       var hi = opt.yMax !== undefined ? opt.yMax : Math.max.apply(null, ys);
       (opt.refLines || []).forEach(function (r) { lo = Math.min(lo, r.y); hi = Math.max(hi, r.y); });
@@ -112,7 +129,6 @@
       if (opt.yMin === undefined) lo -= padY;
       if (opt.yMax === undefined) hi += padY;
 
-      var X = function (t) { return m.l + (x1 === x0 ? iw / 2 : (t - x0) / (x1 - x0) * iw); };
       var Y = function (v) { return m.t + ih - (v - lo) / (hi - lo) * ih; };
 
       var svg = el("svg", { width: width, height: height, viewBox: "0 0 " + width + " " + height,
@@ -135,6 +151,19 @@
         svg.appendChild(el("line", { class: "refline", x1: m.l, x2: width - m.r, y1: Y(r.y), y2: Y(r.y) }));
         if (r.label) svg.appendChild(el("text", { class: "reflabel", x: width - m.r, y: Y(r.y) - 4,
                                                   "text-anchor": "end" }, r.label));
+      });
+
+      pins.forEach(function (p) {
+        if (p.b > p.a) {
+          svg.appendChild(el("rect", { class: "span", x: X(p.a), y: m.t,
+                                       width: Math.max(1, X(p.b) - X(p.a)), height: ih }));
+        }
+        var cy = 6 + PIN + p.row * ROW;
+        svg.appendChild(el("line", { class: "guide", x1: p.px, x2: p.px, y1: cy + PIN, y2: m.t + ih }));
+        var g = el("g", { class: "pin" });
+        g.appendChild(el("circle", { cx: p.px, cy: cy, r: PIN }));
+        g.appendChild(el("text", { x: p.px, y: cy + 3.3, "text-anchor": "middle" }, p.mo.label));
+        svg.appendChild(g);
       });
 
       /* Shaded uncertainty bands, drawn under every line. */
