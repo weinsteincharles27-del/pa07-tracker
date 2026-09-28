@@ -8,8 +8,9 @@
    Kalshi returns 403 to any browser request, so a server reads it and the
    page tries these endpoints in order: api/kalshi is the Vercel function in
    api/kalshi.js and only answers if the repository is deployed there; the
-   raw file is rewritten every ten minutes by
-   .github/workflows/kalshi-live.yml on the live-data branch. */
+   raw file is rewritten by .github/workflows/kalshi-live.yml on the
+   live-data branch. That job asks for every ten minutes and GitHub runs it
+   every few hours, which is why the page shows the file's own age. */
 window.PA07_LIVE = {
   "polymarket": {
     "winner_event": "https://gamma-api.polymarket.com/events/106187",

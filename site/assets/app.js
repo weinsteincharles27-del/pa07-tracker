@@ -11,7 +11,7 @@
 (function () {
   "use strict";
 
-  var D = "#2E5FA3", R = "#C0392B", MODEL = "#6D4C9F", POLL = "#A8620B";
+  var D = "#2E5FA3", R = "#C0392B", MODEL = "#6D4C9F", POLL = "#A8620B", GAP = "#6B7C93";
 
   var State = { data: {} };
 
@@ -53,12 +53,17 @@
     return isNaN(t) ? iso : new Date(t).toISOString().replace("T", " ").slice(0, 16) + " UTC";
   }
 
+  /* Counted from the reader's own date, not the export's: the manifest's
+     days_to_election is frozen at build time and is a day out by the evening. */
   function renderCountdown(man) {
-    var days = man.race.days_to_election;
+    var e = Date.parse(man.race.election + "T00:00:00Z"), n = new Date();
+    var days = Math.round((e - Date.UTC(n.getFullYear(), n.getMonth(), n.getDate())) / 86400000);
+    var when = window.Chart.fmt.day(man.race.election);
     $("countdown").textContent =
-      (days > 0 ? days + " days to the election" : "Election day has passed") +
-      " · 3 November 2026";
-    $("built").textContent = "Data updated " + utc(man.generated_utc);
+      days > 1 ? days + " days to the election on " + when + "." :
+      days === 1 ? "The election is tomorrow, " + when + "." :
+      days === 0 ? "Election day, " + when + "." : "The election was on " + when + ".";
+    $("built").textContent = "Data updated " + utc(man.generated_utc) + ".";
   }
 
   /* ------------------------------------------------------------------ boot */
@@ -66,7 +71,7 @@
   function fail(err) {
     var box = $("boot");
     if (!box) return;
-    box.className = "caveat high";
+    box.className = "caveat";
     box.innerHTML = "<b>Could not load the data files.</b><p>" + String(err) + "</p>" +
       "<p>If you opened this file directly, the browser is blocking the fetch. Serve the " +
       "directory instead: <code>cd site &amp;&amp; /usr/bin/python3 -m http.server 8000</code></p>";
@@ -76,7 +81,10 @@
     Promise.all([
       get("data/manifest.json"),
       get("data/headline.json"),
-      get("data/series.json"),
+      /* The full history, not the 180-day window: the sourced events and the
+         longest disagreements start in December 2025, and a chart that cannot
+         show them cannot carry their pins. */
+      get("data/series-full.json"),
       get("data/distribution.json"),
       get("data/polls.json"),
       get("data/divergence.json")
@@ -93,7 +101,7 @@
 
   window.PA07 = {
     state: State, get: get, elem: elem, ago: ago, utc: utc,
-    colours: { D: D, R: R, MODEL: MODEL, POLL: POLL }
+    colours: { D: D, R: R, MODEL: MODEL, POLL: POLL, GAP: GAP }
   };
 
   if (document.readyState === "loading") {
