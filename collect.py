@@ -77,7 +77,12 @@ for side in ("D", "R"):
                 "contains '%s'. Still collected, but the stable key has moved and the "
                 "matcher should be updated." % (side, slug_part))
     tok = PM_D if side=="D" else PM_R
-    book = kalshi.fetch("https://clob.polymarket.com/book", {"token_id": tok}).json()
+    book = kalshi.pm_book(tok)
+    if book is None:
+        problem("pm_book_closed", slug_part,
+                "Polymarket has no order book for the %s winner market any more (settled), "
+                "so bid and ask are blank." % side)
+        book = {}
     bids = sorted([(float(x["price"]), float(x["size"])) for x in book.get("bids",[])], reverse=True)
     asks = sorted([(float(x["price"]), float(x["size"])) for x in book.get("asks",[])])
     OUT["pm_meta"][side] = {

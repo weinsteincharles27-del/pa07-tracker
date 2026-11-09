@@ -124,3 +124,19 @@ def test_net3_schema_miss_names_the_url_and_keys():
             assert "market" in str(e) and "markets" in str(e), str(e)
         else:
             raise AssertionError("a missing top-level key passed unnoticed")
+
+
+def test_pm_book_settled_market_is_none_not_a_crash():
+    """Polymarket deletes a settled market's book and 404s from then on. That
+    took the whole refresh down for six days after election night."""
+    rec = Recorder((404, {"error": "No orderbook exists for the requested token id"}))
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+        assert kalshi.pm_book("123") is None
+    rec = Recorder((502, {"m": "bad gateway"}))
+    with support.attrs(requests, get=rec), support.attrs(kalshi, BACKOFF=0.0):
+        try:
+            kalshi.pm_book("123")
+        except kalshi.ApiError:
+            pass
+        else:
+            raise AssertionError("an outage must still fail loudly, only a 404 means settled")

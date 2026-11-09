@@ -69,7 +69,12 @@ for name in ORDER:
                 % (name, ", ".join(sorted(str(x) for x in by)) or "(none)"))
         continue
     tok = json.loads(m["clobTokenIds"])[0]
-    book = kalshi.fetch("https://clob.polymarket.com/book", {"token_id": tok}).json()
+    book = kalshi.pm_book(tok)
+    if book is None:
+        problem("pm_book_closed", name,
+                "Polymarket has no order book for margin bracket '%s' any more (settled), "
+                "so bid and ask are blank." % name)
+        book = {}
     bids = sorted([(float(x["price"]), float(x["size"])) for x in book.get("bids", [])], reverse=True)
     asks = sorted([(float(x["price"]), float(x["size"])) for x in book.get("asks", [])])
     OUT["mov"].append({
