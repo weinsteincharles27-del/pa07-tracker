@@ -168,12 +168,12 @@ for k, v in {"A": 34, "B": 16, "C": 17, "D": 16, "E": 16, "F": 16, "G": 16, "H":
 r = 4
 r = section(sm, r, "HEADLINE", 8)
 put(sm, r, 1, "Consensus Democratic win probability", BOLD)
-put(sm, r, 2, '=AVERAGE(Polymarket!D{0},Kalshi!E{1})'.format(PMD, KD), BIG, PCT, YEL)
+put(sm, r, 2, '=IFERROR(AVERAGE(Polymarket!D{0},Kalshi!E{1}),"")'.format(PMD, KD), BIG, PCT, YEL)
 sm.merge_cells(start_row=r, start_column=2, end_row=r, end_column=3); sm.row_dimensions[r].height = 30
 put(sm, r, 4, "Equal-weighted mean of the two venue mids. Not liquidity-weighted — Polymarket carries the larger book.", NOTE, None, None, None, False)
 HEAD = r; r += 1
 put(sm, r, 1, "Consensus Republican win probability", BOLD)
-put(sm, r, 2, '=AVERAGE(Polymarket!D{0},Kalshi!E{1})'.format(PMR, KR), BIG, PCT, YEL)
+put(sm, r, 2, '=IFERROR(AVERAGE(Polymarket!D{0},Kalshi!E{1}),"")'.format(PMR, KR), BIG, PCT, YEL)
 sm.merge_cells(start_row=r, start_column=2, end_row=r, end_column=3); sm.row_dimensions[r].height = 30
 put(sm, r, 4, "Bob Brooks (D) vs incumbent Ryan Mackenzie (R).", NOTE, None, None, None, False); r += 1
 put(sm, r, 1, "Market-implied margin (D−R)", BOLD)
@@ -213,7 +213,7 @@ put(sm, MS, 1, "Polymarket", BOLD, None, GREY)
 put(sm, MS, 2, '=Polymarket!D{0}'.format(PMD), GREEN, PCT2, DEMF)
 put(sm, MS, 3, '=Polymarket!D{0}'.format(PMR), GREEN, PCT2, REPF)
 put(sm, MS, 4, '=Polymarket!D{0}'.format(PMS), GREEN, PCT2)
-put(sm, MS, 5, '=B{0}+C{0}-1'.format(MS), BLACK, DIFF)
+put(sm, MS, 5, '=IF(COUNT(B{0}:C{0})=2,B{0}+C{0}-1,"")'.format(MS), BLACK, DIFF)
 put(sm, MS, 6, '=Polymarket!E{0}'.format(PMD), GREEN, DIFF)
 put(sm, MS, 7, '=IFERROR(B{0}/D{0},"")'.format(MS), BLACK, PCT)
 put(sm, MS, 8, '=Polymarket!B{0}+Polymarket!C{0}'.format(PMVOL), GREEN, USD)
@@ -221,10 +221,10 @@ put(sm, MS + 1, 1, "Kalshi", BOLD, None, GREY)
 put(sm, MS + 1, 2, '=Kalshi!E{0}'.format(KD), GREEN, PCT2, DEMF)
 put(sm, MS + 1, 3, '=Kalshi!E{0}'.format(KR), GREEN, PCT2, REPF)
 put(sm, MS + 1, 4, '=Kalshi!E{0}'.format(KS), GREEN, PCT2)
-put(sm, MS + 1, 5, '=B{0}+C{0}-1'.format(MS + 1), BLACK, DIFF)
+put(sm, MS + 1, 5, '=IF(COUNT(B{0}:C{0})=2,B{0}+C{0}-1,"")'.format(MS + 1), BLACK, DIFF)
 put(sm, MS + 1, 6, '=Kalshi!F{0}'.format(KD), GREEN, DIFF)
 put(sm, MS + 1, 7, '=IFERROR(B{0}/D{0},"")'.format(MS + 1), BLACK, PCT)
-put(sm, MS + 1, 8, '=Kalshi!G{0}+Kalshi!G{1}'.format(KD, KR), GREEN, USD)
+put(sm, MS + 1, 8, '=IF(COUNT(Kalshi!G{0},Kalshi!G{1}),SUM(Kalshi!G{0},Kalshi!G{1}),"")'.format(KD, KR), GREEN, USD)
 put(sm, MS + 2, 1, "Consensus (equal weight)", BOLD, None, YEL)
 for col in (2, 3, 4, 5, 6, 7):
     put(sm, MS + 2, col, '=AVERAGE({0}{1}:{0}{2})'.format(chr(64 + col), MS, MS + 1), BOLD,
@@ -260,15 +260,15 @@ r += 1
 r = section(sm, r, "CROSS-VENUE ARBITRAGE CHECK (live, executable prices)", 8)
 AR = r
 put(sm, r, 1, "Cheapest Dem YES ask", BOLD)
-put(sm, r, 2, '=MIN(Polymarket!C{0},Kalshi!D{1})'.format(PMD, KD), BLACK, PCT2)
-put(sm, r, 3, '=IF(Polymarket!C{0}<=Kalshi!D{1},"Polymarket","Kalshi")'.format(PMD, KD), BLACK, None, GREY); r += 1
+put(sm, r, 2, '=IF(COUNT(Polymarket!C{0},Kalshi!D{1})=2,MIN(Polymarket!C{0},Kalshi!D{1}),"")'.format(PMD, KD), BLACK, PCT2)
+put(sm, r, 3, '=IF(COUNT(Polymarket!C{0},Kalshi!D{1})=2,IF(Polymarket!C{0}<=Kalshi!D{1},"Polymarket","Kalshi"),"")'.format(PMD, KD), BLACK, None, GREY); r += 1
 put(sm, r, 1, "Cheapest Rep YES ask", BOLD)
-put(sm, r, 2, '=MIN(Polymarket!C{0},Kalshi!D{1})'.format(PMR, KR), BLACK, PCT2)
-put(sm, r, 3, '=IF(Polymarket!C{0}<=Kalshi!D{1},"Polymarket","Kalshi")'.format(PMR, KR), BLACK, None, GREY); r += 1
-put(sm, r, 1, "Total cost of both legs", BOLD); put(sm, r, 2, '=B{0}+B{1}'.format(AR, AR + 1), BOLD, PCT2, YEL); r += 1
-put(sm, r, 1, "Gross edge per $1 payout", BOLD); put(sm, r, 2, '=1-B{0}'.format(r - 1), BOLD, DIFF, YEL); EDGE = r; r += 1
+put(sm, r, 2, '=IF(COUNT(Polymarket!C{0},Kalshi!D{1})=2,MIN(Polymarket!C{0},Kalshi!D{1}),"")'.format(PMR, KR), BLACK, PCT2)
+put(sm, r, 3, '=IF(COUNT(Polymarket!C{0},Kalshi!D{1})=2,IF(Polymarket!C{0}<=Kalshi!D{1},"Polymarket","Kalshi"),"")'.format(PMR, KR), BLACK, None, GREY); r += 1
+put(sm, r, 1, "Total cost of both legs", BOLD); put(sm, r, 2, '=IF(COUNT(B{0}:B{1})=2,B{0}+B{1},"")'.format(AR, AR + 1), BOLD, PCT2, YEL); r += 1
+put(sm, r, 1, "Gross edge per $1 payout", BOLD); put(sm, r, 2, '=IF(ISNUMBER(B{0}),1-B{0},"")'.format(r - 1), BOLD, DIFF, YEL); EDGE = r; r += 1
 put(sm, r, 1, "Arbitrage present?", BOLD)
-put(sm, r, 2, '=IF(B{0}>0,"YES — gross, before fees","No")'.format(EDGE), BOLD)
+put(sm, r, 2, '=IF(ISNUMBER(B{0}),IF(B{0}>0,"YES — gross, before fees","No"),"No live quotes")'.format(EDGE), BOLD)
 sm.merge_cells(start_row=r, start_column=2, end_row=r, end_column=4)
 sm.cell(r, 2).comment = Comment(
     "Buying both YES legs guarantees a $1 payout, since exactly one party wins. Any 'YES' here is gross of Kalshi "

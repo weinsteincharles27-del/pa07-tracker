@@ -137,6 +137,21 @@ def fetch(url, params=None, timeout=30, venue="Polymarket"):
     return _send(lambda: requests.get(url, params=params, timeout=timeout), venue, url)
 
 
+def pm_book(token_id):
+    """Polymarket order book, or None once the market has settled.
+
+    The CLOB deletes a settled market's book and answers 404 "No orderbook
+    exists" from then on. That is the normal end of a market, not an outage,
+    so callers get None and record it instead of killing the whole refresh.
+    """
+    try:
+        return fetch("https://clob.polymarket.com/book", {"token_id": token_id}).json()
+    except ApiError as e:
+        if e.status == 404:
+            return None
+        raise
+
+
 def field(resp, key):
     """Pull a required top-level key out of a JSON body.
 

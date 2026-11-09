@@ -122,7 +122,7 @@ r = 4
 r = section(fa, r, "MODEL vs MARKET — the headline disagreement", 9)
 MKT = r
 put(fa, r, 1, "Market consensus P(Dem)", BOLD)
-put(fa, r, 2, '=AVERAGE(Polymarket!D{0},Kalshi!E{1})'.format(PMD, KD), BIG, PCT, YEL)
+put(fa, r, 2, '=IFERROR(AVERAGE(Polymarket!D{0},Kalshi!E{1}),"")'.format(PMD, KD), BIG, PCT, YEL)
 fa.merge_cells(start_row=r, start_column=2, end_row=r, end_column=3); fa.row_dimensions[r].height = 26
 put(fa, r, 4, "Equal-weighted mean of the two venue mids, read directly from their APIs.",
     NOTE, None, None, None, False)
